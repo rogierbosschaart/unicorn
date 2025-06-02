@@ -1,0 +1,2 @@
+class ConnectionCommentsController < ApplicationController
+end
