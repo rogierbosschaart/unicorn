@@ -15,7 +15,7 @@ class User < ApplicationRecord
   private
 
   def only_agents_belong_to_agency
-    if user_type != 'agent' && agency_id.present?
+    if user_type != 'agent' 
       errors.add(:agency, 'can only be assigned to agency if user is agent')
     end
   end
