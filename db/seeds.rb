@@ -1,10 +1,8 @@
 Travel.destroy_all
 Hotel.destroy_all
-
-Client.destroy_all
 Listing.destroy_all
+Client.destroy_all
 Connection.destroy_all
-
 User.destroy_all
 Agency.destroy_all
 
@@ -37,3 +35,6 @@ Client.create!(name: "Lemaire", contact_info: "Christophe: +33 566738478")
 Client.create!(name: "Wooyungmi", contact_info: "John: +33 566738478")
 
 Listing.create!(client: Client.last, user: agent, listing_type: 'casting', start_date: "03/06/2026", address: "Paris" )
+Connection.create!(user: model1, listing: Listing.last, rate: 1200)
+Connection.create!(user: model2, listing: Listing.last, rate: 1200)
+Connection.create!(user: model3, listing: Listing.last, rate: 1200)
