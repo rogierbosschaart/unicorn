@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :agency, only: [:show] do
     resources :listing, only: [:index, :new, :create]
+    resources :travel, only: [:index]
+    resources :hotel, only: [:index]
   end
 end
