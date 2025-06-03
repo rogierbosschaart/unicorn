@@ -6,4 +6,6 @@ class Agency < ApplicationRecord
            inverse_of: :agency
   has_many :model_agency_profiles
   has_many :mannequins, through: :model_agency_profiles, source: :user
+  has_many :hotels
+  has_many :travels
 end
