@@ -1,17 +1,36 @@
 class ListingsController < ApplicationController
+before_action :authenticate_user!
 
   def index
-    @listings = Listing.all
+    @agency = Agency.find(params[:agency_id])
+    @listings = @agency.listings.where(user: current_user)
   end
 
   def new
-    @listing = Listing.new
+    @agency = Agency.find(params[:agency_id])
+    @listing = @agency.listings.build
   end
 
   def create
-    @listing = Listing.new(listing_params)
-    @user = current_user
-    @listing.user_id = @user.id
-    @item.save
+    @agency = Agency.find(params[:agency_id])
+    @listing = @agency.listings.build(listing_params)
+    @listing.user = current_user
+    @listing.client = Client.first
+    raise
+
+    if @listing.save
+      redirect_to agency_listings_path(@agency), notice: "Listing created successfully."
+    else
+      render :new, status: :unprocessable_entity, notice: "ERROR"
+    end
+  end
+
+    private
+
+  def listing_params
+    params.require(:listing).permit(
+      :start_date, :end_date, :listing_type,
+      :location, :address, :photographer, :stylist
+    )
   end
 end
