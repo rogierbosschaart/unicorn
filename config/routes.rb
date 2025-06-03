@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :agency, only: [:show] do
-    resources :listing, only: [:index, :new]
+    resources :listing, only: [:index, :new, :create]
   end
 end
