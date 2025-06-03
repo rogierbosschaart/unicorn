@@ -6,9 +6,17 @@ class Listing < ApplicationRecord
   scope :options, -> { where(listing_type: 'option') }
   scope :jobs, -> { where(listing_type: 'job') }
 
-  enum listing_type: { casting: 'casting', option: 'option', job: 'jpb' }
+  enum listing_type: { casting: 'casting', option: 'option', job: 'job' }
 
-  if listing_type == 'casting'
-    validates :address, presence: true
-  end
+  # CASTINGS
+  validates :start_date, presence: true, if: :casting?
+  validates :start_time, presence: true, if: :casting?
+  validates :end_time, presence: true, if: :casting?
+  validates :address, presence: true, if: :casting?
+
+  # OPTIONS
+  validates :start_date, presence: true, if: :option?
+
+  # JOBS
+  validates :start_date, presence: true, if: :job?
 end
