@@ -1,7 +1,6 @@
 class AgenciesController < ApplicationController
 
-  def index
-    @agencies = Agency.all
+  def show
+    
   end
-  
 end
