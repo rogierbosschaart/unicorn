@@ -19,4 +19,5 @@ class User < ApplicationRecord
   #     errors.add(:agency, 'can only be assigned to agency if user is agent')
   #   end
   # end
+
 end

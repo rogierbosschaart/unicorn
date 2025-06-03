@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_151231) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -112,6 +112,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_151231) do
     t.string "f_name"
     t.string "l_name"
     t.string "username"
+    t.bigint "agency_id"
+    t.index ["agency_id"], name: "index_users_on_agency_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -127,4 +129,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_151231) do
   add_foreign_key "model_agency_profiles", "users"
   add_foreign_key "travels", "agencies"
   add_foreign_key "travels", "users"
+  add_foreign_key "users", "agencies"
 end
