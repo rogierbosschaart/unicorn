@@ -15,8 +15,7 @@ before_action :authenticate_user!
     @agency = Agency.find(params[:agency_id])
     @listing = @agency.listings.build(listing_params)
     @listing.user = current_user
-    @listing.client = Client.first
-    raise
+    @listing.client = Client.last
 
     if @listing.save
       redirect_to agency_listings_path(@agency), notice: "Listing created successfully."

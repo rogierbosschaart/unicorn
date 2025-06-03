@@ -13,10 +13,7 @@ class Listing < ApplicationRecord
 
   # CASTINGS
   validates :start_date, presence: true, if: :casting?
-<<<<<<< HEAD
   validates :end_date, presence: true, if: :casting?
-=======
->>>>>>> main
   # validates :start_time, presence: true, if: :casting?
   # validates :end_time, presence: true, if: :casting?
   validates :address, presence: true, if: :casting?

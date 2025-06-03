@@ -1,7 +1,5 @@
 <h1>Listings</h1>
 <% @listings.each do |listing| %>
-  <p>Location: <%= listing.location %></p>
-  <p>Type: <%= listing.listing_type %></p>
-  <p>Start: <%= listing.start_date %></p>
+  <%= listing.location %>
 <% end %>
 <%= link_to "Create listing", new_agency_listing_path(@agency) %>
