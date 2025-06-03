@@ -8,15 +8,15 @@ class User < ApplicationRecord
   scope :mannequins, -> { where(user_type: 'mannequin') }
 
   belongs_to :agency, optional: true
-  validate :only_agents_belong_to_agency
+  # validate :only_agents_belong_to_agency
 
   has_many :model_agency_profiles
 
-  private
+  # private
 
-  def only_agents_belong_to_agency
-    if user_type != 'agent' && agency_id.present?
-      errors.add(:agency, 'can only be assigned to agency if user is agent')
-    end
-  end
+  # def only_agents_belong_to_agency
+  #   if user_type != 'agent'
+  #     errors.add(:agency, 'can only be assigned to agency if user is agent')
+  #   end
+  # end
 end
