@@ -7,6 +7,8 @@ class Agency < ApplicationRecord
   has_many :model_agency_profiles
   has_many :mannequins, through: :model_agency_profiles, source: :user
   has_many :listings, through: :agents, source: :listings
+
   has_many :hotels
   has_many :travels
+  has_many :clients
 end
