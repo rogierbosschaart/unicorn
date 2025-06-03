@@ -1,7 +1,7 @@
 <%# app/views/travels/index.html.erb %>
 
 <div class="container my-4">
-  <h1>Travels and Hotels</h1>
+  <h1>Travels and Hotels for <%= @agency.name %></h1> <%# Добавил название агентства %>
 
   <div class="row">
     <div class="col-md-6">
@@ -10,18 +10,16 @@
         <ul class="list-group">
           <% @travels.each do |travel| %>
             <li class="list-group-item">
-              <%= link_to "Travel to #{travel.destination} (#{travel.start_date.strftime('%Y-%m-%d')} - #{travel.end_date.strftime('%Y-%m-%d')})", travel_path(travel) %>
-              <%# travel_path(travel) предполагает, что у вас есть маршрут :show для travel %>
-              <%# Если у вас есть associations, можете добавить: %>
-              <%# <br><small>For: <%= travel.model.first_name %> <%= travel.model.last_name %></small> %>
+              <%# Ссылка на отдельный Travel (если есть show action для travel) %>
+              <%= link_to "Travel to #{travel.destination} (#{travel.start_date.strftime('%Y-%m-%d')} - #{travel.end_date.strftime('%Y-%m-%d')})", agency_travel_path(@agency, travel) %>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <p>No travels found yet.</p>
+        <p>No travels found yet for this agency.</p>
       <% end %>
-      <%= link_to 'Add New Travel', new_travel_path, class: 'btn btn-primary mt-3' %>
-      <%# new_travel_path предполагает, что у вас есть маршрут :new для travel %>
+      <%# ИЗМЕНЕНИЕ ЗДЕСЬ: new_agency_travel_path(@agency) %>
+      <%= link_to 'Add New Travel', new_agency_travel_path(@agency), class: 'btn btn-primary mt-3' %>
     </div>
 
     <div class="col-md-6">
@@ -30,18 +28,16 @@
         <ul class="list-group">
           <% @hotels.each do |hotel| %>
             <li class="list-group-item">
-              <%= link_to "#{hotel.name} in #{hotel.city}", hotel_path(hotel) %>
-              <%# hotel_path(hotel) предполагает, что у вас есть маршрут :show для hotel %>
-              <%# Если у вас есть associations, можете добавить: %>
-              <%# <br><small>Booked for: <%= hotel.model.first_name %> <%= hotel.model.last_name %></small> %>
+              <%# Ссылка на отдельный Hotel (если есть show action для hotel) %>
+              <%= link_to "#{hotel.name} in #{hotel.city}", agency_hotel_path(@agency, hotel) %>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <p>No hotels found yet.</p>
+        <p>No hotels found yet for this agency.</p>
       <% end %>
-      <%= link_to 'Add New Hotel', new_hotel_path, class: 'btn btn-primary mt-3' %>
-      <%# new_hotel_path предполагает, что у вас есть маршрут :new для hotel %>
+      <%# ИЗМЕНЕНИЕ ЗДЕСЬ: new_agency_hotel_path(@agency) %>
+      <%= link_to 'Add New Hotel', new_agency_hotel_path(@agency), class: 'btn btn-primary mt-3' %>
     </div>
   </div>
 </div>
