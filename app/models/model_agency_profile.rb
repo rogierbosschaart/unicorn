@@ -8,7 +8,7 @@ class ModelAgencyProfile < ApplicationRecord
   private
 
   def user_must_be_mannequin
-    if user_type != 'mannequin' && user.present?
+    if user.user_type != 'mannequin' && user.present?
       errors.add(:agency, 'can only be assigned to model-agency-profile if user is mannequin')
     end
   end

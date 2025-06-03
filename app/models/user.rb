@@ -10,8 +10,12 @@ class User < ApplicationRecord
   belongs_to :agency, optional: true
   # validate :only_agents_belong_to_agency
 
+<<<<<<< HEAD
   has_many :model_agency_profiles
   has_many :listings
+=======
+  has_many :model_agency_profiles, dependent: :destroy
+>>>>>>> main
 
   # private
 
