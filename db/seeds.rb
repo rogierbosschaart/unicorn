@@ -1,10 +1,8 @@
 Travel.destroy_all
 Hotel.destroy_all
-
-Client.destroy_all
 Listing.destroy_all
+Client.destroy_all
 Connection.destroy_all
-
 User.destroy_all
 Agency.destroy_all
 
@@ -13,7 +11,18 @@ success = Agency.create!( name: "Success", city: "Paris" )
 bella = Agency.create!( name: "Bella", city: "Milan" )
 img = Agency.create!( name: "IMG", city: "New-York" )
 agent = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: "rbosschaart", user_type: "agent", email: "rogierbosschaart@gmail.com", password: "123456", agency_id: Agency.last)
-model = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "tymur@gmail.com", password: "123456")
+model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "tymur@gmail.com", password: "123456")
+model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "james@james.com", password: "123456")
+model3 = User.create!(f_name: "Sarah", l_name: "Sarahson", username: 'SS', user_type: 'mannequin', email: "sarah@sarah.com", password: "123456")
+model4 = User.create!(f_name: "Bennie", l_name: "Bennieson", username: 'BB', user_type: 'mannequin', email: "bennie@bennie.com", password: "123456")
+ModelAgencyProfile.create!(user: model1, agency: Agency.last)
+ModelAgencyProfile.create!(user: model2, agency: Agency.last)
+ModelAgencyProfile.create!(user: model3, agency: Agency.last)
+ModelAgencyProfile.create!(user: model4, agency: Agency.last)
+ModelAgencyProfile.create!(user: model1, agency: Agency.first)
+ModelAgencyProfile.create!(user: model2, agency: Agency.first)
+ModelAgencyProfile.create!(user: model3, agency: Agency.first)
+ModelAgencyProfile.create!(user: model4, agency: Agency.first)
 
 Travel.create!( origin: "Amsterdam", destination: "Paris", date_time: "03/06/2026 05:32", user: User.mannequins.last, agency: Agency.first )
 Travel.create!( origin: "Paris", destination: "Milan", date_time: "03/06/2026 23:48", user: User.mannequins.last, agency: Agency.last )
@@ -26,3 +35,8 @@ Hotel.create!( name: "Palau Pacific Resort", address: "Koror, Republic of Palau 
 Client.create!(name: "Prada", contact_info: "Dave: +33 566738478")
 Client.create!(name: "Lemaire", contact_info: "Christophe: +33 566738478")
 Client.create!(name: "Wooyungmi", contact_info: "John: +33 566738478")
+
+Listing.create!(client: Client.last, user: agent, listing_type: 'casting', start_date: "03/06/2026", address: "Paris" )
+Connection.create!(user: model1, listing: Listing.last, rate: 1200)
+Connection.create!(user: model2, listing: Listing.last, rate: 1200)
+Connection.create!(user: model3, listing: Listing.last, rate: 1200)

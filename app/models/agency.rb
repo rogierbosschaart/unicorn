@@ -5,7 +5,9 @@ class Agency < ApplicationRecord
            foreign_key: "agency_id",
            inverse_of: :agency
   has_many :model_agency_profiles
-  has_many :users, through: :model_agency_profiles, source: :user
+  has_many :mannequins, through: :model_agency_profiles, source: :user
+  has_many :listings, through: :agents, source: :listings
+
   has_many :hotels
   has_many :travels
   has_many :clients
