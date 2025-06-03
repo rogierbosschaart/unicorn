@@ -15,7 +15,6 @@ img = Agency.create!( name: "IMG", city: "New-York" )
 agent = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: "rbosschaart", user_type: "agent", email: "rogierbosschaart@gmail.com", password: "123456", agency_id: Agency.last)
 model = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "tymur@gmail.com", password: "123456")
 
-
 Travel.create!( origin: "Amsterdam", destination: "Paris", date_time: "03/06/2026 05:32", user: User.mannequins.last, agency: Agency.first )
 Travel.create!( origin: "Paris", destination: "Milan", date_time: "03/06/2026 23:48", user: User.mannequins.last, agency: Agency.last )
 Travel.create!( origin: "Milan", destination: "New-York", date_time: "04/06/2026 12:32", user: User.mannequins.last, agency: Agency.last )
