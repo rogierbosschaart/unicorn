@@ -1,4 +1,3 @@
-
 Agency.create!( name: "Success", city: "Paris" ),
 Agency.create!( name: "Bella", city: "Milan" ),
 Agency.create!( name: "Moda", city: "New-York" ),
@@ -10,3 +9,4 @@ Travel.create!( origin: "Milan", destination: "New-YOrk", date_time: "04/06/2026
 Hotel.create!( name: "Hotel Zeeuws-Meisje", address: "Hoofdpoortstraat 2A, 4301 AM Zierikzee, Netherlands", extra_info: "This cozy boutique hotel is located in the center of Zierikzee" ),
 Hotel.create!( name: "Pension De Appelgaard", address: "Culemborg, Gelderland, Netherlands", extra_info: "This charming guesthouse offers clean and quiet rooms, a delightful breakfast, and a relaxing atmosphere." ),
 Hotel.create!( name: "Palau Pacific Resort", address: "Koror, Republic of Palau 96940", extra_info: "A luxurious resort hotel set on 64 acres of tropical forest, offering ideal conditions for a peaceful getaway." ),
+
