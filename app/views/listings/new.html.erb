@@ -1,10 +1,12 @@
-<%= simple_form_for listings do |f| %>
-  <%= f.input :start_date, label: "START DATE:" %>
-  <%= f.input :end_date, label: "END DATE:" %>
-  <%= f.input :listing_type, label: "Listing TYPE:" %>
-  <%= f.input :location, label: "Location:" %>
-  <%= f.input :address, label: "Address:" %>
-  <%= f.input :photographer, label: "Photographer:" %>
-  <%= f.input :stylist, label: "Stylist:" %>
-  <%= f.submit %>
+<h1>New Listing</h1>
+
+<%= simple_form_for [@agency, @listing] do |f| %>
+  <%= f.input :start_date, label: "Start Date" %>
+  <%= f.input :end_date, label: "End Date" %>
+  <%= f.input :listing_type, label: "Listing Type", collection: Listing::LISTING_TYPES %>
+  <%= f.input :location, label: "Location" %>
+  <%= f.input :address, label: "Address" %>
+  <%= f.input :photographer, label: "Photographer" %>
+  <%= f.input :stylist, label: "Stylist" %>
+  <%= f.submit "Create Listing", class: "btn btn-primary" %>
 <% end %>
