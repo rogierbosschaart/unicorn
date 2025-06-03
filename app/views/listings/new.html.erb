@@ -8,5 +8,6 @@
   <%= f.input :address, label: "Address" %>
   <%= f.input :photographer, label: "Photographer" %>
   <%= f.input :stylist, label: "Stylist" %>
+  <%= f.input :client, label: "Client", collection: Client.all %>
   <%= f.submit "Create Listing", class: "btn btn-primary" %>
 <% end %>
