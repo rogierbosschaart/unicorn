@@ -1,0 +1,21 @@
+
+<main class="inbox-container">
+    <div class="message-list" id="messageList">
+        <% if @messages.any? %>
+            <% @messages.each do |message| %>
+                <div class="card mb-3 <%= 'border-primary' if !message[:read] %>">
+                    <div class="card-body message-item <%= 'unread' if !message[:read] %>"> 
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="message-sender"><%= message[:sender] %></div>
+                            <div class="message-date"><%= message[:date] %></div>
+                        </div>
+                        <div class="message-subject"><%= message[:subject] %></div>
+                        <div class="message-body"><%= message[:body] %></div>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <p>No messages to display.</p>
+        <% end %>
+    </div>
+</main>
