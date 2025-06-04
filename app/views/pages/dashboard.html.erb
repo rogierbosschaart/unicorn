@@ -1,0 +1,10 @@
+<div class="model_list">
+  <%= puts "CURRENT USER: #{current_user.inspect}" %>
+  <ul>
+    <% @models.each do |model| %>
+      <li>
+        <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
+      </li>
+    <% end %>
+  </ul>
+</div>
