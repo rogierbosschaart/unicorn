@@ -1,4 +1,4 @@
 class Hotel < ApplicationRecord
   belongs_to :agency
-  belongs_to :model_agency_profiles
+  belongs_to :model_agency_profile
 end
