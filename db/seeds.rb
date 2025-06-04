@@ -21,8 +21,8 @@ model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user
 model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "james@james.com", password: "123456")
 
 # create model_agency_profiles
-model_development = ModelAgencyProfile.create!(user: model1, agency: success)
-ModelAgencyProfile.create!(user: model2, agency: success)
+model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
+ModelAgencyProfile.create!(user: model2, agency: success, active: true)
 
 # create travels
 Travel.create!( origin: "Amsterdam", destination: "Paris", date_time: "03/06/2026 05:32", model_agency_profile: model_development, agency: success )

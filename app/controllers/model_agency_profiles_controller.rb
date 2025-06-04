@@ -1,14 +1,19 @@
 class ModelAgencyProfilesController < ApplicationController
+  before_action :set_user
+
   def inbox
+    if @model.connections != nil
+      @connections = @model.connections
     # @model_agency_profile = current_user.model_agency_profile_ids
-    @connections  = Connection.where(current_user == :model_agency_profile)
+    # @connections  = Connection.where(current_user == :model_agency_profile)
     # raise
-    @castings     = @connections.joins(:listing)
+      @castings     = @connections.joins(:listing)
                             .where(listings: { listing_type: 'casting' })
-    @options      = @connections.joins(:listing)
+      @options      = @connections.joins(:listing)
                             .where(listings: { listing_type: 'option' })
-    @jobs         = @connections.joins(:listing)
+      @jobs         = @connections.joins(:listing)
                             .where(listings: { listing_type: 'job' })
+    end
 
     # @connections = Connection.all.order(created_at: :desc)
     # @messages = @connections.map do |conn|
@@ -32,5 +37,15 @@ class ModelAgencyProfilesController < ApplicationController
   def travel
     @travels = Travel.where(current_user == :model_agency_profile)
     @hotels = Hotel.where(current_user == :model_agency_profile)
+  end
+
+  private
+
+  def set_user
+    if current_user.user_type == 'agent'
+      redirect_to dashboard_path
+    else
+      @model = current_user.model_agency_profiles.find_by(active: true)
+    end
   end
 end
