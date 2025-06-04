@@ -1,10 +1,22 @@
-<div class="model_list">
-  <%= puts "CURRENT USER: #{current_user.inspect}" %>
-  <ul>
-    <% @models.each do |model| %>
-      <li>
-        <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
-      </li>
+<div class="dashboard">
+  <div class="sidebar">
+    <!-- Тут рендерим список моделей -->
+    <%= render partial: 'model_agency_profiles/list', locals: { models: @models } %>
+  </div>
+
+  <div class="right-side">
+   <div class="button-bar">
+      <button class="btn btn-primary">CASTING</button>
+      <button class="btn btn-primary">OPTION</button>
+      <button class="btn btn-primary">JOB</button>
+      <button class="btn btn-primary">TRAVEL</button>
+      <button class="btn btn-primary">HOTEL</button>
+    </div>
+
+    <%= turbo_frame_tag :contact_details do %>
+      <turbo-frame id="contact_details">
+      <%= render partial: 'listings/form' %>
+      </turbo-frame>
     <% end %>
-  </ul>
+  </div>
 </div>

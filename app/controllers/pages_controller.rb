@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @agency = Agency.find_by(id: current_user.agency_id)
+    @listing = Listing.new
 
     if @agency.present?
       @models = ModelAgencyProfile.includes(:user)
