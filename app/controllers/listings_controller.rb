@@ -1,21 +1,4 @@
 class ListingsController < ApplicationController
-before_action :authenticate_user!
-
-  def index
-    @agency = Agency.find(params[:agency_id])
-    @listings = @agency.listings
-  end
-
-  # def new
-  #   @agency = Agency.find(params[:agency_id])
-  #   @listing = current_user.listings.build
-  # end
-
-  def new
-    @agency = Agency.find(params[:agency_id])
-    @listing = @agency.listings.new
-  end
-
   def create
     @agency = Agency.find(params[:agency_id])
     @listing = current_user.listings.build(listing_params)
@@ -29,7 +12,7 @@ before_action :authenticate_user!
     end
   end
 
-    private
+  private
 
   def listing_params
     params.require(:listing).permit(

@@ -1,6 +1,8 @@
 class ModelAgencyProfilesController < ApplicationController
   def inbox
+    # @model_agency_profile = current_user.model_agency_profile_ids
     @connections  = Connection.where(current_user == :model_agency_profile)
+    # raise
     @castings     = @connections.joins(:listing)
                             .where(listings: { listing_type: 'casting' })
     @options      = @connections.joins(:listing)
