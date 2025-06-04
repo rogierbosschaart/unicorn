@@ -2,6 +2,9 @@ class ModelAgencyProfile < ApplicationRecord
   belongs_to :agency
   belongs_to :user
   validate :user_must_be_mannequin
+  has_many :travels
+  has_many :hotels
+  has_many :connections
 
   scope :mannequin, -> { joins(:user).where(users: { user_type: 'mannequin'}) }
 
