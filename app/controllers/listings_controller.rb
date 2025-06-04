@@ -3,24 +3,24 @@ before_action :authenticate_user!
 
   def index
     @agency = Agency.find(params[:agency_id])
-    @listings = @agency.listings.where(user: current_user)
+    @listings = @agency.listings
   end
 
   def new
     @agency = Agency.find(params[:agency_id])
-    @listing = @agency.listings.build
+    @listing = current_user.listings.build
   end
 
   def create
     @agency = Agency.find(params[:agency_id])
-    @listing = @agency.listings.build(listing_params)
-    @listing.user = current_user
+    @listing = current_user.listings.build(listing_params)
     @listing.client = Client.last
 
     if @listing.save
       redirect_to agency_listings_path(@agency), notice: "Listing created successfully."
     else
-      render :new, status: :unprocessable_entity, notice: "ERROR"
+      puts @listing.errors.full_messages
+      render :new, status: :unprocessable_entity
     end
   end
 
