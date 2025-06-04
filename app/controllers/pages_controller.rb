@@ -1,6 +1,17 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  before_action :authenticate_user!
 
-  def home
+  def dashboard
+    @agency = Agency.find_by(id: current_user.agency_id)
+
+    if @agency.present?
+      @models = ModelAgencyProfile.includes(:user)
+                                  .where(agency_id: @agency.id)
+                                  .map(&:user)
+                                  .select { |user| user.mannequin? }
+    else
+      @models = []
+      flash[:alert] = "Вы не привязаны к агентству."
+    end
   end
 end
