@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   get 'home', to: 'model_agency_profiles#home', as: :home
   get 'inbox', to: 'model_agency_profiles#inbox', as: :inbox
   get 'travel', to: 'model_agency_profiles#travel', as: :travel
-  end
 end
