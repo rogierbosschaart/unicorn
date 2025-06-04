@@ -6,9 +6,14 @@ before_action :authenticate_user!
     @listings = @agency.listings
   end
 
+  # def new
+  #   @agency = Agency.find(params[:agency_id])
+  #   @listing = current_user.listings.build
+  # end
+
   def new
     @agency = Agency.find(params[:agency_id])
-    @listing = current_user.listings.build
+    @listing = @agency.listings.new
   end
 
   def create
@@ -29,7 +34,7 @@ before_action :authenticate_user!
   def listing_params
     params.require(:listing).permit(
       :start_date, :end_date, :listing_type,
-      :location, :address, :photographer, :stylist
+      :location, :address, :photographer, :stylist, :client_id
     )
   end
 end
