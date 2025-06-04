@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_04_105456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,7 +37,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
   end
 
   create_table "connections", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "listing_id", null: false
     t.boolean "opened"
     t.boolean "attended_casting"
@@ -46,8 +45,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
     t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "model_agency_profile_id"
     t.index ["listing_id"], name: "index_connections_on_listing_id"
-    t.index ["user_id"], name: "index_connections_on_user_id"
+    t.index ["model_agency_profile_id"], name: "index_connections_on_model_agency_profile_id"
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -55,11 +55,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
     t.text "address"
     t.text "extra_info"
     t.bigint "agency_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "model_agency_profile_id"
     t.index ["agency_id"], name: "index_hotels_on_agency_id"
-    t.index ["user_id"], name: "index_hotels_on_user_id"
+    t.index ["model_agency_profile_id"], name: "index_hotels_on_model_agency_profile_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -88,7 +88,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
   end
 
   create_table "travels", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "agency_id", null: false
     t.string "origin"
     t.string "destination"
@@ -96,8 +95,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "extra_info"
+    t.bigint "model_agency_profile_id"
     t.index ["agency_id"], name: "index_travels_on_agency_id"
-    t.index ["user_id"], name: "index_travels_on_user_id"
+    t.index ["model_agency_profile_id"], name: "index_travels_on_model_agency_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,14 +120,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_130030) do
 
   add_foreign_key "connection_comments", "connections"
   add_foreign_key "connections", "listings"
-  add_foreign_key "connections", "users"
+  add_foreign_key "connections", "model_agency_profiles"
   add_foreign_key "hotels", "agencies"
-  add_foreign_key "hotels", "users"
+  add_foreign_key "hotels", "model_agency_profiles"
   add_foreign_key "listings", "clients"
   add_foreign_key "listings", "users"
   add_foreign_key "model_agency_profiles", "agencies"
   add_foreign_key "model_agency_profiles", "users"
   add_foreign_key "travels", "agencies"
-  add_foreign_key "travels", "users"
+  add_foreign_key "travels", "model_agency_profiles"
   add_foreign_key "users", "agencies"
 end
