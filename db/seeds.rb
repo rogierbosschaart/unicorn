@@ -1,3 +1,4 @@
+ModelAgencyProfile.destroy_all
 Travel.destroy_all
 Hotel.destroy_all
 Listing.destroy_all
@@ -5,6 +6,7 @@ Client.destroy_all
 Connection.destroy_all
 User.destroy_all
 Agency.destroy_all
+
 
 # create agencies
 success = Agency.create!( name: "Success", city: "Paris" )
