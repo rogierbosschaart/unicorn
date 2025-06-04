@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_04_105456) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_04_123051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_105456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "model_agency_profile_id"
+    t.bigint "agency_id"
+    t.index ["agency_id"], name: "index_connections_on_agency_id"
     t.index ["listing_id"], name: "index_connections_on_listing_id"
     t.index ["model_agency_profile_id"], name: "index_connections_on_model_agency_profile_id"
   end
@@ -119,6 +121,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_105456) do
   end
 
   add_foreign_key "connection_comments", "connections"
+  add_foreign_key "connections", "agencies"
   add_foreign_key "connections", "listings"
   add_foreign_key "connections", "model_agency_profiles"
   add_foreign_key "hotels", "agencies"
