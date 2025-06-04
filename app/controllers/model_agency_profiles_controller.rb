@@ -19,4 +19,9 @@ class ModelAgencyProfilesController < ApplicationController
     end
 
   end
+
+  def travel
+    @travels = Travel.all
+    @hotels = Hotel.all
+  end
 end
