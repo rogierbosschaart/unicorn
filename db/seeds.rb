@@ -10,9 +10,10 @@ Agency.destroy_all
 success = Agency.create!( name: "Success", city: "Paris" )
 # bella = Agency.create!( name: "Bella", city: "Milan" )
 # img = Agency.create!( name: "IMG", city: "New-York" )
+
 # create agents
-agent1 = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "shokybas@gmail.com", password: "123456", agency: success)
-agent2 = User.create!(f_name: "Test", l_name: "Test", username: "test", user_type: "agent", email: "test@gmail.com", password: "123456", agency: success)
+agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "shokybas@gmail.com", password: "123456", agency: success)
+agent_test = User.create!(f_name: "Test", l_name: "Test", username: "test", user_type: "agent", email: "test@gmail.com", password: "123456", agency: success)
 # create models and connect them to the agency through ModelAgencyProfile
 model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "tymur@gmail.com", password: "123456")
 model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "james@james.com", password: "123456")
@@ -42,7 +43,7 @@ Client.create!(name: "Prada", contact_info: "Dave: +33 566738478")
 Client.create!(name: "Lemaire", contact_info: "Christophe: +33 566738478")
 Client.create!(name: "Wooyungmi", contact_info: "John: +33 566738478")
 
-Listing.create!(client: Client.last, user: agent, listing_type: 'casting', start_date: "03/06/2026", address: "Paris" )
+Listing.create!(client: Client.last, user: agent_development, listing_type: 'casting', start_date: "03/06/2026", address: "Paris" )
 Connection.create!(user: model_development, listing: Listing.last, rate: 1200)
 Connection.create!(user: model_development, listing: Listing.last, rate: 1200)
 # Connection.create!(user: model3, listing: Listing.last, rate: 1200)
