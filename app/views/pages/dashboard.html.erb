@@ -1,0 +1,9 @@
+<div class="model_list">
+  <ul>
+    <% @models.each do |model| %>
+      <li>
+        <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
+      </li>
+    <% end %>
+  </ul>
+</div>
