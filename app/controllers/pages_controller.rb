@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!
 
   def dashboard
-    @agency = current_user.agency
+    @agency = Agency.find_by(id: current_user.agency_id)
 
     if @agency.present?
       @models = ModelAgencyProfile.includes(:user)
