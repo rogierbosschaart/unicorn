@@ -1,2 +1,0 @@
-class ModelAgencyProfileController < ApplicationController
-end

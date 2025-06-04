@@ -1,4 +1,4 @@
-class ModelAgencyProfile < ApplicationRecord
+class ModelAgencyProfiles < ApplicationRecord
   belongs_to :agency
   belongs_to :user
   validate :user_must_be_mannequin
