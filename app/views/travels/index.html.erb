@@ -1,47 +1,65 @@
 <%# app/views/travels/index.html.erb %>
 
 <div class="container my-4">
-  <h1>Travels and Hotels</h1>
+  <h1 class="mb-4 text-center">Travels and Hotels for <%= @agency.name %></h1>
 
   <div class="row">
+    <%# --- Блок для Hotels --- %>
     <div class="col-md-6">
-      <h2>Travels</h2>
-      <% if @travels.any? %>
-        <ul class="list-group">
-          <% @travels.each do |travel| %>
-            <li class="list-group-item">
-              <%= link_to "Travel to #{travel.destination} (#{travel.start_date.strftime('%Y-%m-%d')} - #{travel.end_date.strftime('%Y-%m-%d')})", travel_path(travel) %>
-              <%# travel_path(travel) предполагает, что у вас есть маршрут :show для travel %>
-              <%# Если у вас есть associations, можете добавить: %>
-              <%# <br><small>For: <%= travel.model.first_name %> <%= travel.model.last_name %></small> %>
-            </li>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h2 class="h5 mb-0">Hotels</h2>
+        </div>
+        <div class="card-body">
+          <% if @hotels.any? %>
+            <ul class="list-group list-group-flush">
+              <% @hotels.each do |hotel| %>
+                <li class="list-group-item mb-3 p-3 border rounded bg-light">
+                  <p class="mb-1"><strong>Name:</strong> <%= hotel.name %></p>
+                  <p class="mb-1"><strong>Address:</strong> <%= hotel.address %></p>
+                  <p class="mb-0"><strong>Extra Info:</strong> <%= hotel.extra_info %></p>
+                  <%# ПРИМЕЧАНИЕ: Поля Check-in и Check-out отсутствуют в вашей текущей миграции для Hotels. %>
+                  <%# Если они нужны, вам нужно добавить их новой миграцией. %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="text-muted">No hotels found yet for this agency.</p>
           <% end %>
-        </ul>
-      <% else %>
-        <p>No travels found yet.</p>
-      <% end %>
-      <%= link_to 'Add New Travel', new_travel_path, class: 'btn btn-primary mt-3' %>
-      <%# new_travel_path предполагает, что у вас есть маршрут :new для travel %>
+          <%# Ссылка на добавление нового отеля (закомментирована, если только index) %>
+          <%# <%= link_to 'Add New Hotel', new_agency_hotel_path(@agency), class: 'btn btn-primary mt-3' %>
+        </div>
+      </div>
     </div>
 
+    <%# --- Блок для Travels --- %>
     <div class="col-md-6">
-      <h2>Hotels</h2>
-      <% if @hotels.any? %>
-        <ul class="list-group">
-          <% @hotels.each do |hotel| %>
-            <li class="list-group-item">
-              <%= link_to "#{hotel.name} in #{hotel.city}", hotel_path(hotel) %>
-              <%# hotel_path(hotel) предполагает, что у вас есть маршрут :show для hotel %>
-              <%# Если у вас есть associations, можете добавить: %>
-              <%# <br><small>Booked for: <%= hotel.model.first_name %> <%= hotel.model.last_name %></small> %>
-            </li>
+      <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="h5 mb-0">Travels</h2>
+        </div>
+        <div class="card-body">
+          <% if @travels.any? %>
+            <ul class="list-group list-group-flush">
+              <% @travels.each do |travel| %>
+                <li class="list-group-item mb-3 p-3 border rounded bg-light">
+                  <%# ИЗМЕНЕНО: Используем travel.date_time для даты и времени %>
+                  <p class="mb-1"><strong>Date:</strong> <%= travel.date_time&.strftime('%Y-%m-%d') %></p>
+                  <p class="mb-1"><strong>Time:</strong> <%= travel.date_time&.strftime('%H:%M') %></p>
+                  <p class="mb-1"><strong>Origin:</strong> <%= travel.origin %></p>
+                  <p class="mb-1"><strong>Destination:</strong> <%= travel.destination %></p>
+                  <%# ДОБАВЛЕНО: extra_info для Travel, согласно вашей миграции %>
+                  <p class="mb-0"><strong>Extra Info:</strong> <%= travel.extra_info %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="text-muted">No travels found yet for this agency.</p>
           <% end %>
-        </ul>
-      <% else %>
-        <p>No hotels found yet.</p>
-      <% end %>
-      <%= link_to 'Add New Hotel', new_hotel_path, class: 'btn btn-primary mt-3' %>
-      <%# new_hotel_path предполагает, что у вас есть маршрут :new для hotel %>
+          <%# Ссылка на добавление нового путешествия (закомментирована, если только index) %>
+          <%# <%= link_to 'Add New Travel', new_agency_travel_path(@agency), class: 'btn btn-primary mt-3' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

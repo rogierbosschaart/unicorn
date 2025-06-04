@@ -1,3 +1,7 @@
 <h1>Listings</h1>
-<%= @listings.all %>
-<%= link_to "Create listing" new_agency_listing_path %>
+<p>Total: <%= @listings.size %></p>
+<% @listings.each do |listing| %>
+<h1>TEST PAGE</h1>
+  <p>Total listings: <%= @listings.location %></p>
+<% end %>
+<%= link_to "Create listing", new_agency_listing_path(@agency) %>

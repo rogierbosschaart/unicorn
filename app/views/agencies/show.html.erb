@@ -1,1 +1,24 @@
-<p> Hello Kaz </p>
+
+<div class="container my-4">
+    <h1><%= @agency.name %></h1>
+    <% @clients.each do |client| %>
+        <p><strong>Client Name:</strong> <%= client.name %></p>
+         <p><strong>Contact info:</strong> <%= client.contact_info %></p>
+    <% end %>
+</div>
+<div class="col-md-6">
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-info text-white">
+          <h2 class="h5 mb-0">Users</h2>
+        </div>
+        <div class="card-body">
+
+        <% @agency.mannequins.each do |user| %> <%# Итерация по @agency.users %>
+                <li class="list-group-item mb-3 p-3 border rounded bg-light">
+                  <%# ПРИМЕЧАНИЕ: Убедитесь, что у вашей модели User есть поля first_name и last_name %>
+                </li>
+              <% end %>
+            <ul class="list-group list-group-flush">
+        </div>
+    </div>
+</div>
