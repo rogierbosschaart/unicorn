@@ -6,10 +6,10 @@
   </div>
 <% end %>
 
-<% @hotels.each do |hotel| %>
+<% @travels.each do |travel| %>
   <div class="m-3">
-    <span>Hotel <%= hotel.name %> </span><br>
-    <span>Address <%= hotel.address %> </span><br>
-    <span>Extra info <%= hotel.extra_info %> </span><br>
+    <span>From <%= travel.origin %> </span><br>
+    <span>To <%= travel.destination %> </span><br>
+    <span>Extra info <%= travel.extra_info %> </span><br>
   </div>
 <% end %>
