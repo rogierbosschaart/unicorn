@@ -21,7 +21,7 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def travel
-    @travels = Travel.all
-    @hotels = Hotel.all
+    @travels = Travel.where(current_user ==  :model_agency_profile)
+    @hotels = Hotel.where(current_user == :model_agency_profile)
   end
 end
