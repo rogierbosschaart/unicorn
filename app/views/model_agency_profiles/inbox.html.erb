@@ -1,39 +1,70 @@
 <h1>All</h1>
-<div class="m-3">
-  <% @connections.each do |connection| %>
-    <div class="m-3">
-      <span> <%= connection.listing.client.name %> </span>
-      <span> <%= connection.listing.address %> </span>
-    </div>
-  <% end %>
+<div>
+ <div class="connections-container">
+  <div class="avatar">
+  </div>
+  <div class="connactions-info">
+   <% @connections.each do |connection| %>
+     <div class="card d-flex justify-content-between align-items-start">
+       <span> <%= connection.listing.listing_type %> </span>
+       <span> <%= connection.listing.client.name %> </span>
+       <span> <%= connection.listing.address %> </span>
+     </div>
+   <% end %>
+  </div>
+ </div>
 </div>
 
 <h1>Castings</h1>
-<div class="m-3">
-  <% @castings.each do |casting| %>
-    <div class="m-3">
-      <span> <%= casting.listing.client.name %> </span>
-      <span> <%= casting.listing.address %> </span>
-    </div>
-  <% end %>
+<div class="m-0">
+ <div class="connections-container">
+  <div class="avatar">
+  </div>
+  <div class="connactions-info">
+   <% @castings.each do |casting| %>
+     <div class="card d-flex justify-content-between align-items-start">
+       <span> <%= casting.listing.listing_type %> </span>
+       <span> <%= casting.listing.client.name %> </span>
+       <span> <%= casting.listing.start_time %> </span>
+       <span> <%= casting.listing.end_time %> </span>
+     </div>
+    <% end %>
+   </div>
+ </div>
 </div>
 
 <h1>Options</h1>
-<div class="m-3">
-  <% @options.each do |option| %>
-    <div class="m-3">
-      <span> <%= option.listing.client.name %> </span>
-      <span> <%= option.listing.address %> </span>
-    </div>
-  <% end %>
+<div class="m-0">
+ <div class="connections-container">
+  <div class="avatar">
+  </div>
+  <div class="connactions-info">
+   <% @options.each do |option| %>
+     <div class="card d-flex justify-content-between align-items-start">
+       <span> <%= option.listing.listing_type %> </span>
+       <span> <%= option.listing.client.name %> </span>
+       <span> <%= option.listing.start_date %> </span>
+       <span> <%= option.listing.end_date %> </span>
+     </div>
+    <% end %>
+  </div>
+ </div>
 </div>
 
 <h1>Jobs</h1>
-<div class="m-3">
-  <% @jobs.each do |job| %>
-    <div class="m-3">
-      <span> <%= job.listing.client.name %> </span>
-      <span> <%= job.listing.address %> </span>
-    </div>
-  <% end %>
+<div class="m-0">
+ <div class="connections-container">
+  <div class="avatar">
+  </div>
+  <div class="connactions-info">
+   <% @jobs.each do |job| %>
+     <div class="card d-flex justify-content-between align-items-start">
+       <span> <%= job.listing.listing_type %> </span>
+       <span> <%= job.listing.client.name %> </span>
+       <span> <%= job.listing.start_date %> </span>
+       <span> <%= job.listing.end_date %> </span>
+     </div>
+    <% end %>
+  </div>
+ </div>
 </div>
