@@ -19,9 +19,11 @@
   <div class="grid-bottom-left">
     <!-- Models list -->
       <% @models.each do |model| %>
-      <%# map = model.model_agency_profiles.first %>
-        <%= button_to model_agency_profile_path(model), turbo_method: :patch, params: { map: { selected: true }} do %>
-          <span> model.user.f_name </span>
+        <%= button_to model_agency_profile_path(model),
+                      method: :patch,
+                      params: { model: { selected: !model.selected }},
+                      class: "btn btn-link" do %>
+          <span> <%= model.selected %></span>
         <% end %>
       <% end %>
   </div>
