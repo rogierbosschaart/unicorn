@@ -1,4 +1,23 @@
-<% if current_user.user_type == 'agent' %>
+<%# TOP %>
+<div class="grid-top">
+  <%# LEFT %>
+  <div class="grid-top-left">
+  </div>
+  <%# RIGHT %>
+  <div class="grid-top-right">
+  </div>
+</div>
+
+<%# BOTTOM %>
+<div class="grid-bottom">
+  <%# LEFT %>
+  <div class="grid-bottom-left">
+  </div>
+  <%# RIGHT %>
+  <div class="grid-bottom-right">
+  </div>
+</div>
+
   <h1><%= @agency.name %></h1>
 
   <div class="dashboard">
@@ -29,6 +48,3 @@
       <%# <% end %>
     </div>
   </div>
-<% else %>
-  <p>Only Agents have access to the dashboard</p>
-<% end %>
