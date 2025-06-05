@@ -3,7 +3,7 @@
 
   <div class="dashboard">
     <div class="sidebar">
-      <!-- Тут рендерим список моделей -->
+      <!-- Models list -->
       <ul>
         <% @models.each do |model| %>
           <li class="p-2 hover:bg-gray-100 cursor-pointer">
@@ -23,7 +23,7 @@
       </div>
 
       <%# <%= turbo_frame_tag :contact_details do %>
-        <turbo-frame id="contact_details">
+        <turbo-frame id="">
         <%# <%= render partial: 'listings/form' %>
         </turbo-frame>
       <%# <% end %>
