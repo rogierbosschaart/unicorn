@@ -1,1 +1,10 @@
-<%= render 'form' %>
+<%= turbo_frame_tag :create_panel do %>
+  <% case params[:type] %>
+  <% when 'casting' %>
+    <%= render 'listings/forms/casting' %>
+  <% when 'option' %>
+    <%= render 'listings/forms/option' %>
+  <% when 'job' %>
+    <%= render 'listings/forms/job' %>
+  <% end %>
+<% end %>

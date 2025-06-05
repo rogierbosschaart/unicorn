@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   def new
-    @listing = Listing.new
+    @agency = Agency.find(params[:agency_id])
+    @listing = Listing.new(listing_type: params[:type])
   end
 
   def create
@@ -9,7 +10,7 @@ class ListingsController < ApplicationController
     @listing.client = Client.last
 
     if @listing.save
-      redirect_to agency_listings_path(@agency), notice: "Listing created successfully."
+      redirect_to dashboard_path, notice: "Listing created successfully."
     else
       puts @listing.errors.full_messages
       render :new, status: :unprocessable_entity

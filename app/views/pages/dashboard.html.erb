@@ -5,9 +5,9 @@
   </div>
   <%# RIGHT %>
   <div class="grid-top-right">
-    <%= link_to "CASTING", new_listing_path, data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
-    <button class="btn btn-primary">OPTION</button>
-    <button class="btn btn-primary">JOB</button>
+    <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
+    <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
+    <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
     <button class="btn btn-primary">TRAVEL</button>
     <button class="btn btn-primary">HOTEL</button>
   </div>

@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   # AGENCY
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   resources :listings, only: [:new, :create]
-  resources :connections, only: [:create]
-  resources :clients, only: [:create]
-  resources :hotels, only: [:create]
-  resources :travels, only: [:create]
-  # resources :agencies do
-  # resources :listings, only: [:create]
-  # end
+  resources :connections, only: [:new, :create]
+  resources :clients, only: [:new, :create]
+  resources :hotels, only: [:new, :create]
+  resources :travels, only: [:new, :create]
+  resources :agencies do
+   resources :listings, only: [:new, :create]
+  end
 
   # MODELS
   get 'home', to: 'model_agency_profiles#home', as: :home

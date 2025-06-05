@@ -8,8 +8,8 @@ class Listing < ApplicationRecord
 
   enum listing_type: { casting: 'casting', option: 'option', job: 'job' }
 
-  LISTING_TYPES = %w[casting option job]
-  validates :listing_type, inclusion: { in: LISTING_TYPES }
+  # LISTING_TYPES = %w[casting option job]
+  # validates :listing_type, inclusion: { in: LISTING_TYPES }
 
   # CASTINGS
   validates :start_date, presence: true, if: :casting?
