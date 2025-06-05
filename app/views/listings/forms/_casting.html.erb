@@ -6,7 +6,7 @@
     <%= f.input :address, label: "Address" %>
     <%= f.input :photographer, label: "Photographer" %>\
     <%= f.input :stylist, label: "Stylist" %>
-    <%= f.input :client, label: "Client", collection: Client.all %>
+    <%= f.input :client_id, label: "Client", collection: Client.all %>
     <%= f.hidden_field :listing_type, value: 'casting' %>
     <%= f.submit "Create Casting", class: "btn btn-primary" %>
   <% end %>
