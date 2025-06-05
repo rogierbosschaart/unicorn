@@ -13,12 +13,12 @@ success = Agency.create!( name: "Success", city: "Paris" )
 # img = Agency.create!( name: "IMG", city: "New-York" )
 
 # create agents
-agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "shokybas@gmail.com", password: "123456", agency: success)
-User.create!(f_name: "Test", l_name: "Test", username: "test", user_type: "agent", email: "test@gmail.com", password: "123456", agency: success)
+agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "agent@agent.com", password: "123456", agency: success)
+User.create!(f_name: "Test", l_name: "Test", username: "test", user_type: "agent", email: "agent@test.com", password: "123456", agency: success)
 
 # create models
-model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "tymur@gmail.com", password: "123456")
-model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "james@james.com", password: "123456")
+model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "model@model.com", password: "123456")
+model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "model@test.com", password: "123456")
 
 # create model_agency_profiles
 model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
