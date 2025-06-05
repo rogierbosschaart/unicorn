@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :clients, only: [:create]
   resources :hotels, only: [:create]
   resources :travels, only: [:create]
-  resources :agencies do
-  resources :listings, only: [:create]
-  end
+  # resources :agencies do
+  # resources :listings, only: [:create]
+  # end
 
   # MODELS
   get 'home', to: 'model_agency_profiles#home', as: :home

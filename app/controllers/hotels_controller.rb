@@ -1,3 +1,4 @@
 class HotelsController < ApplicationController
-  belongs_to :user
+  def create
+  end
 end
