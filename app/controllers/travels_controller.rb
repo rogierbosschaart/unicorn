@@ -1,4 +1,8 @@
 class TravelsController < ApplicationController
+  def new
+    @travel = Travel.new
+  end
+
   def create
     @travel = Travel.new(travel_params)
     @agency = current_user.agency

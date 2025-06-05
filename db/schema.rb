@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_05_133059) do
-
+ActiveRecord::Schema[7.1].define(version: 2025_06_05_134200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,7 +81,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_133059) do
     t.time "start_time"
     t.time "end_time"
     t.string "extra_info"
-
     t.index ["client_id"], name: "index_listings_on_client_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -93,6 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_133059) do
     t.bigint "agency_id"
     t.bigint "user_id"
     t.boolean "active", default: false
+    t.boolean "selected", default: false
     t.index ["agency_id"], name: "index_model_agency_profiles_on_agency_id"
     t.index ["user_id"], name: "index_model_agency_profiles_on_user_id"
   end

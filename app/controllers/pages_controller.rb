@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     # raise
     @models = ModelAgencyProfile.includes(:user)
                                 .where(agency: @agency)
-                                .map(&:user)
+                                # .map(&:user)
     @listing = Listing.new
 
     # raise

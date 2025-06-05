@@ -18,13 +18,12 @@
   <%# LEFT %>
   <div class="grid-bottom-left">
     <!-- Models list -->
-    <ul>
       <% @models.each do |model| %>
-        <li class="p-2 hover:bg-gray-100 cursor-pointer">
-          <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
-        </li>
+      <%# map = model.model_agency_profiles.first %>
+        <%= button_to model_agency_profile_path(model), turbo_method: :patch, params: { map: { selected: true }} do %>
+          <span> model.user.f_name </span>
+        <% end %>
       <% end %>
-    </ul>
   </div>
   <%# RIGHT %>
   <div class="grid-bottom-right">

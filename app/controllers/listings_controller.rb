@@ -25,4 +25,16 @@ class ListingsController < ApplicationController
       :extra_info, :start_time, :end_time
     )
   end
+
+  def create_connection_for_every_model
+    @connections = Connection.all
+    @models = ModelAgencyProfile.where(agency: @agency, selected: true)
+    @models.each do |model|
+      Connection.create(
+        model_agency_profile: model,
+        listing: @listing,
+        agency_id: @agency.id
+      )
+    end
+  end
 end
