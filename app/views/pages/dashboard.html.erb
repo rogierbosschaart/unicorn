@@ -21,10 +21,22 @@
       <% @models.each do |model| %>
         <%= button_to model_agency_profile_path(model),
                       method: :patch,
+                      class: "btn btn-link " do %>
+          <span>
+            <% if session[:selected_model_ids].include?(model.id) %>
+              Unselect
+            <% else %>
+              Select
+            <% end %>
+          </span>
+        <% end %>
+
+        <%# button_to model_agency_profile_path(model),
+                      method: :patch,
                       params: { model: { selected: !model.selected }},
                       class: "btn btn-link" do %>
-          <span> <%= model.selected %></span>
-        <% end %>
+          <%# <span> model.selected</span> %>
+        <%# <% end %>
       <% end %>
   </div>
   <%# RIGHT %>

@@ -20,7 +20,16 @@ class ModelAgencyProfilesController < ApplicationController
 
   def update
     @model = ModelAgencyProfile.find(params[:id])
-    @model.update(selected_params)
+    session[:selected_model_ids] ||= []
+
+    if session[:selected_model_ids].include?(@model.id)
+      session[:selected_model_ids].delete(@model.id)
+    else
+      session[:selected_model_ids] << @model.id
+    end
+
+    # @model = ModelAgencyProfile.find(params[:id])
+    # @model.update(selected_params)
     redirect_to dashboard_path
   end
 
