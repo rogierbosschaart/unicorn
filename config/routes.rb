@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # AGENCY
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
-  resources :listings, only: [:create]
+  resources :listings, only: [:new, :create]
   resources :connections, only: [:create]
   resources :clients, only: [:create]
   resources :hotels, only: [:create]

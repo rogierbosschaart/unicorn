@@ -5,6 +5,11 @@
   </div>
   <%# RIGHT %>
   <div class="grid-top-right">
+    <%= link_to "CASTING", new_listing_path, data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
+    <button class="btn btn-primary">OPTION</button>
+    <button class="btn btn-primary">JOB</button>
+    <button class="btn btn-primary">TRAVEL</button>
+    <button class="btn btn-primary">HOTEL</button>
   </div>
 </div>
 
@@ -12,39 +17,22 @@
 <div class="grid-bottom">
   <%# LEFT %>
   <div class="grid-bottom-left">
+    <!-- Models list -->
+    <ul>
+      <% @models.each do |model| %>
+        <li class="p-2 hover:bg-gray-100 cursor-pointer">
+          <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <%# RIGHT %>
   <div class="grid-bottom-right">
+  <%= turbo_frame_tag :create_panel do %>
+    <h2>Hello</h2>
+  <% end %>
+    <%# <%= turbo_frame_tag :contact_details do %>
+    <%# <%= render partial: 'listings/form' %>
+    <%# <% end %>
   </div>
 </div>
-
-  <h1><%= @agency.name %></h1>
-
-  <div class="dashboard">
-    <div class="sidebar">
-      <!-- Models list -->
-      <ul>
-        <% @models.each do |model| %>
-          <li class="p-2 hover:bg-gray-100 cursor-pointer">
-            <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="right-side">
-    <div class="button-bar">
-        <button class="btn btn-primary">CASTING</button>
-        <button class="btn btn-primary">OPTION</button>
-        <button class="btn btn-primary">JOB</button>
-        <button class="btn btn-primary">TRAVEL</button>
-        <button class="btn btn-primary">HOTEL</button>
-      </div>
-
-      <%# <%= turbo_frame_tag :contact_details do %>
-        <turbo-frame id="">
-        <%# <%= render partial: 'listings/form' %>
-        </turbo-frame>
-      <%# <% end %>
-    </div>
-  </div>

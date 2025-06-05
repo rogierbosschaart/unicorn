@@ -1,4 +1,8 @@
 class ListingsController < ApplicationController
+  def new
+    @listing = Listing.new
+  end
+
   def create
     @agency = Agency.find(params[:agency_id])
     @listing = current_user.listings.build(listing_params)
