@@ -1,40 +1,49 @@
 <h1>All</h1>
-<div>
+<% @connections.each do |connection| %>
  <div class="connections-container">
-  <div class="avatar">
-  </div>
-  <div class="connections-info">
-   <% @connections.each do |connection| %>
-     <div class="card d-flex justify-content-between align-items-start">
-       <span> <%= connection.listing.listing_type %> </span>
-       <span> <%= connection.listing.client.name %> </span>
-       <span> <%= connection.listing.address %> </span>
-     </div>
-   <% end %>
-  </div>
+    <div class="avatar">
+    </div>
+    <% if connection.listing.listing_type == 'casting' %>
+    <div class="connections-info card">
+        <span class="small-type"> <%= connection.listing.listing_type %> </span>
+        <span class="p-standard"> <%= connection.listing.client.name %> </span>
+        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %>  </span>
+    </div>
+    <% elsif connection.listing.listing_type == 'option' %>
+    <div class="connections-info card">
+        <span class="small-type"> <%= connection.listing.listing_type %> </span>
+        <span class="p-standard"> <%= connection.listing.client.name %> </span>
+        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
+    </div>
+    <% elsif connection.listing.listing_type == 'job' %>
+    <div class="connections-info card">
+        <span class="small-type"> <%= connection.listing.listing_type %> </span>
+        <span class="p-standard"> <%= connection.listing.client.name %> </span>
+        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
+    </div>
+    <% end %>
  </div>
-</div>
+<% end %>
 
 <h1>Castings</h1>
 <% @castings.each do |casting| %>
- <div class="m-0 connections-container">
+ <div class="connections-container">
     <div class="avatar">
     </div>
-    <div class="connections-info">
+    <div class="connections-info card">
         <span class="small-type"> <%= casting.listing.listing_type %> </span>
         <span class="p-standard"> <%= casting.listing.client.name %> </span>
-        <span class="p-standard"> <%= casting.listing.start_date %> </span>
-        <span class="p-standard"> <%= casting.listing.start_time.strftime('%H:%M') %> - <%= casting.listing.end_time.strftime('%H:%M') %>  </span>
+        <span class="p-standard"> <%= casting.listing.start_date %> - <%= casting.listing.start_time.strftime('%H:%M') %> - <%= casting.listing.end_time.strftime('%H:%M') %>  </span>
     </div>
  </div>
 <% end %>
 
 <h1>Options</h1>
 <% @options.each do |option| %>
- <div class="m-0 connections-container">
+ <div class="connections-container">
     <div class="avatar">
     </div>
-    <div class="connections-info">
+    <div class="connections-info card">
        <span class="small-type"> <%= option.listing.listing_type %> </span>
        <span class="p-standard"> <%= option.listing.client.name %> </span>
        <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
@@ -43,19 +52,14 @@
 <% end %>
 
 <h1>Jobs</h1>
-<div class="m-0">
+<% @jobs.each do |job| %>
  <div class="connections-container">
-  <div class="avatar">
-  </div>
-  <div class="connactions-info">
-   <% @jobs.each do |job| %>
-     <div class="card d-flex justify-content-between align-items-start">
-       <span> <%= job.listing.listing_type %> </span>
-       <span> <%= job.listing.client.name %> </span>
-       <span> <%= job.listing.start_date %> </span>
-       <span> <%= job.listing.end_date %> </span>
-     </div>
-    <% end %>
-  </div>
+    <div class="avatar">
+    </div>
+    <div class="connections-info card">
+       <span class="small-type"> <%= job.listing.listing_type %> </span>
+       <span class="p-standard"> <%= job.listing.client.name %> </span>
+       <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+    </div>
  </div>
-</div>
+<% end %> 

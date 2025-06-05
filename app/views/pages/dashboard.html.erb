@@ -5,11 +5,11 @@
   </div>
   <%# RIGHT %>
   <div class="grid-top-right">
-    <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
-    <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
-    <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "btn btn-primary" %>
-    <button class="btn btn-primary">TRAVEL</button>
-    <button class="btn btn-primary">HOTEL</button>
+    <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+    <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+    <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+    <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+    <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
   </div>
 </div>
 
