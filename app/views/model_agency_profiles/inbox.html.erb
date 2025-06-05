@@ -27,7 +27,7 @@
 
 <h1>Castings</h1>
 <% @castings.each do |casting| %>
- <div class="m-0 connections-container">
+ <div class="connections-container">
     <div class="avatar">
     </div>
     <div class="connections-info card">
@@ -40,7 +40,7 @@
 
 <h1>Options</h1>
 <% @options.each do |option| %>
- <div class="m-0 connections-container">
+ <div class="connections-container">
     <div class="avatar">
     </div>
     <div class="connections-info card">
@@ -53,13 +53,13 @@
 
 <h1>Jobs</h1>
 <% @jobs.each do |job| %>
- <div class="m-0 connections-container">
+ <div class="connections-container">
     <div class="avatar">
     </div>
     <div class="connections-info card">
-       <span> <%= job.listing.listing_type %> </span>
-       <span> <%= job.listing.client.name %> </span>
-       <span> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+       <span class="small-type"> <%= job.listing.listing_type %> </span>
+       <span class="p-standard"> <%= job.listing.client.name %> </span>
+       <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
     </div>
  </div>
 <% end %> 
