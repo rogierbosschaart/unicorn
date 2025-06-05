@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_04_220730) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_05_103610) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_220730) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "model_agency_profile_id"
+    t.date "checkin"
+    t.date "checkout"
     t.index ["agency_id"], name: "index_hotels_on_agency_id"
     t.index ["model_agency_profile_id"], name: "index_hotels_on_model_agency_profile_id"
   end
@@ -94,11 +96,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_220730) do
     t.bigint "agency_id", null: false
     t.string "origin"
     t.string "destination"
-    t.datetime "date_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "extra_info"
     t.bigint "model_agency_profile_id"
+    t.date "date"
+    t.time "time"
     t.index ["agency_id"], name: "index_travels_on_agency_id"
     t.index ["model_agency_profile_id"], name: "index_travels_on_model_agency_profile_id"
   end
