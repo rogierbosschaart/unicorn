@@ -1,8 +1,21 @@
 class TravelsController < ApplicationController
+
+  def new
+    @agency = Agency.find(params[:agency_id])
+    @travel = Travel.new
+  end
+
   def create
+    @agency = Agency.find(params[:agency_id])
     @travel = Travel.new(travel_params)
-    @agency = current_user.agency
     @travel.agency = @agency
+
+    if @travel.save
+      redirect_to dashboard_path, notice: "Travel created successfully."
+    else
+      puts @travel.errors.full_messages
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
