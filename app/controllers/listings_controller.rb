@@ -7,7 +7,6 @@ class ListingsController < ApplicationController
   def create
     @agency = Agency.find(params[:agency_id])
     @listing = current_user.listings.build(listing_params)
-    @listing.client = Client.last
 
     if @listing.save
       redirect_to dashboard_path, notice: "Listing created successfully."

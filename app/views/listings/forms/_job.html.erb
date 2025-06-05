@@ -4,7 +4,7 @@
     <%= f.input :end_date, label: "End Date" %>
     <%= f.input :location, label: "Location" %>
     <%= f.input :address, label: "Address" %>
-    <%= f.input :client, label: "Client", collection: Client.all %>
+    <%= f.input :client_id, label: "Client", collection: Client.all %>
     <%= f.hidden_field :listing_type, value: 'job' %>
     <%= f.submit "Create Job", class: "btn btn-primary" %>
   <% end %>
