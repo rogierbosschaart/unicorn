@@ -1,42 +1,27 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:update]
 
   def inbox
     if @model.connections != nil
       @connections = @model.connections
-    # @model_agency_profile = current_user.model_agency_profile_ids
-    # @connections  = Connection.where(current_user == :model_agency_profile)
-    # raise
       @castings     = @connections.joins(:listing)
-                            .where(listings: { listing_type: 'casting' })
+                                  .where(listings: { listing_type: 'casting' })
       @options      = @connections.joins(:listing)
-                            .where(listings: { listing_type: 'option' })
+                                  .where(listings: { listing_type: 'option' })
       @jobs         = @connections.joins(:listing)
-                            .where(listings: { listing_type: 'job' })
+                                  .where(listings: { listing_type: 'job' })
     end
-
-    # @connections = Connection.all.order(created_at: :desc)
-    # @messages = @connections.map do |conn|
-    #   {
-    #     id: conn.id,
-    #     # Отправитель: Можно использовать имя клиента или имя агента, связанного с Listing
-    #     sender: conn.listing&.client&.name || conn.listing&.user&.f_name || "Unknown Sender",
-    #     # Тема: Тип листинга + адрес, или просто тип
-    #     subject: "#{conn.listing&.listing_type&.capitalize} - #{conn.listing&.address || 'No Address'}",
-    #     # Тело сообщения: Может включать ставку и другую информацию
-    #     body: "Rate: #{conn.rate}€ - Listing for: #{conn.listing&.client&.name || 'N/A'}. Starts: #{conn.listing&.start_date&.strftime('%Y-%m-%d') || 'N/A'}",
-    #     # Дата: Дата начала листинга
-    #     date: conn.listing&.start_date&.strftime('%Y-%m-%d') || 'N/A',
-    #     # Статус прочитанного: В модели Connection нет поля 'read'.
-    #     # Можно добавить его в Connection, или всегда считать непрочитанным для простоты.
-    #     read: false # По умолчанию всегда непрочитано для этого примера
-    #   }
-    # end
   end
 
   def travel
     @travels = Travel.where(current_user == :model_agency_profile)
     @hotels = Hotel.where(current_user == :model_agency_profile)
+  end
+
+  def update
+    @model = ModelAgencyProfile.find(params[:id])
+    @model.update(selected_params)
+    redirect_to dashboard_path
   end
 
   private
@@ -47,5 +32,9 @@ class ModelAgencyProfilesController < ApplicationController
     else
       @model = current_user.model_agency_profiles.find_by(active: true)
     end
+  end
+
+  def selected_params
+    params.require(:model).permit(:selected)
   end
 end

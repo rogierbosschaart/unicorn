@@ -18,13 +18,14 @@
   <%# LEFT %>
   <div class="grid-bottom-left">
     <!-- Models list -->
-    <ul>
       <% @models.each do |model| %>
-        <li class="p-2 hover:bg-gray-100 cursor-pointer">
-          <%= model.f_name %> <%= model.l_name %> – <%= model.email %>
-        </li>
+        <%= button_to model_agency_profile_path(model),
+                      method: :patch,
+                      params: { model: { selected: !model.selected }},
+                      class: "btn btn-link" do %>
+          <span> <%= model.selected %></span>
+        <% end %>
       <% end %>
-    </ul>
   </div>
   <%# RIGHT %>
   <div class="grid-bottom-right">
