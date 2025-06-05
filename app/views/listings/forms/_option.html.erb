@@ -3,7 +3,10 @@
     <%= f.input :start_date, label: "Start Date" %>
     <%= f.input :end_date, label: "End Date" %>
     <%= f.input :location, label: "Location" %>
+    <%= f.input :photographer, label: "Photographer" %>
+    <%= f.input :stylist, label: "Stylist" %>
     <%= f.input :client_id, label: "Client", collection: Client.all %>
+    <%= f.input :extra_info, label: "Extra information" %>
     <%= f.hidden_field :listing_type, value: 'option' %>
     <%= f.submit "Create Option", class: "btn btn-primary" %>
   <% end %>

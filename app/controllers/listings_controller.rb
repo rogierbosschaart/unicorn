@@ -21,7 +21,8 @@ class ListingsController < ApplicationController
   def listing_params
     params.require(:listing).permit(
       :start_date, :end_date, :listing_type,
-      :location, :address, :photographer, :stylist, :client_id
+      :location, :address, :photographer, :stylist, :client_id,
+      :extra_info, :start_time, :end_time
     )
   end
 end

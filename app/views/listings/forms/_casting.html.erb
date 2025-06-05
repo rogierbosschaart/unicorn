@@ -1,12 +1,12 @@
 <div>
   <%= simple_form_for [@agency, @listing] do |f| %>
     <%= f.input :start_date, label: "Start Date" %>
-    <%= f.input :end_date, label: "End Date" %>
+    <%= f.input :start_time, label: "Start Time" %>
+    <%= f.input :end_time, label: "End Time" %>
     <%= f.input :location, label: "Location" %>
     <%= f.input :address, label: "Address" %>
-    <%= f.input :photographer, label: "Photographer" %>\
-    <%= f.input :stylist, label: "Stylist" %>
     <%= f.input :client_id, label: "Client", collection: Client.all %>
+    <%= f.input :extra_info, label: "Extra information" %>
     <%= f.hidden_field :listing_type, value: 'casting' %>
     <%= f.submit "Create Casting", class: "btn btn-primary" %>
   <% end %>
