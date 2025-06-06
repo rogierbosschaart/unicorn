@@ -1,8 +1,8 @@
 <div class="tab">
   <button class="tablinks" onclick="openTag(event, 'All')">All</button>
-  <button class="tablinks" onclick="openTag(event, 'Casting')">Casting</button>
-  <button class="tablinks" onclick="openTag(event, 'Option')">Option</button>
-  <button class="tablinks" onclick="openTag(event, 'Job')">Job</button>
+  <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
+  <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
+  <button class="tablinks" onclick="openTag(event, 'Job')">Jobs</button>
 </div>
 
 <div id="All" class="tabcontent">
@@ -12,8 +12,6 @@
     <div class="avatar">
     </div>
     <%= link_to connection_path(connection), class: "connections-info card" do %>
-      <span class="small-type"> <%= connection.listing.listing_type %> </span>
-      <span class="p-standard"> <%= connection.listing.client.name %> </span>
       <% if connection.listing.listing_type == 'casting' %>
       <div class="connections-info card">
           <span class="small-type"> <%= connection.listing.listing_type %> </span>
