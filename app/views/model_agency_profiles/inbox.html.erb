@@ -31,42 +31,47 @@
 
 <h1>Castings</h1>
 <% @castings.each do |casting| %>
- <div class="connections-container">
+  <div class="connections-container">
     <div class="avatar">
     </div>
-    <div class="connections-info card">
-        <span class="small-type"> <%= casting.listing.listing_type %> </span>
-        <span class="p-standard"> <%= casting.listing.client.name %> </span>
-        <span class="p-standard"> <%= casting.listing.start_date %> - <%= casting.listing.start_time.strftime('%H:%M') %> - <%= casting.listing.end_time.strftime('%H:%M') %>  </span>
-    </div>
- </div>
+    <%= link_to connection_path(casting), class: "connections-info card" do %>
+      <span class="small-type"> <%= casting.listing.listing_type %> </span>
+      <span class="p-standard"> <%= casting.listing.client.name %> </span>
+      <span class="p-standard">
+        <%= casting.listing.start_date %> -
+        <%= casting.listing.start_time.strftime('%H:%M') %> -
+        <%= casting.listing.end_time.strftime('%H:%M') %>
+      </span>
+    <% end %>
+  </div>
 <% end %>
 
 <h1>Options</h1>
 <% @options.each do |option| %>
- <div class="connections-container">
+  <div class="connections-container">
     <div class="avatar">
     </div>
-    <div class="connections-info card">
-       <span class="small-type"> <%= option.listing.listing_type %> </span>
-       <span class="p-standard"> <%= option.listing.client.name %> </span>
-       <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
-    </div>
- </div>
+    <%= link_to connection_path(option), class: "connections-info card" do %>
+      <span class="small-type"> <%= option.listing.listing_type %> </span>
+      <span class="p-standard"> <%= option.listing.client.name %> </span>
+      <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
+    <% end %>
+  </div>
 <% end %>
 
 <h1>Jobs</h1>
 <% @jobs.each do |job| %>
- <div class="connections-container">
+  <div class="connections-container">
     <div class="avatar">
     </div>
     <div class="connections-info card">
+      <%= link_to connection_path(job), class: "connections-info card" do %>
        <span class="small-type"> <%= job.listing.listing_type %> </span>
        <span class="p-standard"> <%= job.listing.client.name %> </span>
        <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+      <% end %>
     </div>
  </div>
-
 <% end %> 
 <%= render 'shared/mobile-app-navbar' %>
 
