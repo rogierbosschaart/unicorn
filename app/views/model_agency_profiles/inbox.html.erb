@@ -3,24 +3,28 @@
  <div class="connections-container">
     <div class="avatar">
     </div>
-    <% if connection.listing.listing_type == 'casting' %>
-    <div class="connections-info card">
-        <span class="small-type"> <%= connection.listing.listing_type %> </span>
-        <span class="p-standard"> <%= connection.listing.client.name %> </span>
-        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %>  </span>
-    </div>
-    <% elsif connection.listing.listing_type == 'option' %>
-    <div class="connections-info card">
-        <span class="small-type"> <%= connection.listing.listing_type %> </span>
-        <span class="p-standard"> <%= connection.listing.client.name %> </span>
-        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
-    </div>
-    <% elsif connection.listing.listing_type == 'job' %>
-    <div class="connections-info card">
-        <span class="small-type"> <%= connection.listing.listing_type %> </span>
-        <span class="p-standard"> <%= connection.listing.client.name %> </span>
-        <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
-    </div>
+    <%= link_to connection_path(connection), class: "connections-info card" do %>
+      <span class="small-type"> <%= connection.listing.listing_type %> </span>
+      <span class="p-standard"> <%= connection.listing.client.name %> </span>
+      <% if connection.listing.listing_type == 'casting' %>
+      <div class="connections-info card">
+          <span class="small-type"> <%= connection.listing.listing_type %> </span>
+          <span class="p-standard"> <%= connection.listing.client.name %> </span>
+          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %>  </span>
+      </div>
+      <% elsif connection.listing.listing_type == 'option' %>
+      <div class="connections-info card">
+          <span class="small-type"> <%= connection.listing.listing_type %> </span>
+          <span class="p-standard"> <%= connection.listing.client.name %> </span>
+          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
+      </div>
+      <% elsif connection.listing.listing_type == 'job' %>
+      <div class="connections-info card">
+          <span class="small-type"> <%= connection.listing.listing_type %> </span>
+          <span class="p-standard"> <%= connection.listing.client.name %> </span>
+          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
+      </div>
+      <% end %>
     <% end %>
  </div>
 <% end %>
@@ -62,5 +66,9 @@
        <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
     </div>
  </div>
+
 <% end %> 
 <%= render 'shared/mobile-app-navbar' %>
+
+<% end %>
+
