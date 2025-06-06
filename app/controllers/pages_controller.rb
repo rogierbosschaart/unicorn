@@ -21,7 +21,7 @@ class PagesController < ApplicationController
                                 .where(agency: @agency)
                                 # .map(&:user)
     @listing = Listing.new
-
+    session[:selected_model_ids] ||= []
     # raise
     # @agency = Agency.find_by(id: current_user.agency_id)
     # @listing = Listing.new
