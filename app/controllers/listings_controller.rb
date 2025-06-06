@@ -47,7 +47,7 @@ class ListingsController < ApplicationController
       Connection.create!(
         model_agency_profile: model,
         listing: @listing,
-        agency: @listing.agency
+        agency_id: model.agency.id
       )
     end
     session.delete(:selected_model_ids)

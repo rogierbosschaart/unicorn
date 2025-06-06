@@ -2,8 +2,8 @@
 <h2>Connection Details</h2>
 
 <p><strong>Listing Type:</strong> <%= @listing.listing_type %></p>
-<p><strong>Client:</strong> <%= @client&.name %></p>
-<p><strong>Model:</strong> <%= @model_profile&.user&.f_name %></p>
-<p><strong>Agency:</strong> <%= @agency&.name %></p>
+<p><strong>Client:</strong> <%= @client.name %></p>
+<p><strong>Model:</strong> <%= @model_profile.user.f_name %></p>
+<p><strong>Agency:</strong> <%= @agency.name %></p>
 <p><strong>Rate:</strong> <%= @connection.rate %></p>
 <%= render 'shared/mobile-app-navbar' %>
