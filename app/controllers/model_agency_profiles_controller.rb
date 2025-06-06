@@ -1,6 +1,9 @@
 class ModelAgencyProfilesController < ApplicationController
   before_action :set_user, except: [:update]
 
+  def home
+  end
+
   def inbox
     if @model.connections != nil
       @connections = @model.connections
