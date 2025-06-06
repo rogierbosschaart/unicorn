@@ -1,4 +1,12 @@
-<h1>All</h1>
+<div class="tab">
+  <button class="tablinks" onclick="openTag(event, 'All')">All</button>
+  <button class="tablinks" onclick="openTag(event, 'Casting')">Casting</button>
+  <button class="tablinks" onclick="openTag(event, 'Option')">Option</button>
+  <button class="tablinks" onclick="openTag(event, 'Job')">Job</button>
+</div>
+
+<div id="All" class="tabcontent">
+  <h3>All</h3>
 <% @connections.each do |connection| %>
  <div class="connections-container">
     <div class="avatar">
@@ -28,8 +36,10 @@
     <% end %>
  </div>
 <% end %>
+</div>
 
-<h1>Castings</h1>
+<div id="Casting" class="tabcontent">
+  <h3>Casting</h3>
 <% @castings.each do |casting| %>
   <div class="connections-container">
     <div class="avatar">
@@ -45,8 +55,10 @@
     <% end %>
   </div>
 <% end %>
+</div>
 
-<h1>Options</h1>
+<div id="Option" class="tabcontent">
+  <h3>Option</h3>
 <% @options.each do |option| %>
   <div class="connections-container">
     <div class="avatar">
@@ -58,8 +70,10 @@
     <% end %>
   </div>
 <% end %>
+</div>
 
-<h1>Jobs</h1>
+<div id="Job" class="tabcontent">
+  <h3>Jobs</h3>
 <% @jobs.each do |job| %>
   <div class="connections-container">
     <div class="avatar">
@@ -73,5 +87,22 @@
     </div>
  </div>
 <% end %> 
+</div>
+
+<script>
+  function openTag(evt, tagName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tagName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
 <%= render 'shared/mobile-app-navbar' %>
 
