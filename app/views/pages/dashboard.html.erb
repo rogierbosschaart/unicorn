@@ -1,51 +1,63 @@
-<%# TOP %>
-<div class="grid-top">
-  <%# LEFT %>
-  <div class="grid-top-left">
-  </div>
-  <%# RIGHT %>
-  <div class="grid-top-right">
-    <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-    <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-    <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-    <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-    <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-  </div>
-</div>
+<div>
+  <%= turbo_frame_tag :other_side do %>
+  <%# TOP %>
+  <div class="grid-top">
+    <%# LEFT %>
+    <div class="grid-top-left">
+    </div>
 
-<%# BOTTOM %>
-<div class="grid-bottom">
-  <%# LEFT %>
-  <div class="grid-bottom-left">
-    <!-- Models list -->
-      <% @models.each do |model| %>
-        <%= button_to model_agency_profile_path(model),
-                      method: :patch,
-                      class: "btn btn-link " do %>
-          <span>
-            <% if session[:selected_model_ids].include?(model.id) %>
-              Unselect
-            <% else %>
-              Select
-            <% end %>
-          </span>
+    <%# MIDDLE %>
+    <div class="grid-top-middle">
+      <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+      <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+      <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+      <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+      <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+    </div>
+
+    <div class="grid-top-right">
+      <%= link_to "LISTINGS", agency_listings_path(@agency), data: { turbo_frame: "other_side" }, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <%# BOTTOM %>
+  <div class="grid-bottom">
+    <%# MIDDLE %>
+    <div class="grid-bottom-left">
+      <!-- Models list -->
+        <% @models.each do |model| %>
+          <%= button_to model_agency_profile_path(model),
+                        method: :patch,
+                        class: "btn btn-link " do %>
+            <span>
+              <% if session[:selected_model_ids].include?(model.id) %>
+                Unselect
+              <% else %>
+                Select
+              <% end %>
+            </span>
+          <% end %>
+
+          <%# button_to model_agency_profile_path(model),
+                        method: :patch,
+                        params: { model: { selected: !model.selected }},
+                        class: "btn btn-link" do %>
+            <%# <span> model.selected</span> %>
+          <%# <% end %>
         <% end %>
+    </div>
 
-        <%# button_to model_agency_profile_path(model),
-                      method: :patch,
-                      params: { model: { selected: !model.selected }},
-                      class: "btn btn-link" do %>
-          <%# <span> model.selected</span> %>
-        <%# <% end %>
+    <%# MIDDLE %>
+    <div class="grid-bottom-middle">
+      <%= turbo_frame_tag :create_panel do %>
       <% end %>
+    </div>
   </div>
-  <%# RIGHT %>
-  <div class="grid-bottom-right">
-  <%= turbo_frame_tag :create_panel do %>
-    <h2>Hello</h2>
+
   <% end %>
-    <%# <%= turbo_frame_tag :contact_details do %>
-    <%# <%= render partial: 'listings/form' %>
-    <%# <% end %>
+
+  <%# RIGHT %>
+  <div>
   </div>
+
 </div>

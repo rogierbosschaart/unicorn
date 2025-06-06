@@ -1,4 +1,14 @@
 class ListingsController < ApplicationController
+  def index
+    @listings = Listing.joins(:user)
+                       .where(users: { agency_id: current_user.agency_id })
+  end
+
+  def show
+    @agency = Agency.find(params[:agency_id])
+    @listing = Listing.find(params[:id])
+  end
+
   def new
     @agency = Agency.find(params[:agency_id])
     @listing = Listing.new(listing_type: params[:type])

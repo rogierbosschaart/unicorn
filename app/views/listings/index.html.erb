@@ -1,0 +1,37 @@
+<%= turbo_frame_tag :other_side do %>
+  <%# GRID TOP %>
+  <div class="grid-top">
+    <%# LEFT %>
+    <div class="grid-top-left">
+    </div>
+    <%# MIDDLE %>
+    <div class="grid-top-middle">
+    </div>
+    <%# RIGHT %>
+    <div class="grid-top-right">
+       <%= link_to "NEW", dashboard_path, data: { turbo_frame: "other_side" }, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <%# GRID BOTTOM %>
+  <div class="grid-bottom">
+    <%# LEFT %>
+    <div class="grid-bottom-left">
+      <% @listings.each do |listing| %>
+        <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
+          <div class="m-2">
+            <span> <%= listing.client.name %> </span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%# MIDDLE %>
+    <div class="grid-bottom-middle">
+      <%= turbo_frame_tag :show_listing do %>
+      <% end %>
+    </div>
+    <%# RIGHT %>
+    <div class="grid-bottom-right">
+    </div>
+  </div>
+<% end %>
