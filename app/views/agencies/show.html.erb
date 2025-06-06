@@ -13,9 +13,8 @@
         </div>
         <div class="card-body">
 
-        <% @agency.mannequins.each do |user| %> <%# Итерация по @agency.users %>
+        <% @agency.mannequins.each do |user| %>
                 <li class="list-group-item mb-3 p-3 border rounded bg-light">
-                  <%# ПРИМЕЧАНИЕ: Убедитесь, что у вашей модели User есть поля first_name и last_name %>
                 </li>
               <% end %>
             <ul class="list-group list-group-flush">

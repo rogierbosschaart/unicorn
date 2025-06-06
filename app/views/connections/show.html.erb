@@ -1,0 +1,11 @@
+<h2>Connection Details</h2>
+
+<p><strong>Listing Type:</strong> <%= @listing.listing_type %></p>
+<p><strong>Client:</strong> <%= @client&.name %></p>
+<p><strong>Model:</strong> <%= @model_profile&.user&.full_name %></p>
+<p><strong>Agency:</strong> <%= @agency&.name %></p>
+<p><strong>Opened:</strong> <%= @connection.opened ? 'Yes' : 'No' %></p>
+<p><strong>Attended Casting:</strong> <%= @connection.attended_casting ? 'Yes' : 'No' %></p>
+<p><strong>Accepted Option:</strong> <%= @connection.accepted_option ? 'Yes' : 'No' %></p>
+<p><strong>Busy for Casting:</strong> <%= @connection.busy_casting ? 'Yes' : 'No' %></p>
+<p><strong>Rate:</strong> <%= @connection.rate %></p>
