@@ -64,10 +64,14 @@
   <div class="connections-container">
     <div class="avatar">
     </div>
-    <%= link_to connection_path(job), class: "connections-info card" do %>
-      <span class="small-type"> <%= job.listing.listing_type %> </span>
-      <span class="p-standard"> <%= job.listing.client.name %> </span>
-      <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
-    <% end %>
-  </div>
-<% end %>
+    <div class="connections-info card">
+      <%= link_to connection_path(job), class: "connections-info card" do %>
+       <span class="small-type"> <%= job.listing.listing_type %> </span>
+       <span class="p-standard"> <%= job.listing.client.name %> </span>
+       <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+      <% end %>
+    </div>
+ </div>
+<% end %> 
+<%= render 'shared/mobile-app-navbar' %>
+
