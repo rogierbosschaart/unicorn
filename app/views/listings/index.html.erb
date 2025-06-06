@@ -17,6 +17,12 @@
   <div class="grid-bottom">
     <%# LEFT %>
     <div class="grid-bottom-left">
+      <div class="form-section">
+        <form action="<%= root_path %>" method="get" class="search-form">
+          <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
+          <input type="submit" value=">" class="button">
+        </form>
+      </div>
       <% @listings.each do |listing| %>
         <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
           <div class="m-2">
@@ -32,6 +38,7 @@
     </div>
     <%# RIGHT %>
     <div class="grid-bottom-right">
+      <i class="fa-regular fa-plus"></i>
     </div>
   </div>
 <% end %>

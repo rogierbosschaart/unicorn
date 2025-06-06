@@ -1,5 +1,4 @@
-<div>
-  <%= turbo_frame_tag :other_side do %>
+<%= turbo_frame_tag :other_side do %>
   <%# TOP %>
   <div class="grid-top">
     <%# LEFT %>
@@ -22,8 +21,16 @@
 
   <%# BOTTOM %>
   <div class="grid-bottom">
-    <%# MIDDLE %>
+    <%# LEFT%>
     <div class="grid-bottom-left">
+
+      <div class="form-section">
+        <form action="<%= root_path %>" method="get" class="search-form">
+          <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
+          <input type="submit" value=">" class="button">
+        </form>
+      </div>
+      
       <!-- Models list -->
         <% @models.each do |model| %>
           <%= button_to model_agency_profile_path(model),
@@ -31,9 +38,9 @@
                         class: "btn btn-link " do %>
             <span>
               <% if session[:selected_model_ids].include?(model.id) %>
-                Unselect
+                <span class="model green"><%= model.user.f_name %><%= model.user.l_name %></span>
               <% else %>
-                Select
+                <span class="model"><%= model.user.f_name %><%= model.user.l_name %></span>
               <% end %>
             </span>
           <% end %>
@@ -52,12 +59,9 @@
       <%= turbo_frame_tag :create_panel do %>
       <% end %>
     </div>
+    <%# RIGHT %>
+    <div class="grid-bottom-right">
+      <i class="fa-regular fa-plus"></i>
+    </div>
   </div>
-
-  <% end %>
-
-  <%# RIGHT %>
-  <div>
-  </div>
-
-</div>
+<% end %>
