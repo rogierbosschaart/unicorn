@@ -1,3 +1,68 @@
 <%= turbo_frame_tag :show_listing do %>
-  <h1>Hello</h1>
+  <%# CASTING %>
+  <% if @listing.listing_type == 'casting' %>
+    <div>
+      <span><%= @listing.listing_type %></span>
+      <span><%= @listing.client.name %></span>
+      <span><%= @listing.start_date %></span>
+      <span><%= @listing.start_time %> <%= @listing.end_time.presence %></span>
+      <span><%= @listing.location.presence %></span>
+      <span><%= @listing.address %></span>
+      <span><%= @listing.extra_info.presence %></span>
+    </div>
+    <%# models for casting %>
+    <div>
+      <% @connections.each do |connection| %>
+        <span>
+          <%= connection.model_agency_profile.user.f_name %>
+          <%= connection.model_agency_profile.user.l_name %>
+        </span>
+      <% end %>
+    </div>
+
+  <%# OPTION %>
+  <% elsif @listing.listing_type == 'option' %>
+    <div>
+      <span><%= @listing.listing_type %></span>
+      <span><%= @listing.client.name %></span>
+      <span><%= @listing.start_date %> <% @listing.end_date.presence %></span>
+      <span><%= @listing.start_time %></span>
+      <span><%= @listing.photographer.presence %></span>
+      <span><%= @listing.stylist.presence %></span>
+      <span><%= @listing.location.presence %></span>
+      <span><%= @listing.address %></span>
+      <span><%= @listing.extra_info.presence %></span>
+    </div>
+    <%# models for option %>
+    <div>
+      <% @connections.each do |connection| %>
+        <span>
+          <%= connection.model_agency_profile.user.f_name %>
+          <%= connection.model_agency_profile.user.l_name %>
+        </span>
+      <% end %>
+    </div>
+  <%# JOB %>
+  <% else %>
+    <div>
+      <span><%= @listing.listing_type %></span>
+      <span><%= @listing.client.name %></span>
+      <span><%= @listing.start_date %><%= @listing.end_date.presence %></span>
+      <span><%= @listing.start_time.presence %></span>
+      <span><%= @listing.photographer.presence %></span>
+      <span><%= @listing.stylist.presence %></span>
+      <span><%= @listing.location.presence %></span>
+      <span><%= @listing.address %></span>
+      <span><%= @listing.extra_info.presence%></span>
+    </div>
+    <%# models for Job %>
+    <div>
+      <% @connections.each do |connection| %>
+        <span>
+          <%= connection.model_agency_profile.user.f_name %>
+          <%= connection.model_agency_profile.user.l_name %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
