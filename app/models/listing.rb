@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :client
+  has_many :connections
 
   scope :castings, -> { where(listing_type: 'casting') }
   scope :options, -> { where(listing_type: 'option') }
