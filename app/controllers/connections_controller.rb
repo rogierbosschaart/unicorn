@@ -4,7 +4,7 @@ class ConnectionsController < ApplicationController
     @listing = @connection.listing
     @client = @listing.client if @listing.present?
     @model_profile = @connection.model_agency_profile
-    @agency = @connection.agency
+    @agency = @connection.agency_id
   end
 
   def create
