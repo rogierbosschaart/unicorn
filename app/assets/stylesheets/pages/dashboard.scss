@@ -92,13 +92,14 @@
 
   // List of models/listings
   .grid-bottom-left {
+    overflow: scroll;
     border-right: 1px solid grey;
   }
 
   // This is where the main toggleable content goes
-  //  .grid-bottom-right {
-
-  //  }
+   .grid-bottom-right {
+    overflow: scroll;
+   }
 
 }
 
