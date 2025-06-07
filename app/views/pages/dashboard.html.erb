@@ -1,67 +1,79 @@
 <%= turbo_frame_tag :other_side do %>
-  <%# TOP %>
-  <div class="grid-top">
-    <%# LEFT %>
-    <div class="grid-top-left">
-    </div>
+  <div class="background-1 dashboard-grid">
 
-    <%# MIDDLE %>
-    <div class="grid-top-middle">
-      <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-      <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-      <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-      <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-      <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-    </div>
+    <%# LEFT SIDE%>
+    <div class="grid-left-side">
 
-    <div class="grid-top-right">
-      <%= link_to "LISTINGS", agency_listings_path(@agency), data: { turbo_frame: "other_side" }, class: "btn btn-primary" %>
-    </div>
-  </div>
-
-  <%# BOTTOM %>
-  <div class="grid-bottom">
-    <%# LEFT%>
-    <div class="grid-bottom-left">
-
-      <div class="form-section">
-        <form action="<%= root_path %>" method="get" class="search-form">
-          <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
-          <input type="submit" value=">" class="button">
-        </form>
+      <%# dashboard navigation bar %>
+      <div class="dashboard-navbar">
+        <%= render 'pages/dashboard_shared/dashboard_navbar' %>
       </div>
-      
-      <!-- Models list -->
-        <% @models.each do |model| %>
-          <%= button_to model_agency_profile_path(model),
-                        method: :patch,
-                        class: "btn btn-link " do %>
-            <span>
-              <% if session[:selected_model_ids].include?(model.id) %>
-                <span class="model green"><%= model.user.f_name %><%= model.user.l_name %></span>
-              <% else %>
-                <span class="model"><%= model.user.f_name %><%= model.user.l_name %></span>
-              <% end %>
-            </span>
+
+      <%# TOP SIDE %>
+      <div class="dashboard-content-grid-top">
+
+          <%# TOP LEFT %>
+          <div class="grid-top-left">
+            <%# empty for now %>
+          </div>
+
+          <%# TOP RIGHT %>
+          <%# buttons go here %>
+          <div class="grid-top-right">
+            <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+            <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+            <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+            <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+            <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+          </div>
+      </div>
+
+      <%# BOTTOM SIDE %>
+      <div class="dashboard-content-grid-bottom">
+
+        <%# BOTTOM LEFT %>
+        <%# models/listings-list %>
+        <div class="grid-bottom-left">
+          <!-- searchbar || not yet functioning -->
+          <div class="form-section">
+            <form action="<%= root_path %>" method="get" class="search-form">
+              <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
+              <input type="submit" value=">" class="button">
+            </form>
+          </div>
+          <!-- Models list -->
+          <% @models.each do |model| %>
+            <%= button_to model_agency_profile_path(model),
+                          method: :patch,
+                          class: "btn btn-link " do %>
+              <span>
+                <% if session[:selected_model_ids].include?(model.id) %>
+                  <span class="model green"><%= model.user.f_name %><%= model.user.l_name %></span>
+                <% else %>
+                  <span class="model"><%= model.user.f_name %><%= model.user.l_name %></span>
+                <% end %>
+              </span>
+            <% end %>
           <% end %>
+        </div>
 
-          <%# button_to model_agency_profile_path(model),
-                        method: :patch,
-                        params: { model: { selected: !model.selected }},
-                        class: "btn btn-link" do %>
-            <%# <span> model.selected</span> %>
-          <%# <% end %>
-        <% end %>
+        <%# BOTTOM RIGHT %>
+        <%# toggle screen with forms and listing#show %>
+        <div class="grid-bottom-right">
+          <%= turbo_frame_tag :create_panel do %>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="dashboard-footer">
+      </div>
     </div>
 
-    <%# MIDDLE %>
-    <div class="grid-bottom-middle">
-      <%= turbo_frame_tag :create_panel do %>
-      <% end %>
+    <%# RIGHT SIDE%>
+    <%# dashboard sidebar %>
+    <div class="grid-right-side side-bar-right">
+      <%= render 'pages/dashboard_shared/dashboard_sidebar' %>
     </div>
-    <%# RIGHT %>
-    <div class="grid-bottom-right">
-      <i class="fa-regular fa-plus"></i>
-    </div>
+
   </div>
 <% end %>

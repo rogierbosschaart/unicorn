@@ -1,5 +1,6 @@
 <div class="my-2 mx-5">
   <%= simple_form_for [@agency, @listing] do |f| %>
+    <%= f.input :client_id, label: "Client", collection: Client.all %>
     <%= f.input :start_date, label: "Start Date" %>
     <%= f.input :end_date, label: "End Date" %>
     <%= f.input :start_time, label: "Start Time" %>
@@ -7,7 +8,7 @@
     <%= f.input :address, label: "Address" %>
     <%= f.input :photographer, label: "Photographer" %>
     <%= f.input :stylist, label: "Stylist" %>
-    <%= f.input :client_id, label: "Client", collection: Client.all %>
+
     <%= f.input :extra_info, label: "Extra information" %>
     <%= f.hidden_field :listing_type, value: 'job' %>
     <%= f.submit "Create Job", class: "btn btn-primary" %>
