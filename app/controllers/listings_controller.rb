@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.joins(:user)
                        .where(users: { agency_id: current_user.agency_id })
+    @agency = current_user.agency
   end
 
   def show
