@@ -1,12 +1,24 @@
 <div class="my-2 mx-5">
   <%= simple_form_for [@agency, @listing] do |f| %>
-    <%= f.input :start_date, label: "Start Date", as: :date  %>
-    <%= f.input :end_date, label: "End Date", as: :date  %>
-    <%= f.input :location, label: "Location" %>
-    <%= f.input :photographer, label: "Photographer" %>
-    <%= f.input :stylist, label: "Stylist" %>
     <%= f.input :client_id, label: "Client", collection: Client.all %>
-    <%= f.input :extra_info, label: "Extra information" %>
+    <%= f.input :location, label: "Location" %>
+    <div class="d-flex">
+      <div>
+        <%= f.input :start_date, label: "From", as: :date  %>
+      </div>
+      <div>
+        <%= f.input :end_date, label: "Until", as: :date  %>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <%= f.input :extra_info, label: "Extra information" %>
+      </div>
+      <div>
+        <%= f.input :photographer, label: "Photographer" %>
+        <%= f.input :stylist, label: "Stylist" %>
+      </div>
+    </div>
     <%= f.hidden_field :listing_type, value: 'option' %>
     <%= f.submit "Create Option", class: "btn btn-primary" %>
   <% end %>
