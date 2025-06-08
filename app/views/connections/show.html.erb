@@ -7,3 +7,30 @@
 <p><strong>Agency:</strong> <%= @agency.name %></p>
 <p><strong>Rate:</strong> <%= @connection.rate %></p>
 <%= render 'shared/mobile-app-navbar' %>
+
+ <%# COMMENTS SECTION%>
+<h3>Comments</h3>
+
+<div id="comments">
+  <% @connection.connection_comments.each do |comment| %>
+    <p>
+      <strong><%= comment.user.f_name %>:</strong>
+      <%= comment.comment %>
+      <small>(<%= comment.created_at.strftime("%d %b %Y, %H:%M") %>)</small>
+    </p>
+  <% end %>
+</div>
+
+<hr>
+
+<h3>Add a Comment</h3>
+
+<%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment, rows: 3 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Post Comment" %>
+  </div>
+<% end %>

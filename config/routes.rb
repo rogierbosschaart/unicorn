@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # AGENCY
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   # resources :listings, only: [:new, :create]
-  resources :connections, only: [:new, :create, :show]
+  resources :connections, only: [:new, :create, :show] do
+    resources :connection_comments, only: [:create]
+  end
   resources :clients, only: [:new, :create]
 
   resources :model_agency_profiles, only: [:update, :edit]
