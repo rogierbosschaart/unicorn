@@ -1,106 +1,156 @@
-<div class="tab">
-  <button class="tablinks" onclick="openTag(event, 'All')">All</button>
-  <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
-  <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
-  <button class="tablinks" onclick="openTag(event, 'Job')">Jobs</button>
-</div>
+<div class="inbox-page d-flex flex-column">
+  <%# INBOX NAVIGATION TABS %>
+  <div class="tab">
+    <button class="tablinks" onclick="openTag(event, 'All')">All</button>
+    <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
+    <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
+    <button class="tablinks" onclick="openTag(event, 'Job')">Jobs</button>
+  </div>
 
-<div id="All" class="tabcontent">
-  <h3>All</h3>
-<% @connections.each do |connection| %>
- <div class="connections-container">
-    <div class="avatar">
-    </div>
-    <%= link_to connection_path(connection), class: "connections-info card" do %>
+  <div id="All" class="tabcontent connections-inbox">
+    <h3>All</h3>
+    <% @connections.each do |connection| %>
+      <%# IF CASTING %>
       <% if connection.listing.listing_type == 'casting' %>
-      <div class="connections-info card">
-          <span class="small-type"> <%= connection.listing.listing_type %> </span>
-          <span class="p-standard"> <%= connection.listing.client.name %> </span>
-          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %>  </span>
-      </div>
+        <div>
+          <%= link_to connection_path(connection), class: "connection-container" do %>
+            <%= render 'shared/avatar_inbox' %>
+            <div class="connection-info">
+              <% if connection.opened == true %>
+                <span class="p-light"><%= connection.listing.client.name %></span>
+                <span class="p-light"><%= connection.listing.start_date.strftime('%-d %B') %></span>
+                <span class="p-light"><%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %></span>
+              <% else %>
+                <span class="p-xbold"><%= connection.listing.client.name %></span>
+                <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %></span>
+                <span class="p-xbold"><%= connection.listing.start_time.strftime('%H:%M') %> - <%= connection.listing.end_time.strftime('%H:%M') %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= connection.listing.listing_type.upcase %></span>
+            </div>
+
+          <% end %>
+        </div>
+
+      <%# IF OPTION %>
       <% elsif connection.listing.listing_type == 'option' %>
-      <div class="connections-info card">
-          <span class="small-type"> <%= connection.listing.listing_type %> </span>
-          <span class="p-standard"> <%= connection.listing.client.name %> </span>
-          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
-      </div>
+        <div>
+          <%= link_to connection_path(connection), class: "connection-container" do %>
+            <%= render 'shared/avatar_inbox' %>
+            <div class="connection-info">
+              <% if connection.opened == true %>
+                <span class="p-light"><%= connection.listing.client.name %></span>
+                <span class="p-light"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-light"><%= connection.listing.extra_info %></span>
+              <% else %>
+                <span class="p-xbold"><%= connection.listing.client.name %></span>
+                <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-standard"><%= connection.listing.extra_info %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= connection.listing.listing_type.upcase %></span>
+            </div>
+          <% end %>
+        </div>
+
+      <%# IF  JOB %>
       <% elsif connection.listing.listing_type == 'job' %>
-      <div class="connections-info card">
-          <span class="small-type"> <%= connection.listing.listing_type %> </span>
-          <span class="p-standard"> <%= connection.listing.client.name %> </span>
-          <span class="p-standard"> <%= connection.listing.start_date %> - <%= connection.listing.end_date %> </span>
+        <div>
+          <%= link_to connection_path(connection), class: "connection-container" do %>
+            <%= render 'shared/avatar_inbox' %>
+            <div class="connection-info">
+              <% if connection.opened == true %>
+                <span class="p-light"><%= connection.listing.client.name %></span>
+                <span class="p-light"><%= connection.listing.start_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-light"><%= connection.listing.start_time.presence&.strftime('%H:%M') %></span>
+              <% else %>
+                <span class="p-xbold"><%= connection.listing.client.name %></span>
+                <span class="p-xbold"><%= connection.listing.start_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-xbold"><%= connection.listing.start_time.presence&.strftime('%H:%M') %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= connection.listing.listing_type.upcase %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+  <%# CASTINGS %>
+  <div id="Casting" class="tabcontent connections-inbox">
+    <h3>Casting</h3>
+    <% @castings.each do |casting| %>
+      <%= link_to connection_path(casting), class: "connections-info" do %>
+        <div class="connections-container">
+          <%# SENDER AVATAR %>
+          <%= render 'shared/avatar_inbox' %>
+
+          <span class="small-type"> <%= casting.listing.listing_type %> </span>
+          <span class="p-standard"> <%= casting.listing.client.name %> </span>
+          <span class="p-standard">
+            <%= casting.listing.start_date %> -
+            <%= casting.listing.start_time.strftime('%H:%M') %> -
+            <%= casting.listing.end_time.strftime('%H:%M') %>
+          </span>
+        <% end %>
       </div>
-      <% end %>
-    <% end %>
- </div>
-<% end %>
-</div>
-
-<div id="Casting" class="tabcontent">
-  <h3>Casting</h3>
-<% @castings.each do |casting| %>
-  <div class="connections-container">
-    <div class="avatar">
-    </div>
-    <%= link_to connection_path(casting), class: "connections-info card" do %>
-      <span class="small-type"> <%= casting.listing.listing_type %> </span>
-      <span class="p-standard"> <%= casting.listing.client.name %> </span>
-      <span class="p-standard">
-        <%= casting.listing.start_date %> -
-        <%= casting.listing.start_time.strftime('%H:%M') %> -
-        <%= casting.listing.end_time.strftime('%H:%M') %>
-      </span>
     <% end %>
   </div>
-<% end %>
-</div>
 
-<div id="Option" class="tabcontent">
-  <h3>Option</h3>
-<% @options.each do |option| %>
-  <div class="connections-container">
-    <div class="avatar">
-    </div>
-    <%= link_to connection_path(option), class: "connections-info card" do %>
-      <span class="small-type"> <%= option.listing.listing_type %> </span>
-      <span class="p-standard"> <%= option.listing.client.name %> </span>
-      <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
-    <% end %>
-  </div>
-<% end %>
-</div>
-
-<div id="Job" class="tabcontent">
-  <h3>Jobs</h3>
-<% @jobs.each do |job| %>
-  <div class="connections-container">
-    <div class="avatar">
-    </div>
-    <div class="connections-info card">
-      <%= link_to connection_path(job), class: "connections-info card" do %>
-       <span class="small-type"> <%= job.listing.listing_type %> </span>
-       <span class="p-standard"> <%= job.listing.client.name %> </span>
-       <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+  <%# OPTIONS %>
+  <div id="Option" class="tabcontent connections-inbox">
+    <h3>Option</h3>
+  <% @options.each do |option| %>
+    <div class="connections-container">
+      <div class="avatar">
+      </div>
+      <%= link_to connection_path(option), class: "connections-info" do %>
+        <span class="small-type"> <%= option.listing.listing_type %> </span>
+        <span class="p-standard"> <%= option.listing.client.name %> </span>
+        <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
       <% end %>
     </div>
- </div>
-<% end %> 
+  <% end %>
+  </div>
+
+  <%# JOBS %>
+  <div id="Job" class="tabcontent">
+    <h3>Jobs</h3>
+  <% @jobs.each do |job| %>
+    <div class="connections-container connections-inbox">
+      <div class="avatar">
+      </div>
+      <div class="connections-info">
+        <%= link_to connection_path(job), class: "connections-info" do %>
+         <span class="small-type"> <%= job.listing.listing_type %> </span>
+         <span class="p-standard"> <%= job.listing.client.name %> </span>
+         <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
+        <% end %>
+      </div>
+   </div>
+  <% end %>
+  </div>
+
+  <script>
+    function openTag(evt, tagName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tagName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+  <%= render 'shared/mobile-app-navbar' %>
 </div>
-
-<script>
-  function openTag(evt, tagName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tagName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-</script>
-<%= render 'shared/mobile-app-navbar' %>
-

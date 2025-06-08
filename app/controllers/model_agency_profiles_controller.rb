@@ -6,7 +6,7 @@ class ModelAgencyProfilesController < ApplicationController
 
   def inbox
     if @model.connections != nil
-      @connections = @model.connections
+      @connections = @model.connections.order(created_at: :desc)
       @castings     = @connections.joins(:listing)
                                   .where(listings: { listing_type: 'casting' })
       @options      = @connections.joins(:listing)
