@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :model_agency_profiles
   has_many :listings
   has_many :model_agency_profiles, dependent: :destroy
+  has_many :connection_comments
 
   # private
 
