@@ -20,11 +20,7 @@
           <%# TOP RIGHT %>
           <%# buttons go here %>
           <div class="grid-top-right">
-            <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-            <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-            <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-            <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
-            <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "bttn-dsb" %>
+            <%# empty for now %>
           </div>
       </div>
 
@@ -41,18 +37,12 @@
               <input type="submit" value=">" class="button">
             </form>
           </div>
-          <!-- Models list -->
-          <% @models.each do |model| %>
-            <%= button_to model_agency_profile_path(model),
-                          method: :patch,
-                          class: "btn btn-link " do %>
-              <span>
-                <% if session[:selected_model_ids].include?(model.id) %>
-                  <span class="model green"><%= model.user.f_name %><%= model.user.l_name %></span>
-                <% else %>
-                  <span class="model"><%= model.user.f_name %><%= model.user.l_name %></span>
-                <% end %>
-              </span>
+          <!-- listings list -->
+          <% @listings.each do |listing| %>
+            <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
+              <div class="m-2">
+                <span> <%= listing.client.name %> </span>
+              </div>
             <% end %>
           <% end %>
         </div>
@@ -60,7 +50,7 @@
         <%# BOTTOM RIGHT %>
         <%# toggle screen with forms and listing#show %>
         <div class="grid-bottom-right">
-          <%= turbo_frame_tag :create_panel do %>
+          <%= turbo_frame_tag :show_listing do %>
           <% end %>
         </div>
 

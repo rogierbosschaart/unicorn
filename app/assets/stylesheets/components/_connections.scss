@@ -1,3 +1,20 @@
+.tab {
+    display: flex;
+    background-color: #F5F5F5;
+    width: 100%;
+}
+
+.tab button.active {
+    background-color: white;
+    border-bottom: 0px solid white;
+  }
+
+.tab button {
+    width: 25%;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
 .connections-container {
     background-color: white;
 }
@@ -6,6 +23,7 @@
     color: white;
     background-color: black;
 }
+
 .small-type {
 font-family: Lato;
 font-weight: 400;

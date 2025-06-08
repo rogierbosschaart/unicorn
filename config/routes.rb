@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :model_agency_profiles, only: [:update, :edit]
   resources :agencies do
-    resources :listings, only: [:new, :create]
-    resources :hotels, only: [:new, :create]
-    resources :travels, only: [:new, :create]
+    resources :listings, only: [:index, :show, :new, :create]
+    resources :hotels, only: [:index, :show, :new, :create]
+    resources :travels, only: [:index, :show, :new, :create]
   end
 
   # MODELS

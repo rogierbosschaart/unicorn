@@ -1,11 +1,13 @@
-<div>
+<div class="my-2 mx-5">
   <%= simple_form_for [@agency, @travel] do |f| %>
+    <%= f.input :model_agency_profile_id, label: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
     <%= f.input :origin, label: "Origin" %>
     <%= f.input :destination, label: "Destination" %>
-    <%= f.input :date, label: "Date" %>
-    <%= f.input :time, label: "Time" %>
+    <div class="d-flex">
+      <%= f.input :date, label: "Date" %>
+      <%= f.input :time, label: "Time" %>
+    </div>
     <%= f.input :extra_info, label: "Extra information" %>
-    <%= f.input :model_agency_profile_id, label: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
     <%= f.submit "Create Option", class: "btn btn-primary" %>
   <% end %>
 </div>

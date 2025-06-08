@@ -1,4 +1,15 @@
 class ListingsController < ApplicationController
+  def index
+    @listings = Listing.joins(:user)
+                       .where(users: { agency_id: current_user.agency_id })
+    @agency = current_user.agency
+  end
+
+  def show
+    @listing = Listing.find(params[:id])
+    @connections = @listing.connections
+  end
+
   def new
     @agency = Agency.find(params[:agency_id])
     @listing = Listing.new(listing_type: params[:type])
@@ -31,12 +42,13 @@ class ListingsController < ApplicationController
 
   def create_connections_from_session
     selected_model_ids = session[:selected_model_ids] || []
+    selected_models = ModelAgencyProfile.where(id: selected_model_ids)
 
     selected_models.each do |model|
       Connection.create!(
         model_agency_profile: model,
         listing: @listing,
-        agency: @listing.agency
+        agency_id: model.agency.id
       )
     end
     session.delete(:selected_model_ids)
