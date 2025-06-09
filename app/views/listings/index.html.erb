@@ -1,43 +1,42 @@
 <%= turbo_frame_tag :other_side do %>
-  <div class="background-1 dashboard-grid">
+  <div class="background-1">
+    <%# NAVBAR %>
+    <div class="dashboard-navbar">
+      <%= render 'pages/dashboard_shared/dashboard_navbar' %>
+    </div>
 
-    <%# LEFT SIDE%>
-    <div class="grid-left-side">
-
-      <%# dashboard navigation bar %>
-      <div class="dashboard-navbar">
-        <%= render 'pages/dashboard_shared/dashboard_navbar' %>
+    <%# GRID-TOP %>
+    <div class="grid-top">
+      <%# GRID TOP LEFT %>
+      <div class="grid-top-left">
+        <%# empty %>
       </div>
 
-      <%# TOP SIDE %>
-      <div class="dashboard-content-grid-top">
-
-          <%# TOP LEFT %>
-          <div class="grid-top-left">
-            <%# empty for now %>
-          </div>
-
-          <%# TOP RIGHT %>
-          <%# buttons go here %>
-          <div class="grid-top-right">
-            <%# empty for now %>
-          </div>
+      <%# GRID TOP CENTER %>
+      <div class="grid-top-center">
+        <%# empty for now here %>
       </div>
 
-      <%# BOTTOM SIDE %>
-      <div class="dashboard-content-grid-bottom">
+      <%# GRID TOP RIGHT %>
+      <div class="grids-top-right">
+        <%# empty %>
+      </div>
+    </div>
 
-        <%# BOTTOM LEFT %>
-        <%# models/listings-list %>
-        <div class="grid-bottom-left">
-          <!-- searchbar || not yet functioning -->
-          <div class="form-section">
-            <form action="<%= root_path %>" method="get" class="search-form">
-              <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
-              <input type="submit" value=">" class="button">
-            </form>
-          </div>
-          <!-- listings list -->
+    <%# GRID BOTTOM %>
+    <div class="grid-bottom">
+      <%# Grid Bottom Left %>
+      <div class="grid-bottom-left">
+        <!-- searchbar || not yet functioning -->
+        <div class="form-section">
+          <form action="<%= root_path %>" method="get" class="search-form">
+            <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
+            <input type="submit" value=">" class="button">
+          </form>
+        </div>
+
+        <!-- listings list -->
+        <div class="model-listings-section">
           <% @listings.each do |listing| %>
             <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
               <div class="m-2">
@@ -46,24 +45,21 @@
             <% end %>
           <% end %>
         </div>
-
-        <%# BOTTOM RIGHT %>
-        <%# toggle screen with forms and listing#show %>
-        <div class="grid-bottom-right">
-          <%= turbo_frame_tag :show_listing do %>
-          <% end %>
-        </div>
-
       </div>
-      <div class="dashboard-footer">
+
+      <%# Grid Bottom Center %>
+      <div class="grid-bottom-center">
+        <%= turbo_frame_tag :show_listing do %>
+        <% end %>
+      </div>
+
+      <%# Grid Bottom right %>
+      <div class="grid-bottom-right side-bar-right">
+        <%= render 'pages/dashboard_shared/dashboard_sidebar' %>
       </div>
     </div>
 
-    <%# RIGHT SIDE%>
-    <%# dashboard sidebar %>
-    <div class="grid-right-side side-bar-right">
-      <%= render 'pages/dashboard_shared/dashboard_sidebar' %>
+    <div class="dashboard-footer">
     </div>
-
   </div>
 <% end %>
