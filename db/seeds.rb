@@ -1,3 +1,4 @@
+Post.destroy_all
 Travel.destroy_all
 Hotel.destroy_all
 Connection.destroy_all
