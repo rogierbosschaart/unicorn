@@ -1,5 +1,5 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user, except: [:update]
+  before_action :set_user, except: [:update, :home]
 
   def home
   end
@@ -13,6 +13,16 @@ class ModelAgencyProfilesController < ApplicationController
                                   .where(listings: { listing_type: 'option' })
       @jobs         = @connections.joins(:listing)
                                   .where(listings: { listing_type: 'job' })
+    end
+  end
+
+  def create
+    # @user = User.new(params[:user])
+    @model_agency_profile = current_user.model_agency_profile.build(params[:model_agency_profile])
+    if @model_agency_profile.save
+      redirect_to dashboard_path, notice: 'Model was successfully added to your listings!'
+    else
+      redirect_to dashboard_path, alert: @model_agency_profile.errors.full_messages.to_sentence
     end
   end
 
@@ -33,7 +43,15 @@ class ModelAgencyProfilesController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def home
+    @posts = Post.all
+  end
+
   private
+
+  def model_agency_profile_params
+    params.require(:model_agency_profile).permit(:user_id)
+  end
 
   def set_user
     if current_user.user_type == 'agent'

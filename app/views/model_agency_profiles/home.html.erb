@@ -1,6 +1,7 @@
-<h1>Hello</h1>
+
 
 
   <% @posts.each do |post| %>
     <h1> <%= post.post_text %> </h1>
+    <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
