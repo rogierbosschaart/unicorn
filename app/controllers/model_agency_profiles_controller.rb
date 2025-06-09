@@ -1,5 +1,9 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user, except: [:update, :home]
+  before_action :set_user, except: [:update, :home, :new ]
+
+  def new
+    @model_agency_profile = ModelAgencyProfile.new
+  end
 
   def home
   end

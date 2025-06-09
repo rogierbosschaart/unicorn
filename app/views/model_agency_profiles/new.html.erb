@@ -1,0 +1,6 @@
+<%= turbo_frame_tag :create_panel do %>
+  <%= simple_form_for [@model_agency_profile] do |f| %>
+    <%= f.input :user_id, label: "User", collection: User.where(user_type: "mannequin"), label_method: :full_name %>
+    <%= f.submit "Create Profile", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
