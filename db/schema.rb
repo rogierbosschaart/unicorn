@@ -113,8 +113,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_09_124622) do
     t.time "start_time"
     t.time "end_time"
     t.text "extra_info"
-    t.float "latitude"
-    t.float "longitude"
     t.index ["client_id"], name: "index_listings_on_client_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end

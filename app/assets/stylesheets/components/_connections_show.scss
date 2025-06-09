@@ -1,0 +1,59 @@
+.connection-show-container {
+  height: 90vh;
+  overflow: scroll;
+}
+
+.connection-header {
+  border-bottom: 0.5px solid #7D7D7D;
+  display: flex;
+  align-items: center;
+  background-color: white;
+}
+
+.connection-agency-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.connection-show-buttons {
+  width: 100%;
+  border-bottom: 0.5px solid #7D7D7D;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 6px 8px 8px;
+  background-color: white;
+}
+
+.check-button {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 0.5px solid #7d7d7d;
+  margin-right: 10px;
+}
+
+.connection-main-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+}
+
+.connection-type-and-date {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.p-description {
+  margin-bottom: 0.8rem;
+  width: 7rem;
+}
+
+hr {
+  margin: 0;
+}
+
+.field {
+  font-size: 1.4rem;
+}

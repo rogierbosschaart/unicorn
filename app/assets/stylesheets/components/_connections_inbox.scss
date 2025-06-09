@@ -27,14 +27,6 @@
   width: 100%;
   border-bottom: 0.5px solid #7d7d7d;
 
-  .avatar-inbox {
-    height: 36px;
-    width: 36px;
-    border: 1px solid #7d7d7d;
-    border-radius: 50%;
-    margin: 18px 16px;
-  }
-
   .connection-info {
     flex-grow: 1;
     display: flex;
@@ -49,27 +41,4 @@
     justify-content: center;
     text-align: center;
   }
-}
-
-.p-standard {
-  color: black;
-  font-weight: 400;
-}
-
-.p-light {
-  color: #7d7d7d;
-  font-weight: 400;
-  margin: 0;
-}
-
-.small-type {
-  font-style: italic;
-  color: #7D7D7D;
-  font-weight: 300;
-  margin: 0;
-}
-
-.p-xbold {
-  font-weight: 900;
-  margin: 0;
 }
