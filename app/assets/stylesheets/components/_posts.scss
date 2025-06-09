@@ -1,7 +1,9 @@
-.post-modal {
-  position: absolute;
-  height: 500px;
-  width: 500px;
-  top: 0;
-  right: 10;
+.home-posts-container {
+  height: 90vh;
+  overflow: scroll;
+  background-color: white;
+
+  h1 {
+    padding: 1rem 1rem 1rem 3rem;
+  }
 }

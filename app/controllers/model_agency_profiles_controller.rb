@@ -2,6 +2,7 @@ class ModelAgencyProfilesController < ApplicationController
   before_action :set_user, except: [:update, :home]
 
   def home
+    @posts = Post.all
   end
 
   def inbox
@@ -17,7 +18,6 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def create
-    # @user = User.new(params[:user])
     @model_agency_profile = current_user.model_agency_profile.build(params[:model_agency_profile])
     if @model_agency_profile.save
       redirect_to dashboard_path, notice: 'Model was successfully added to your listings!'
