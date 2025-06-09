@@ -1,5 +1,5 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user, except: [:update]
+  before_action :set_user, except: [:update, :home]
 
   def home
   end
@@ -31,6 +31,10 @@ class ModelAgencyProfilesController < ApplicationController
       session[:selected_model_ids] << @model.id
     end
     redirect_to dashboard_path
+  end
+
+  def home
+    @posts = Post.all
   end
 
   private
