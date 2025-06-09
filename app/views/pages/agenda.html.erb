@@ -1,0 +1,10 @@
+<h1>Agenda</h1>
+
+<span><%= month_calendar(class: "big-calendar") do |date| %></span>
+  <div>
+    <span><strong><%= date.day %></strong></span>
+    <span><% (@listings_by_date[date] || []).each do |listing| %></span>
+      <span><div><%= listing.listing_type %></div></span>
+    <% end %>
+  </div>
+<% end %>
