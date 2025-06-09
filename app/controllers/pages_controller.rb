@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @model_agency_profile = ModelAgencyProfile.new
     @agency = current_user.agency
     # raise
     @models = ModelAgencyProfile.includes(:user)
