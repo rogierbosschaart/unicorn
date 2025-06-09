@@ -54,6 +54,7 @@ gem "geocoder"
 gem "importmap-rails"
 gem "cloudinary"
 gem 'dotenv-rails', groups: [:development, :test]
+gem "simple_calendar"
 
 
 group :development, :test do

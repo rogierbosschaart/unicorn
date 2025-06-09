@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   # MAP
   get 'map', to: 'pages#map', as: :map
+
+  get 'agenda', to: 'pages#agenda'
 end

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, except: [:map]
+  before_action :set_user, except: [:map, :agenda]
 
   def root
     if user_signed_in?
@@ -35,7 +35,20 @@ class PagesController < ApplicationController
     end
   end
 
-  
+  def agenda
+  @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
+    start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
+    next unless start
+
+    finish = listing.end_date || start
+
+    (start..finish).each do |date|
+      hash[date] << listing
+    end
+  end
+end
+
+
   private
 
   def set_user
