@@ -18,7 +18,6 @@ class PostsController < ApplicationController
       puts @post.errors.full_messages
       render :new, status: :unprocessable_entity
     end
-
   end
 
   private

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :create_panel do %>
+  <%= simple_form_for [@client] do |f| %>
+    <%= f.input :name, label: "name" %>
+    <%= f.input :contact_info, label: "contact info" %>
+    <%= f.submit "Client", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
