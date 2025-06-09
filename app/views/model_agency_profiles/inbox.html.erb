@@ -1,6 +1,7 @@
 <div class="inbox-page d-flex flex-column">
   <%# INBOX NAVIGATION TABS %>
   <div class="tab">
+  <%= link_to "MAP", map_path, class: "btn btn-primary" %>
     <button class="tablinks" onclick="openTag(event, 'All')">All</button>
     <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
     <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
@@ -32,7 +33,6 @@
 
           <% end %>
         </div>
-
       <%# IF OPTION %>
       <% elsif connection.listing.listing_type == 'option' %>
         <div>

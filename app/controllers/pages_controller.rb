@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :set_user, except: [:map]
 
   def root
     if user_signed_in?
@@ -42,6 +43,20 @@ class PagesController < ApplicationController
   def set_user
     if current_user.user_type == 'mannequin'
       redirect_to inbox_path
+    end
+  end
+
+  def map
+    @listings = Listing.geocoded
+    @markers = @listings.map do |listing|
+      {
+        latitude: listing.latitude,
+        longitude: listing.longitude,
+        info_window_html: render_to_string(
+          partial: "listings/info_window",
+          locals: { listing: listing }
+        )
+      }
     end
   end
 end

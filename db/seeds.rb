@@ -71,7 +71,7 @@ dior_option           = Listing.create!(client: dior,          user: agent_devel
 saint_laurent_casting = Listing.create!(client: saint_laurent, user: agent_development, listing_type: 'casting', start_date: "25/06/2026", start_time: "09:00", end_time: "17:00", address: "Paris")
 fendi_job             = Listing.create!(client: fendi,         user: agent_development, listing_type: 'job',     start_date: "26/06/2026", end_date: "26/06/2026", address: "Milan")
 
-Connection.create!(model_agency_profile: model_development, agency: success, listing: prada_casting, rate: 1200)
+Connection.create!(model_agency_profile: model_development, agencya: success, listing: prada_casting, rate: 1200)
 Connection.create!(model_agency_profile: model_development, agency: success, listing: lemaire_job, rate: 1400)
 Connection.create!(model_agency_profile: model_development, agency: success, listing: wooyungmi_option, rate: 1000)
 Connection.create!(model_agency_profile: model_development, agency: success, listing: chanel_casting, rate: 1300)
