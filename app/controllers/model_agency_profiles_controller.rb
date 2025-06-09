@@ -40,8 +40,6 @@ class ModelAgencyProfilesController < ApplicationController
     else
       session[:selected_model_ids] << @model.id
     end
-
-    # @model.update(selected_params)
     redirect_to dashboard_path
   end
 
