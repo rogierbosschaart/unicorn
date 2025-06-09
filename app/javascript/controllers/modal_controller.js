@@ -4,18 +4,17 @@ export default class extends Controller {
   static targets = ["post"]
 
   connect() {
-    console.log(this.postTarget)
+    this.modal = new bootstrap.Modal(this.element)
   }
 
   open() {
-    if (!this.element.classList.contains('show')) {
-      this.postTarget.show()
+    this.modal.show()
     }
-  }
+
 
   close(event) {
     if (event.detail.success) {
-      this.postTarget.hide()
+      this.modal.hide()
     }
   }
 }

@@ -1,9 +1,11 @@
 <%# DASHBOARD NAVBAR BUTTONS %>
-<%= link_to "NEW",
-            dashboard_path,
+<%= link_to dashboard_path,
             data: { turbo_frame: "other_side" },
-            class: "btn btn-primary" %>
-<%= link_to "LISTINGS",
-            agency_listings_path(@agency),
+            class: "icon-dashboard-nav"  do %>
+  <i class="fa-regular fa-plus"></i>
+<% end %>
+<%= link_to agency_listings_path(@agency),
             data: { turbo_frame: "other_side" },
-            class: "btn btn-primary" %>
+            class: "icon-dashboard-nav" do %>
+  <i class="fa-solid fa-envelope"></i>
+<% end %>

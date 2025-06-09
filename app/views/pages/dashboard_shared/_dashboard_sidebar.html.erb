@@ -20,16 +20,14 @@
   </ul>
 <% end %>
 <%# NEW POST %>
-<%= link_to "New post",
-            new_post_path,
-            data: { turbo_frame: "create_panel" },
-            class: "btn btn-primary" %>
-<%= link_to "New client",
-            new_client_path,
-            data: { turbo_frame: "create_panel" },
-            class: "btn btn-primary" %>
-<%= link_to "New Profile",
-            new_model_agency_profile_path,
-            data: { turbo_frame: "create_panel" },
-            class: "btn btn-primary" %>
-
+<div class="sidebar-links">
+  <%= link_to new_post_path, data: { turbo_frame: "modal" } do %>
+    <span><i class="fa-regular fa-plus"></i> POST</span>
+  <% end %>
+  <%= link_to new_client_path, data: { turbo_frame: "modal" } do %>
+    <span><i class="fa-regular fa-plus"></i> CLIENT</span>
+  <% end %>
+  <%= link_to new_model_agency_profile_path, data: { turbo_frame: "modal" } do %>
+    <span><i class="fa-regular fa-plus"></i> MODEL</span>
+  <% end %>
+</div>

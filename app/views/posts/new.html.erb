@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :create_panel do %>
+<%= turbo_frame_tag :modal do %>
   <%= simple_form_for [@post] do |f| %>
     <%= f.input :photo, as: :file %>
     <%= f.input :post_text, label: "Message" %>
