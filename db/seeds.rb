@@ -102,3 +102,4 @@ Connection.create!(model_agency_profile: model_development, agency_id: success.i
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: saint_laurent_option, rate: 1130)
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: gucci_option, rate: 1040)
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: fendi_option, rate: 1090)
+

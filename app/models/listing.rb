@@ -12,6 +12,10 @@ class Listing < ApplicationRecord
   # LISTING_TYPES = %w[casting option job]
   # validates :listing_type, inclusion: { in: LISTING_TYPES }
 
+  # MAP
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   # CASTINGS
   validates :start_date, presence: true, if: :casting?
   # validates :start_time, presence: true, if: :casting?

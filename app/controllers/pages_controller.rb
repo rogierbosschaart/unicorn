@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user
+  before_action :set_user, except: [:map]
 
   def root
     if user_signed_in?
@@ -23,6 +23,19 @@ class PagesController < ApplicationController
     session[:selected_model_ids] ||= []
   end
 
+  def map
+    @listings = Listing.geocoded
+    @markers = @listings.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { listing: listing }),
+        marker_html: render_to_string(partial: "marker", locals: { listing: listing })
+      }
+    end
+  end
+
+  
   private
 
   def set_user

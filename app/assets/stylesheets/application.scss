@@ -13,6 +13,9 @@
 
 @import "pages/dashboard";
 
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
+
 * {
   // font-size:62.5%;
   font-family: 'Lato';
@@ -40,6 +43,7 @@ p {
   font-weight: 400;
   margin-bottom: 10rem;
 }
+
 
 span {
   font-size: 1.4rem;
