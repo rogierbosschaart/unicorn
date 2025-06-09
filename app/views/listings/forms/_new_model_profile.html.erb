@@ -1,0 +1,26 @@
+
+<button class="open-button" onclick="openForm()">Open the form</button>
+
+<div class="form-popup" id="myForm" style="display:none;">
+<div class="">
+  <%= simple_form_for [@model_agency_profile] do |f| %>
+    <%= f.input :user_id, label: "User", collection: User.where(user_type: "mannequin"), label_method: :full_name %>
+    <%= f.hidden_field :user_type, value: 'mannequin' %>
+    <%= f.submit "Create Profile", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-secondary" onclick="closeForm()">Close</button>
+  <% end %>
+</div>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+
+

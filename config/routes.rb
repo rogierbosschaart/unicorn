@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:new, :create]
   resources :posts, only: [:index, :new, :create]
 
-  resources :model_agency_profiles, only: [:update, :edit]
+  resources :model_agency_profiles, only: [:new, :create, :update, :edit]
   resources :agencies do
     resources :listings, only: [:index, :show, :new, :create]
     resources :hotels, only: [:index, :show, :new, :create]
