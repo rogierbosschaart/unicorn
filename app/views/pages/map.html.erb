@@ -1,11 +1,12 @@
 <%# MAP %>
 <h1>MAP</h1>
-  <div class="map-container m-4">
-    <div style="width: 100%; padding-bottom: 200px; position: relative;">
-      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 200px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
+<div class="map-container m-4">
+  <div style="width: 100%; padding-bottom: 200px; position: relative;">
+    <div
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 200px;"
+      data-controller="map"
+      data-map-markers-value="<%= raw(@markers.to_json) %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
+</div>
