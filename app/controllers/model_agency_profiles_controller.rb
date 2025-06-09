@@ -1,12 +1,8 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user, except: [:update, :home]
+  before_action :set_user, except: [:update, :home, :new ]
 
   def new
     @model_agency_profile = ModelAgencyProfile.new
-    @model = current_user.model_agency_profiles.find_by(active: true)
-    if @model.nil?
-      redirect_to dashboard_path, alert: 'You must have a model profile to access this page.'
-    end
   end
 
   def home
