@@ -47,10 +47,6 @@ class ModelAgencyProfilesController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def home
-    @posts = Post.all
-  end
-
   private
 
   def model_agency_profile_params

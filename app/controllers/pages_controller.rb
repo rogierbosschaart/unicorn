@@ -40,14 +40,13 @@ class PagesController < ApplicationController
     start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
     next unless start
 
-    finish = listing.end_date || start
+      finish = listing.end_date || start
 
-    (start..finish).each do |date|
-      hash[date] << listing
+      (start..finish).each do |date|
+        hash[date] << listing
+      end
     end
   end
-end
-
 
   private
 
