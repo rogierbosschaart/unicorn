@@ -7,7 +7,7 @@ class ConnectionsController < ApplicationController
     @model_profile = @connection.model_agency_profile
     @agency = @connection.agency
   end
-  
+
   def create
     @connection = Connection.new
   end
