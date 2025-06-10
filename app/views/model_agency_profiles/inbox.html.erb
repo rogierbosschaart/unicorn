@@ -1,19 +1,19 @@
 <div class="inbox-container">
-  <div class="navbar-top">
-    <p>navbar-top goes here</p>
+  <div class="navbar-top-container">
+    <%= render "shared/navbar_top" %>
   </div>
   <div class="inbox-body">
     <h1 class="inbox-header">Inbox</h1>
     <%# INBOX NAVIGATION TABS %>
     <div class="tab">
       <%= link_to "MAP", map_path, class: "btn btn-primary" %>
-      <button class="tablinks" onclick="openTag(event, 'All')">All</button>
+      <button class="tablinks active" onclick="openTag(event, 'All')">All</button>
       <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
       <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
       <button class="tablinks" onclick="openTag(event, 'Job')">Jobs</button>
     </div>
 
-    <div id="All" class="tabcontent connections-inbox">
+    <div id="All" class="tabcontent connections-inbox active">
 
       <% @connections.each do |connection| %>
         <%# IF CASTING %>
@@ -35,7 +35,6 @@
               <div class="connection-listing-type">
                 <span class="p-light"><%= connection.listing.listing_type.upcase %></span>
               </div>
-
             <% end %>
           </div>
         <%# IF OPTION %>
@@ -89,20 +88,24 @@
 
     <%# CASTINGS %>
     <div id="Casting" class="tabcontent connections-inbox">
-      <h3>Casting</h3>
       <% @castings.each do |casting| %>
-        <%= link_to connection_path(casting), class: "connections-info" do %>
-          <div class="connections-container">
-            <%# SENDER AVATAR %>
+        <div>
+          <%= link_to connection_path(casting), class: "connection-container" do %>
             <%= render 'shared/avatar_inbox' %>
-
-            <span class="small-type"> <%= casting.listing.listing_type %> </span>
-            <span class="p-standard"> <%= casting.listing.client.name %> </span>
-            <span class="p-standard">
-              <%= casting.listing.start_date %> -
-              <%= casting.listing.start_time.strftime('%H:%M') %> -
-              <%= casting.listing.end_time.strftime('%H:%M') %>
-            </span>
+            <div class="connection-info">
+              <% if casting.opened == true %>
+                <span class="p-light"><%= casting.listing.client.name %></span>
+                <span class="p-light"><%= casting.listing.start_date.strftime('%-d %B') %></span>
+                <span class="p-light"><%= casting.listing.start_time.strftime('%H:%M') %> - <%= casting.listing.end_time.strftime('%H:%M') %></span>
+              <% else %>
+                <span class="p-xbold"><%= casting.listing.client.name %></span>
+                <span class="p-xbold"><%= casting.listing.start_date.strftime('%-d %B') %></span>
+                <span class="p-xbold"><%= casting.listing.start_time.strftime('%H:%M') %> - <%= casting.listing.end_time.strftime('%H:%M') %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= casting.listing.listing_type.upcase %></span>
+            </div>
           <% end %>
         </div>
       <% end %>
@@ -110,34 +113,50 @@
 
     <%# OPTIONS %>
     <div id="Option" class="tabcontent connections-inbox">
-      <h3>Option</h3>
       <% @options.each do |option| %>
-        <div class="connections-container">
-          <div class="avatar">
-          </div>
-          <%= link_to connection_path(option), class: "connections-info" do %>
-            <span class="small-type"> <%= option.listing.listing_type %> </span>
-            <span class="p-standard"> <%= option.listing.client.name %> </span>
-            <span class="p-standard"> <%= option.listing.start_date %> - <%= option.listing.end_date %> </span>
+        <div>
+          <%= link_to connection_path(option), class: "connection-container" do %>
+            <%= render 'shared/avatar_inbox' %>
+            <div class="connection-info">
+              <% if option.opened == true %>
+                <span class="p-light"><%= option.listing.client.name %></span>
+                <span class="p-light"><%= option.listing.start_date.strftime('%-d %B') %> - <%= option.listing.end_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-light"><%= option.listing.extra_info.presence&.truncate(40) %></span>
+              <% else %>
+                <span class="p-xbold"><%= option.listing.client.name %></span>
+                <span class="p-xbold"><%= option.listing.start_date.strftime('%-d %B') %> - <%= option.listing.end_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-standard"><%= option.listing.extra_info.presence&.truncate(40) %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= option.listing.listing_type.upcase %></span>
+            </div>
           <% end %>
         </div>
       <% end %>
     </div>
 
     <%# JOBS %>
-    <div id="Job" class="tabcontent">
-      <h3>Jobs</h3>
+    <div id="Job" class="tabcontent connections-inbox">
       <% @jobs.each do |job| %>
-        <div class="connections-container connections-inbox">
-          <div class="avatar">
-          </div>
-          <div class="connections-info">
-            <%= link_to connection_path(job), class: "connections-info" do %>
-            <span class="small-type"> <%= job.listing.listing_type %> </span>
-            <span class="p-standard"> <%= job.listing.client.name %> </span>
-            <span class="p-standard"> <%= job.listing.start_date %> - <%= job.listing.end_date %> </span>
-            <% end %>
-          </div>
+        <div>
+          <%= link_to connection_path(job), class: "connection-container" do %>
+            <%= render 'shared/avatar_inbox' %>
+            <div class="connection-info">
+              <% if job.opened == true %>
+                <span class="p-light"><%= job.listing.client.name %></span>
+                <span class="p-light"><%= job.listing.start_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-light"><%= job.listing.start_time.presence&.strftime('%H:%M') %></span>
+              <% else %>
+                <span class="p-xbold"><%= job.listing.client.name %></span>
+                <span class="p-xbold"><%= job.listing.start_date.presence&.strftime('%-d %B') %></span>
+                <span class="p-xbold"><%= job.listing.start_time.presence&.strftime('%H:%M') %></span>
+              <% end %>
+            </div>
+            <div class="connection-listing-type">
+              <span class="p-light"><%= job.listing.listing_type.upcase %></span>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -148,17 +167,33 @@
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
           tabcontent[i].style.display = "none";
+          tabcontent[i].classList.remove("active"); // Remove active class from content divs
         }
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         document.getElementById(tagName).style.display = "block";
-        evt.currentTarget.className += " active";
+        document.getElementById(tagName).classList.add("active"); // Add active class to content div
+        if (evt && evt.currentTarget) {
+          evt.currentTarget.className += " active";
+        } else {
+          const defaultButton = document.querySelector(`.tablinks[onclick*="'${tagName}'"]`);
+          if (defaultButton) {
+            defaultButton.className += " active";
+          }
+        }
       }
+      document.addEventListener("DOMContentLoaded", function() {
+        openTag(null, 'All');
+      });
     </script>
   </div>
-  <div class="navbar-bottom">
-    <%= render 'shared/mobile-app-navbar' %>
+
+  <div class="navbar-bottom-container">
+    <div class="navbar-bottom">
+      <%= render 'shared/mobile-app-navbar' %>
+    </div>
   </div>
+
 </div>

@@ -1,0 +1,25 @@
+.travel-page-container {
+  background-image: linear-gradient(85deg, rgb(209, 56, 5), rgb(239, 148, 2), rgb(183, 4, 64));
+}
+
+.travel-container {
+  display: flex;
+  height: 88vh;
+  overflow: scroll;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+}
+
+.travel-header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid #7D7D7D;
+  padding-top: 2rem;
+}
+
+.travel-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 4fr;
+  margin-top: 2rem;
+}

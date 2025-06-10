@@ -36,9 +36,20 @@ Travel.create!( origin: "Paris", destination: "Milan", date: "03/06/2026", time:
 Travel.create!( origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_development, agency: success )
 
 # create hotels
-Hotel.create!( name: "Hotel Zeeuws-Meisje", address: "Hoofdpoortstraat 2A, 4301 AM Zierikzee, Netherlands", extra_info: "This cozy boutique hotel is located in the center of Zierikzee", model_agency_profile: model_development, agency: success )
-Hotel.create!( name: "Pension De Appelgaard", address: "Culemborg, Gelderland, Netherlands", extra_info: "This charming guesthouse offers clean and quiet rooms, a delightful breakfast, and a relaxing atmosphere." , model_agency_profile: model_development, agency: success )
-Hotel.create!( name: "Palau Pacific Resort", address: "Koror, Republic of Palau 96940", extra_info: "A luxurious resort hotel set on 64 acres of tropical forest, offering ideal conditions for a peaceful getaway.", model_agency_profile: model_development, agency: success )
+Hotel.create!(
+  name: "The Casting Call Inn",
+  address: "123 Film Studio Ave, Los Angeles, CA 90210, USA",
+  extra_info: "Perfectly located for quick access to major casting studios, offering comfortable stays with early breakfast options.",
+  model_agency_profile: model_development,
+  agency: success
+)
+Hotel.create!(
+  name: "Runway Retreat Boutique",
+  address: "456 Fashion Blvd, Milan, Lombardy, Italy",
+  extra_info: "A chic, modern hotel frequented by models and designers, ideal for fashion week or extended job assignments.",
+  model_agency_profile: model_development,
+  agency: success
+)
 
 # create clients
 prada         = Client.create!(name: "Prada", contact_info: "Dave: +33 566738478")
