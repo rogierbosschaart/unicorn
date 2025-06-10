@@ -11,7 +11,7 @@
     <% (@listings_by_date[date] || []).each do |listing| %>
       <div>
         <%= listing.listing_type %><br>
-        <%= listing.start_time %> - <%= listing.end_time %><br>
+        <%= listing.start_time&.strftime("%H:%M") %> - <%= listing.end_time&.strftime("%H:%M") %><br>
         <%= listing.extra_info %>
       </div>
     <% end %>
