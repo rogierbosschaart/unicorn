@@ -1,8 +1,6 @@
 <div class="inbox-container">
   <div class="navbar-top-container">
-    <div class="navbar-top">
-      <%= render "shared/navbar" %>
-    </div>
+    <%= render "shared/navbar_top" %>
   </div>
   <div class="inbox-body">
     <h1 class="inbox-header">Inbox</h1>
@@ -191,7 +189,11 @@
       });
     </script>
   </div>
-  <div class="navbar-bottom">
-    <%= render 'shared/mobile-app-navbar' %>
+
+  <div class="navbar-bottom-container">
+    <div class="navbar-bottom">
+      <%= render 'shared/mobile-app-navbar' %>
+    </div>
   </div>
+
 </div>

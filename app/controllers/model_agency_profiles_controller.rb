@@ -7,6 +7,7 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def home
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def inbox

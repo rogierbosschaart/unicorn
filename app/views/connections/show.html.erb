@@ -75,33 +75,33 @@
     <%# Client name %>
     <div class="d-flex">
       <span class="p-light p-description">Client</span>
-      <span class="p-regular"><%= @connection.listing.client.name %></span>
+      <span class="p-regular info"><%= @connection.listing.client.name %></span>
     </div>
     <%# Agent name %>
     <div class="d-flex">
       <span class="p-light p-description">Agent</span>
-      <span class="p-regular"><%= @connection.listing.user.f_name%></span>
+      <span class="p-regular info"><%= @connection.listing.user.f_name%></span>
     </div>
 
     <%# Location %>
     <% if @connection.listing.location.present? %>
       <div class="d-flex">
         <span class="p-light p-description">Location</span>
-        <span class="p-regular"><%= @connection.listing.location %></span>
+        <span class="p-regular info"><%= @connection.listing.location %></span>
       </div>
     <% end %>
 
     <%# Address %>
     <div class="d-flex">
       <span class="p-light p-description">Address</span>
-      <span class="p-regular"><%= @connection.listing.address %></span>
+      <span class="p-regular info"><%= @connection.listing.address %></span>
     </div>
 
     <%# Photographer %>
     <% if @connection.listing.photographer.present? %>
       <div class="d-flex">
         <span class="p-light p-description">Photographer</span>
-        <span class="p-regular"><%= @connection.listing.photographer %></span>
+        <span class="p-regular info"><%= @connection.listing.photographer %></span>
       </div>
     <% end %>
 
@@ -109,7 +109,7 @@
     <% if @connection.listing.stylist.present? %>
       <div class="d-flex">
         <span class="p-light p-description">Stylist</span>
-        <span class="p-regular"><%= @connection.listing.stylist %></span>
+        <span class="p-regular info"><%= @connection.listing.stylist %></span>
       </div>
     <% end %>
 
@@ -117,7 +117,7 @@
     <% if @connection.rate.present? %>
       <div class="d-flex">
         <span class="p-light p-description">Rate</span>
-        <span class="p-regular">€ <%= @connection.rate%></span>
+        <span class="p-regular info">€ <%= @connection.rate%></span>
       </div>
     <% end %>
 
@@ -125,7 +125,7 @@
     <% if @connection.listing.extra_info.present? %>
       <div class="d-flex">
         <span class="p-light p-description">Info</span>
-        <span class="p-regular"><%= @connection.listing.extra_info%></span>
+        <span class="p-regular info"><%= @connection.listing.extra_info%></span>
       </div>
     <% end %>
     <hr class="mt-4">
