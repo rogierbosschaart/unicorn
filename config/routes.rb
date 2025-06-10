@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   resources :clients, only: [:new, :create]
   resources :posts, only: [:index, :new, :create]
-  resources :model_agency_profiles, only: [:new, :create, :update, :edit]
+  resources :model_agency_profiles, only: [:new, :create, :update, :edit] do
+    post :switch, on: :member
+  end
   resources :agencies do
     resources :listings, only: [:index, :show, :new, :create]
     resources :hotels, only: [:index, :show, :new, :create]

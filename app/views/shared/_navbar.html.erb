@@ -19,7 +19,11 @@
             <ul>
             <% current_user.model_agency_profiles.each do |profile| %>
               <li>
-                <span><%= profile.agency.name %></span>
+                <span><%= link_to profile.agency.name,
+                          switch_model_agency_profile_path(profile),
+                          data: { turbo_method: :post },
+                          class: "{#{profile.selected ? 'active' : ''}}" %>
+                </span>
               </li>
             <% end %>
             </ul>
