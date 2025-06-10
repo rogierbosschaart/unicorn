@@ -1,6 +1,10 @@
 class ConnectionCommentsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @connection_comment = ConnectionComment.new
+  end
+
   def create
     @connection = Connection.find(params[:connection_id])
     @comment = @connection.connection_comments.build(comment_params)
