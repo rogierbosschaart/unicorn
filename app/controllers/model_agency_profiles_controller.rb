@@ -10,6 +10,9 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def inbox
+    @agency = current_user.model_agency_profiles.where(selected: true).first.agency
+    @model_connections = @model.connections.where(agency_id: @agency.id)
+    raise
     if @model.connections != nil
       @connections = @model.connections.order(created_at: :desc)
       @castings     = @connections.joins(:listing)
@@ -51,8 +54,14 @@ class ModelAgencyProfilesController < ApplicationController
     redirect_to dashboard_path
   end
 
-  
-
+  def switch
+    current_user.model_agency_profiles.update_all(active: false)
+    profile =current_user.model_agency_profiles.find(params[:id])
+    profile.update(active: true)
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
   private
 
   def model_agency_profile_params
