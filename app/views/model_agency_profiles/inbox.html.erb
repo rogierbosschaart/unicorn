@@ -1,4 +1,5 @@
 <div class="inbox-page d-flex flex-column">
+  <h1>Inbox</h1>
   <%# INBOX NAVIGATION TABS %>
   <div class="tab">
   <%= link_to "MAP", map_path, class: "btn btn-primary" %>
@@ -9,7 +10,7 @@
   </div>
 
   <div id="All" class="tabcontent connections-inbox">
-    <h3>All</h3>
+
     <% @connections.each do |connection| %>
       <%# IF CASTING %>
       <% if connection.listing.listing_type == 'casting' %>
@@ -46,7 +47,7 @@
               <% else %>
                 <span class="p-xbold"><%= connection.listing.client.name %></span>
                 <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
-                <span class="p-standard"><%= connection.listing.extra_info %></span>
+                <span class="p-standard"><%= connection.listing.extra_info.presence&.truncate(40) %></span>
               <% end %>
             </div>
             <div class="connection-listing-type">
