@@ -1,7 +1,24 @@
+.inbox-container {
+  height: 100vh;
+}
+
+.navbar-top {
+  height: 6vh;
+}
+
+.navbar-bottom {
+  height: 6vh;
+}
+
+.inbox-hearer {
+  height: 2vh
+}
+
 .tab {
     display: flex;
     background-color: #F5F5F5;
     width: 100%;
+    height: 2vh;
 }
 
 .tab button.active {
@@ -17,7 +34,7 @@
 
 .connections-inbox {
   flex-grow: 1;
-  height: 85vh;
+  height: 84vh;
   overflow: scroll;
 }
 
