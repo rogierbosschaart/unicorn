@@ -21,37 +21,92 @@
   </div>
 
   <%# MAIN CONTENT %>
-  <div class="connection-main-content">
-    <h1>
-      <%= @connection.listing.start_date.strftime('%-d %B') %> - <%= @connection.listing.end_date.presence&.strftime('%-d %B') %>
-    </h1>
-    <div class="connection-type-and-date">
-      <h2><%= @connection.listing.listing_type %></h2>
-      <span class="small-type"><%= @connection.listing.created_at.strftime('%-d %B') %></span>
-    </div>
-    <hr class="mb-2">
-    <div class="d-flex">
-      <span class="p-light p-description">Client</span>
-      <span class="p-regular"><%= @connection.listing.client.name %></span>
-    </div>
+<div class="connection-main-content">
+  <%# Client name & Job dates %>
+  <div class="connection-content-header">
+    <% if @connection.listing.listing_type == 'casting' || @connection.listing.listing_type == 'job' %>
+      <%# For Castings & Jobs %>
+      <%# Name %>
+      <h1><%= @connection.listing.client.name %></h1>
+      <%# Times %>
+      <h1>
+        <%= @connection.listing.start_time.strftime('%H:%M') %>  <%= @connection.listing.end_time.presence&.strftime('%H:%M') %>
+      </h1>
+      <%# Dates %>
+      <h1>
+        <%= @connection.listing.start_date.strftime('%-d %B') %>  <%= @connection.listing.end_date.presence&.strftime('%-d %B') %>
+      </h1>
+    <% else %>
+      <%# For Options %>
+      <h1><%= @connection.listing.client.name %></h1>
+      <h1>
+        <%= @connection.listing.start_date.strftime('%-d %B') %>  <%= @connection.listing.end_date.presence&.strftime('%-d %B') %>
+      </h1>
+    <% end %>
+  </div>
+  <%# Connection type // Casting/Option/Job %>
+  <div class="connection-type-and-date">
+    <h2><%= @connection.listing.listing_type.capitalize %></h2>
+    <span class="small-type"><%= @connection.listing.created_at.strftime('%-d %B') %></span>
+  </div>
+  <hr class="mb-2">
+  <%# Client name %>
+  <div class="d-flex">
+    <span class="p-light p-description">Client</span>
+    <span class="p-regular"><%= @connection.listing.client.name %></span>
+  </div>
+  <%# Agent name %>
+  <div class="d-flex">
+    <span class="p-light p-description">Agent</span>
+    <span class="p-regular"><%= @connection.listing.user.f_name%></span>
+  </div>
+
+  <%# Location %>
+  <% if @connection.listing.location.present? %>
     <div class="d-flex">
       <span class="p-light p-description">Location</span>
       <span class="p-regular"><%= @connection.listing.location %></span>
     </div>
+  <% end %>
+
+  <%# Address (assuming you want this always, as it wasn't mentioned) %>
+  <div class="d-flex">
+    <span class="p-light p-description">Address</span>
+    <span class="p-regular"><%= @connection.listing.address %></span>
+  </div>
+
+  <%# Photographer %>
+  <% if @connection.listing.photographer.present? %>
     <div class="d-flex">
-      <span class="p-light p-description">Agent</span>
-      <span class="p-regular"><%= @connection.listing.user.f_name%></span>
+      <span class="p-light p-description">Photographer</span>
+      <span class="p-regular"><%= @connection.listing.photographer %></span>
     </div>
+  <% end %>
+
+  <%# Stylist %>
+  <% if @connection.listing.stylist.present? %>
+    <div class="d-flex">
+      <span class="p-light p-description">Stylist</span>
+      <span class="p-regular"><%= @connection.listing.stylist %></span>
+    </div>
+  <% end %>
+
+  <%# Rate %>
+  <% if @connection.rate.present? %>
     <div class="d-flex">
       <span class="p-light p-description">Rate</span>
       <span class="p-regular">€ <%= @connection.rate%></span>
     </div>
+  <% end %>
+
+  <%# Extra info %>
+  <% if @connection.listing.extra_info.present? %>
     <div class="d-flex">
       <span class="p-light p-description">Info</span>
       <span class="p-regular"><%= @connection.listing.extra_info%></span>
     </div>
-    <hr class="mt-4">
-  </div>
+  <% end %>
+  <hr class="mt-4">
 </div>
 
 

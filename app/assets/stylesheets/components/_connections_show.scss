@@ -32,6 +32,11 @@
   margin-right: 10px;
 }
 
+.connection-content-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .connection-main-content {
   display: flex;
   flex-direction: column;
@@ -47,7 +52,7 @@
 
 .p-description {
   margin-bottom: 0.8rem;
-  width: 7rem;
+  width: 10rem;
 }
 
 hr {
