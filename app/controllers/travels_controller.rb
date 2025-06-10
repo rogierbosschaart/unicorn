@@ -2,7 +2,6 @@ class TravelsController < ApplicationController
 
   def new
     @agency = Agency.find(params[:agency_id])
-
     @travel = Travel.new
   end
 

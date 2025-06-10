@@ -6,13 +6,12 @@
   display: flex;
   flex-grow: 1;
   height: 8vh;
-  background-color: rgba(255,255,255,0.6);
-  border-bottom:rgba(255,255,255,0.0);
-  transition: 0.2s;
+  background-color: rgba(255,255,255,1.0);
+}
 
-  .dashboard-navbar:hover {
-    background-color: rgba(255,255,255,0.3);
-  }
+.dashboard-navbar:hover {
+  background-color: rgba(255,255,255,0.8);
+  transition: 0.2s;
 }
 
 .dashboard-navbar-buttons {
@@ -43,8 +42,8 @@
   height: 10vh;
 
   background-color: white;
-  margin-top: 2px;
-  // margin-bottom: 2px;
+  margin-top: 1px;
+  margin-bottom: 1px;
   // border-radius: 6px;
 
   .grid-top-center {
@@ -58,15 +57,16 @@
   display: grid;
   grid-template-columns: 5fr 19fr 2fr;
   height: 78vh;
+  background-color: white;
 }
 
 .grid-bottom-left {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-right: 2px solid rgba(240,240,240,0.1);
-  margin-top: 2px;
-  margin-bottom: 2px;
+
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-right: 0.5px solid #afafaf;
   // margin-left: 2px;
   // border-radius: 6px;
   // padding-left: 10px;
@@ -74,11 +74,11 @@
   .form-section {
     display: flex;
     justify-content: center;
-    margin: 20px 6px;
+    margin: 0 6px 20px 6px;
 
 
     .search-form {
-      border: 1px solid black;
+      border: 0.5px solid #7d7d7d;
       border-radius: 500px;
     }
 
@@ -114,16 +114,21 @@
     .models-list {
       display: flex;
       align-items: center;
-      margin: 4px 26px 0 4px;
+      margin: 4px 0px 0 16px;
     }
+  }
+
+  .divider {
+    border: 0.5px solid #7d7d7d;
+    margin: 0 24px 0 12px;
   }
 }
 
 .grid-bottom-center {
     overflow: scroll;
-    background-color: white;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    // background-color: white;
+    // margin-top: 1px;
+    // margin-bottom: 1px;
     // margin-right: 2px;
     // border-radius: 6px;
    }
@@ -133,10 +138,9 @@
   flex-direction: column;
   justify-items: center;
   background-color: white;
-  margin-left: 2px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  // border-radius: 6px;
+  // margin-top: 30px;
+  margin-bottom: 6px;
+  // border-left: 0.5px solid #7d7d7d;
 
 
   .sidebar-links {
@@ -156,16 +160,22 @@
 }
 
 .dashboard-footer {
+  margin-top: 1px;
   height: 4vh;
-  border-top: 1px solid grey;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,1.0);
 }
 
 a.button-dashboard {
   text-align: center;
   font-weight: 800;
+  color: #7d7d7d;
   width: 100px;
   padding: 0.8rem 0;
-  border: 2px solid black;
+  border: 1px solid #7d7d7d;
   border-radius: 4px;
+}
+
+#plus-icon:hover {
+  transition: 0.3s;
+  transform: rotate(-90deg);
 }
