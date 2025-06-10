@@ -1,12 +1,12 @@
 class ModelAgencyProfilesController < ApplicationController
-  before_action :set_user, except: [:update, :home, :new ]
+  before_action :set_user, except: [:update, :home, :new, :create]
 
   def new
     @model_agency_profile = ModelAgencyProfile.new
+    @agency = current_user.agency
   end
 
   def home
-    @posts = Post.all
   end
 
   def inbox
@@ -22,11 +22,15 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def create
-    @model_agency_profile = current_user.model_agency_profile.build(params[:model_agency_profile])
+    @model_agency_profile = ModelAgencyProfile.new(model_agency_profile_params)
+    @model_agency_profile.user = User.find(model_agency_profile_params[:user_id])
+    @model_agency_profile.agency = current_user.agency
     if @model_agency_profile.save
       redirect_to dashboard_path, notice: 'Model was successfully added to your listings!'
     else
-      redirect_to dashboard_path, alert: @model_agency_profile.errors.full_messages.to_sentence
+      flash[:alert] = "There was an error adding the model to your listings."
+      @agency = current_user.agency
+      render 'pages/dashboard', status: :unprocessable_entity
     end
   end
 

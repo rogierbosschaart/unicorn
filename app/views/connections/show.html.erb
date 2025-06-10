@@ -131,6 +131,14 @@
     <hr class="mt-4">
   </div>
 
+  <% @connection.connection_comments.each do |comment| %>
+    <div class="comment">
+      <strong><%= comment.user.f_name %>:</strong>
+      <p><%= comment.comment %></p>
+      <hr>
+    </div>
+  <% end %>
+
 
   <%= form_with(model: (@connection), local: true) do |f| %>
     <span class="p-regular">To: </span>
