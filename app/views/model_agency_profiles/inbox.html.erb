@@ -43,7 +43,7 @@
               <% if connection.opened == true %>
                 <span class="p-light"><%= connection.listing.client.name %></span>
                 <span class="p-light"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
-                <span class="p-light"><%= connection.listing.extra_info %></span>
+                <span class="p-light"><%= connection.listing.extra_info.presence&.truncate(40) %></span>
               <% else %>
                 <span class="p-xbold"><%= connection.listing.client.name %></span>
                 <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>

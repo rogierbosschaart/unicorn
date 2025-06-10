@@ -24,13 +24,19 @@
   background-color: white;
 }
 
-.check-button {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 0.5px solid #7d7d7d;
-  margin-right: 10px;
+.check-button-field {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
 }
+
+.check-button {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    border: 0.5px solid #7d7d7d;
+    margin-right: 10px;
+  }
 
 .connection-content-header {
   display: flex;
@@ -60,5 +66,32 @@ hr {
 }
 
 .field {
+
+}
+
+#connection_comment {
+  width: 100vw;
+  border: none;
+  padding: 10px;
+  resize: none;
   font-size: 1.4rem;
 }
+
+#connection_comment:focus {
+  outline: none;
+}
+
+.connection-comment-submit {
+  background-color: white;
+  display: flex;
+  justify-content: end;
+ }
+
+ .connection-comment-submit-button {
+  font-size: 1.4rem;
+  background-color: white;
+  display: flex;
+  justify-content: end;
+  border: none;
+  padding: 2px 16px;
+ }
