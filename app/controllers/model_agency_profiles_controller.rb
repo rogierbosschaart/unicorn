@@ -10,15 +10,16 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def inbox
-    if @model.connections != nil
-      @connections = @model.connections.order(created_at: :desc)
+    @agency = current_user.model_agency_profiles.where(active: true).first.agency
+    return if @model.connections.nil?
+
+      @connections = @model.connections.where(agency_id: @agency.id).order(created_at: :desc)
       @castings     = @connections.joins(:listing)
                                   .where(listings: { listing_type: 'casting' })
       @options      = @connections.joins(:listing)
                                   .where(listings: { listing_type: 'option' })
       @jobs         = @connections.joins(:listing)
                                   .where(listings: { listing_type: 'job' })
-    end
   end
 
   def create
@@ -48,6 +49,13 @@ class ModelAgencyProfilesController < ApplicationController
     else
       session[:selected_model_ids] << @model.id
     end
+    redirect_to dashboard_path
+  end
+
+  def switch
+    current_user.model_agency_profiles.update_all(active: false)
+    profile = current_user.model_agency_profiles.find(params[:id])
+    profile.update(active: true)
     redirect_to dashboard_path
   end
 
