@@ -4,6 +4,8 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import flatpickr from "flatpickr"
+import CalendarController from "./calendar_controller"
+application.register("calendar", CalendarController)
 
 document.addEventListener("turbo:load", () => {
   flatpickr(".date-picker", {

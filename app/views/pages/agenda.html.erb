@@ -1,11 +1,11 @@
 <h1>Agenda</h1>
 
-<div class="mb-3">
+<div class="mb-3" data-controller="calendar">
   <label for="calendar-jump" class="form-label">Jump to Date:</label>
   <input type="date" id="calendar-jump" class="form-control" />
 </div>
 
-<%= month_calendar(class: "big-calendar", data: { controller: "calendar" }) do |date| %>
+<%= month_calendar(class: "big-calendar", params: { month: params[:month] }) do |date| %>
   <div>
     <strong><%= date.day %></strong>
     <% (@listings_by_date[date] || []).each do |listing| %>
