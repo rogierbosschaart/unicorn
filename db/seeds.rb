@@ -10,8 +10,8 @@ Agency.destroy_all
 
 # create agencies
 success = Agency.create!( name: "Success", city: "Paris" )
-# bella = Agency.create!( name: "Bella", city: "Milan" )
-# img = Agency.create!( name: "IMG", city: "New-York" )
+bella = Agency.create!( name: "Bella", city: "Milan" )
+img = Agency.create!( name: "IMG", city: "New-York" )
 
 # create agents
 agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "agent@agent.com", password: "123456", agency: success)
@@ -24,6 +24,11 @@ model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_t
 # create model_agency_profiles
 model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
 ModelAgencyProfile.create!(user: model2, agency: success, active: true)
+ModelAgencyProfile.create!(user: model3, agency: bella, active: true)
+ModelAgencyProfile.create!(user: model4, agency: bella, active: true)
+ModelAgencyProfile.create!(user: model5, agency: img, active: true)
+ModelAgencyProfile.create!(user: model6, agency: img, active: true)
+
 
 # create travels
 Travel.create!( origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success )
