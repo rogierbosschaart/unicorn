@@ -37,8 +37,11 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def travel
-    @travels = Travel.where(current_user == :model_agency_profile)
-    @hotels = Hotel.where(current_user == :model_agency_profile)
+    @agency = current_user.model_agency_profiles.where(active: true).first.agency
+    @travels = current_user.model_agency_profiles.where(active: true).first.travels
+    @hotels = current_user.model_agency_profiles.where(active: true).first.hotels
+    # @travels = Travel.where(current_user == :model_agency_profile)
+    # @hotels = Hotel.where(current_user == :model_agency_profile)
   end
 
   def update
