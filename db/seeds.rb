@@ -146,6 +146,7 @@ versace_job           = Listing.create!(client: versace,       user: agent_devel
 prada_job             = Listing.create!(client: prada,         user: agent_development, listing_type: 'job',     start_date: "20/06/2025", start_time: "09:00", end_time: "10:00", address: "99 Spring St, New York, NY 10012", extra_info: "Catering will be provided. Please inform us of any allergies.")
 chanel_job            = Listing.create!(client: chanel,        user: agent_development, listing_type: 'job',     start_date: "23/06/2025", start_time: "09:00", end_time: "10:00", address: "18 Rue Saint-Honoré, 75001 Paris", stylist: "Ferdi Sibbel", location: "Concorde Square Studio")
 fendi_job             = Listing.create!(client: fendi,         user: agent_development, listing_type: 'job',     start_date: "26/06/2025", end_date: "26/06/2025", start_time: "09:00", end_time: "10:00", address: "Via della Moscova 24, 20121 Milano", location: "Brera District", extra_info: "Travel details will be confirmed next week.")
+
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: prada_casting)
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: lemaire_job, rate: 1400)
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: wooyungmi_option)
@@ -176,3 +177,4 @@ Connection.create!(model_agency_profile: model_success, agency_id: success.id, l
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: saint_laurent_option)
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: gucci_option, rate: 1040)
 Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: fendi_option)
+
