@@ -3,8 +3,8 @@
     <%= f.input :name, label: "Name" %>
     <%= f.input :address, label: "Address" %>
     <div class="d-flex">
-      <%= f.input :checkin, label: "Check in" %>
-      <%= f.input :checkout, label: "Check out" %>
+      <%= f.input :checkin, as: :string, input_html: { type: "date" }, label: "Check in" %>
+      <%= f.input :checkout, as: :string, input_html: { type: "date" }, label: "Check out" %>
     </div>
     <%= f.input :extra_info, label: "Extra information" %>
     <%= f.input :model_agency_profile_id, label: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
