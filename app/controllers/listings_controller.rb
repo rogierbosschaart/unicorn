@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @agency = current_user.agency
     @listing = Listing.find(params[:id])
     @connections = @listing.connections
   end

@@ -1,68 +1,98 @@
 <%= turbo_frame_tag :show_listing do %>
-  <%# CASTING %>
-  <% if @listing.listing_type == 'casting' %>
-    <div>
-      <span><%= @listing.listing_type %></span>
-      <span><%= @listing.client.name %></span>
-      <span><%= @listing.start_date %></span>
-      <span><%= @listing.start_time %> <%= @listing.end_time.presence %></span>
-      <span><%= @listing.location.presence %></span>
-      <span><%= @listing.address %></span>
-      <span><%= @listing.extra_info.presence %></span>
+  <div class="create-panel-container">
+    <div class="connection-show-container">
+      <%# HEADER // ALWAYS THE SAME %>
+      <div class="connection-header">
+        <div class="avatar avatar-connection-show">
+        </div>
+        <div class="connection-agency-info">
+          <span class="p-standard"><%= @agency.name %></span>
+          <span class="small-type"><%= @agency.city %></span>
+        </div>
+      </div>
+      <%# MAIN CONTENT %>
+      <div class="connection-main-content">
+        <%# Client name & Job dates %>
+        <div class="connection-content-header">
+          <% if @listing.listing_type == 'casting' || @listing.listing_type == 'job' %>
+            <%# For Castings & Jobs %>
+            <%# Name %>
+            <h1><%= @listing.client.name %></h1>
+            <%# Times %>
+            <h1>
+              <%= @listing.start_time.strftime('%H:%M') %>  <%= @listing.end_time.presence&.strftime('%H:%M') %>
+            </h1>
+            <%# Dates %>
+            <h1>
+              <%= @listing.start_date.strftime('%-d %B') %>  <%= @listing.end_date.presence&.strftime('%-d %B') %>
+            </h1>
+          <% else %>
+            <%# For Options %>
+            <h1><%= @listing.client.name %></h1>
+            <h1>
+              <%= @listing.start_date.strftime('%-d %B') %>  <%= @listing.end_date.presence&.strftime('%-d %B') %>
+            </h1>
+          <% end %>
+        </div>
+        <%# Connection type // Casting/Option/Job %>
+        <div class="connection-type-and-date">
+          <h2><%= @listing.listing_type.capitalize %></h2>
+          <span class="small-type"><%= @listing.created_at.strftime('%-d %B') %></span>
+        </div>
+        <hr class="mb-2">
+        <%# Client name %>
+        <div class="d-flex">
+          <span class="p-light p-description">Client</span>
+          <span class="p-regular info"><%= @listing.client.name %></span>
+        </div>
+        <%# Agent name %>
+        <div class="d-flex">
+          <span class="p-light p-description">Agent</span>
+          <span class="p-regular info"><%= @listing.user.f_name%></span>
+        </div>
+        <%# Location %>
+        <% if @listing.location.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Location</span>
+            <span class="p-regular info"><%= @listing.location %></span>
+          </div>
+        <% end %>
+        <%# Address %>
+        <div class="d-flex">
+          <span class="p-light p-description">Address</span>
+          <span class="p-regular info"><%= @listing.address %></span>
+        </div>
+        <%# Photographer %>
+        <% if @listing.photographer.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Photographer</span>
+            <span class="p-regular info"><%= @listing.photographer %></span>
+          </div>
+        <% end %>
+        <%# Stylist %>
+        <% if @listing.stylist.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Stylist</span>
+            <span class="p-regular info"><%= @listing.stylist %></span>
+          </div>
+        <% end %>
+        <%# Rate %>
+        <% if @rate.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Rate</span>
+            <span class="p-regular info">€ <%= @rate%></span>
+          </div>
+        <% end %>
+        <%# Extra info %>
+        <% if @listing.extra_info.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Info</span>
+            <span class="p-regular info"><%= @listing.extra_info%></span>
+          </div>
+        <% end %>
+        <hr class="mt-4">
+      </div>
     </div>
-    <%# models for casting %>
-    <div>
-      <% @connections.each do |connection| %>
-        <span>
-          <%= connection.model_agency_profile.user.f_name %>
-          <%= connection.model_agency_profile.user.l_name %>
-        </span>
-      <% end %>
-    </div>
-
-  <%# OPTION %>
-  <% elsif @listing.listing_type == 'option' %>
-    <div>
-      <span><%= @listing.listing_type %></span>
-      <span><%= @listing.client.name %></span>
-      <span><%= @listing.start_date %> <% @listing.end_date.presence %></span>
-      <span><%= @listing.start_time %></span>
-      <span><%= @listing.photographer.presence %></span>
-      <span><%= @listing.stylist.presence %></span>
-      <span><%= @listing.location.presence %></span>
-      <span><%= @listing.address %></span>
-      <span><%= @listing.extra_info.presence %></span>
-    </div>
-    <%# models for option %>
-    <div>
-      <% @connections.each do |connection| %>
-        <span>
-          <%= connection.model_agency_profile.user.f_name %>
-          <%= connection.model_agency_profile.user.l_name %>
-        </span>
-      <% end %>
-    </div>
-  <%# JOB %>
-  <% else %>
-    <div>
-      <span><%= @listing.listing_type %></span>
-      <span><%= @listing.client.name %></span>
-      <span><%= @listing.start_date %><%= @listing.end_date.presence %></span>
-      <span><%= @listing.start_time.presence %></span>
-      <span><%= @listing.photographer.presence %></span>
-      <span><%= @listing.stylist.presence %></span>
-      <span><%= @listing.location.presence %></span>
-      <span><%= @listing.address %></span>
-      <span><%= @listing.extra_info.presence%></span>
-    </div>
-    <%# models for Job %>
-    <div>
-      <% @connections.each do |connection| %>
-        <span>
-          <%= connection.model_agency_profile.user.f_name %>
-          <%= connection.model_agency_profile.user.l_name %>
-        </span>
-      <% end %>
-    </div>
-  <% end %>
+    <div></div>
+  </div>
 <% end %>

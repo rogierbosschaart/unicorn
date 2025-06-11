@@ -39,8 +39,9 @@
         <div class="model-listings-section">
           <% @listings.each do |listing| %>
             <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
-              <div class="m-2">
-                <span> <%= listing.client.name %> </span>
+              <div class="d-flex m-2">
+                <span class="p-light"><%= listing.listing_type %></span>
+                <span class="p-regular"> <%= listing.client.name %> </span>
               </div>
             <% end %>
           <% end %>

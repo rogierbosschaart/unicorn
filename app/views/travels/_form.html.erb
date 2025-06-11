@@ -1,13 +1,16 @@
-<div class="my-2 mx-5">
-  <%= simple_form_for [@agency, @travel] do |f| %>
-    <%= f.input :model_agency_profile_id, label: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
-    <%= f.input :origin, label: "Origin" %>
-    <%= f.input :destination, label: "Destination" %>
-    <div class="d-flex">
-      <%= f.input :date, as: :string, input_html: { type: "date" }, label: "Date" %>
-      <%= f.input :time, label: "Time" %>
-    </div>
-    <%= f.input :extra_info, label: "Extra information" %>
-    <%= f.submit "Create Option", class: "btn btn-primary" %>
-  <% end %>
+<div class="create-panel-container">
+  <div class="form-container">
+    <%= simple_form_for [@agency, @travel] do |f| %>
+      <%= f.input :model_agency_profile_id, placeholder: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
+      <%= f.input :origin, placeholder: "Origin" %>
+      <%= f.input :destination, placeholder: "Destination" %>
+      <div class="d-flex">
+        <%= f.input :date, as: :string, input_html: { type: "date" }, placeholder: "Date" %>
+        <%= f.input :time, placeholder: "Time" %>
+      </div>
+      <%= f.input :extra_info, placeholder: "Extra information" %>
+      <%= f.submit "SEND", class: "button-dashboard" %>
+    <% end %>
+  </div>
+  <div></div>
 </div>
