@@ -3,6 +3,15 @@
     <%= render "shared/navbar_top" %>
   </div>
 
+  <%# HEADER // ALWAYS THE SAME %>
+  <div class="connection-header">
+    <%= image_tag "#{current_user.model_agency_profiles.find_by(active: true).try(:agency).try(:profile_pic)}", class: "avatar avatar-connection-show", alt: "dropdown menu", crop: :cover %>
+    <div class="connection-agency-info">
+      <span class="p-standard"><%= @agency.name %></span>
+      <span class="small-type"><%= @agency.city %></span>
+    </div>
+  </div>
+
   <div class="travel-container">
     <% @hotels.each do |hotel| %>
         <div class="travel-card">
