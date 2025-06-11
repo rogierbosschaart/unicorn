@@ -25,6 +25,7 @@ ModelAgencyProfile.create!(user: model1, agency: bella)
 ModelAgencyProfile.create!(user: model2, agency: bella)
 ModelAgencyProfile.create!(user: model1, agency: img)
 ModelAgencyProfile.create!(user: model2, agency: img)
+
 # create travels
 Travel.create!( origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success )
 Travel.create!( origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_development, agency: success )

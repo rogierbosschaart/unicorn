@@ -25,3 +25,5 @@ pin "nanoid" # @3.3.11
 pin "subtag" # @0.5.0
 pin "suggestions" # @1.7.1
 pin "xtend" # @4.0.2
+pin "flatpickr" # @4.6.13
+pin "flatpickr/dist/l10n/ru.js", to: "flatpickr--dist--l10n--ru.js.js" # @4.6.13
