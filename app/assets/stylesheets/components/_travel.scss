@@ -7,8 +7,12 @@
   height: 88vh;
   overflow: scroll;
   flex-direction: column;
-  padding: 10px;
+}
+
+.travel-card {
+  margin-bottom: 0.5px;
   background-color: white;
+  padding: 10px;
 }
 
 .travel-header {

@@ -46,11 +46,11 @@
                 <% if connection.opened == true %>
                   <span class="p-light"><%= connection.listing.client.name %></span>
                   <span class="p-light"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
-                  <span class="p-light"><%= connection.listing.extra_info.presence&.truncate(40) %></span>
+                  <span class="p-light"><%= connection.listing.extra_info.presence&.truncate(36) %></span>
                 <% else %>
                   <span class="p-xbold"><%= connection.listing.client.name %></span>
                   <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
-                  <span class="p-standard"><%= connection.listing.extra_info.presence&.truncate(40) %></span>
+                  <span class="p-standard"><%= connection.listing.extra_info.presence&.truncate(36) %></span>
                 <% end %>
               </div>
               <div class="connection-listing-type">
@@ -121,11 +121,11 @@
               <% if option.opened == true %>
                 <span class="p-light"><%= option.listing.client.name %></span>
                 <span class="p-light"><%= option.listing.start_date.strftime('%-d %B') %> - <%= option.listing.end_date.presence&.strftime('%-d %B') %></span>
-                <span class="p-light"><%= option.listing.extra_info.presence&.truncate(40) %></span>
+                <span class="p-light"><%= option.listing.extra_info.presence&.truncate(36) %></span>
               <% else %>
                 <span class="p-xbold"><%= option.listing.client.name %></span>
                 <span class="p-xbold"><%= option.listing.start_date.strftime('%-d %B') %> - <%= option.listing.end_date.presence&.strftime('%-d %B') %></span>
-                <span class="p-standard"><%= option.listing.extra_info.presence&.truncate(40) %></span>
+                <span class="p-standard"><%= option.listing.extra_info.presence&.truncate(36) %></span>
               <% end %>
             </div>
             <div class="connection-listing-type">
@@ -188,12 +188,9 @@
         openTag(null, 'All');
       });
     </script>
-  </div>
-
-  <div class="navbar-bottom-container">
-    <div class="navbar-bottom">
-      <%= render 'shared/mobile-app-navbar' %>
+    <div class="navbar-bottom-container">
+      <div class="navbar-bottom">
+        <%= render 'shared/mobile-app-navbar' %>
+      </div>
     </div>
   </div>
-
-</div>

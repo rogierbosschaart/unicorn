@@ -55,6 +55,7 @@ gem "importmap-rails"
 gem "cloudinary"
 gem 'dotenv-rails', groups: [:development, :test]
 gem "simple_calendar"
+gem 'faker', '~> 2.0' # Or the latest stable version
 
 
 group :development, :test do

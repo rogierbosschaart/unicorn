@@ -7,20 +7,17 @@ Listing.destroy_all
 Client.destroy_all
 User.destroy_all
 Agency.destroy_all
-
 # create agencies
 success = Agency.create!( name: "Success", city: "Paris" )
 bella = Agency.create!( name: "Bella", city: "Milan" )
 img = Agency.create!( name: "IMG", city: "New-York" )
-
 # create agents
 agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "agent@agent.com", password: "123456", agency: success)
 User.create!(f_name: "Test", l_name: "Test", username: "test", user_type: "agent", email: "agent@test.com", password: "123456", agency: success)
-
 # create models
 model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user_type: 'mannequin', email: "model@model.com", password: "123456")
 model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "model@test.com", password: "123456")
-
+9:30
 # create model_agency_profiles
 model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
 ModelAgencyProfile.create!(user: model2, agency: success, active: true)
@@ -29,12 +26,10 @@ ModelAgencyProfile.create!(user: model2, agency: bella)
 ModelAgencyProfile.create!(user: model1, agency: img)
 ModelAgencyProfile.create!(user: model2, agency: img)
 
-
 # create travels
 Travel.create!( origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success )
 Travel.create!( origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_development, agency: success )
 Travel.create!( origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_development, agency: success )
-
 # create hotels
 Hotel.create!(
   name: "The Casting Call Inn",
@@ -50,7 +45,7 @@ Hotel.create!(
   model_agency_profile: model_development,
   agency: success
 )
-
+9:30
 # create clients
 prada         = Client.create!(name: "Prada", contact_info: "Dave: +33 566738478")
 lemaire       = Client.create!(name: "Lemaire", contact_info: "Christophe: +33 566738478")
@@ -65,7 +60,6 @@ balenciage    = Client.create!(name: "Balenciaga", contact_info: "Anna: +33 3456
 versace       = Client.create!(name: "Versace", contact_info: "Donatella: +33 901234567")
 fendi         = Client.create!(name: "Fendi", contact_info: "Silvia: +33 456789012")
 burberry      = Client.create!(name: "Burberry", contact_info: "Thomas: +33 567890123")
-
 # create listings
 # Casting Listings (Mixed Cities)
 prada_casting         = Listing.create!(client: prada,         user: agent_development, listing_type: 'casting', start_date: "03/06/2026", start_time: "09:00", end_time: "10:00", address: "72 Greene St, New York, NY 10012", location: "SoHo Casting Studio", extra_info: "Bring comp cards and portfolio.")
@@ -75,7 +69,6 @@ balenciage_casting    = Listing.create!(client: balenciage,    user: agent_devel
 burberry_casting      = Listing.create!(client: burberry,      user: agent_development, listing_type: 'casting', start_date: "19/06/2026", start_time: "09:00", end_time: "12:00", address: "555 Fifth Ave, New York, NY 10111", extra_info: "Dress code: smart casual. Arrive 15 mins early.")
 lemaire_casting       = Listing.create!(client: lemaire,       user: agent_development, listing_type: 'casting', start_date: "22/06/2026", start_time: "09:00", end_time: "22:00", address: "Corso Giacomo Matteotti 10, 20121 Milano", location: "Milan Exhibition Hall")
 saint_laurent_casting = Listing.create!(client: saint_laurent, user: agent_development, listing_type: 'casting', start_date: "25/06/2026", start_time: "09:00", end_time: "17:00", address: "10 Avenue George V, 75008 Paris", extra_info: "Bring own refreshments. No prior experience needed.")
-
 # Option Listings (Mixed Cities)
 wooyungmi_option      = Listing.create!(client: wooyungmi,     user: agent_development, listing_type: 'option',  start_date: "07/06/2026", end_date: "07/06/2026", address: "137 Greene St, New York, NY 10012", photographer: "Micha Taylor", stylist: "Ferdi Sibbel", location: "Flatiron Lofts")
 louis_vuitton_option  = Listing.create!(client: louis_vuitton, user: agent_development, listing_type: 'option',  start_date: "12/06/2026", end_date: "12/06/2026", address: "24 Rue de Sèvres, 75006 Paris", extra_info: "Approval required for final booking. Client feedback by EOD.")
@@ -83,7 +76,8 @@ saint_laurent_option  = Listing.create!(client: saint_laurent, user: agent_devel
 fendi_option          = Listing.create!(client: fendi,         user: agent_development, listing_type: 'option',  start_date: "18/06/2026", end_date: "18/06/2026", address: "680 5th Ave, New York, NY 10019", photographer: "Micha Taylor", extra_info: "Client confirms within 24h. Hold valid until end of day.")
 gucci_option          = Listing.create!(client: gucci,         user: agent_development, listing_type: 'option',  start_date: "21/06/2026", end_date: "21/06/2026", address: "8 Rue de la Paix, 75002 Paris")
 dior_option           = Listing.create!(client: dior,          user: agent_development, listing_type: 'option',  start_date: "24/06/2026", end_date: "24/06/2026", address: "Via del Corso 12, 00186 Roma", stylist: "Ferdi Sibbel", location: "Trastevere Studio")
-
+New
+9:30
 # Job Listings (Mixed Cities)
 lemaire_job           = Listing.create!(client: lemaire,       user: agent_development, listing_type: 'job',     start_date: "05/06/2026", end_date: "05/06/2026", start_time: "09:00", end_time: "10:00", address: "45 Rockefeller Plaza, New York, NY 10111", photographer: "Micha Taylor", location: "Manhattan Penthouse", extra_info: "Full day shoot, lunch provided.")
 dior_job              = Listing.create!(client: dior,          user: agent_development, listing_type: 'job',     start_date: "10/06/2026", start_time: "09:00", end_time: "10:00", address: "32 Rue François 1er, 75008 Paris", stylist: "Ferdi Sibbel", extra_info: "Early call time requested. Specific wardrobe details to follow.")
@@ -92,7 +86,6 @@ versace_job           = Listing.create!(client: versace,       user: agent_devel
 prada_job             = Listing.create!(client: prada,         user: agent_development, listing_type: 'job',     start_date: "20/06/2026", start_time: "09:00", end_time: "10:00", address: "99 Spring St, New York, NY 10012", extra_info: "Catering will be provided. Please inform us of any allergies.")
 chanel_job            = Listing.create!(client: chanel,        user: agent_development, listing_type: 'job',     start_date: "23/06/2026", start_time: "09:00", end_time: "10:00", address: "18 Rue Saint-Honoré, 75001 Paris", stylist: "Ferdi Sibbel", location: "Concorde Square Studio")
 fendi_job             = Listing.create!(client: fendi,         user: agent_development, listing_type: 'job',     start_date: "26/06/2026", end_date: "26/06/2026", start_time: "09:00", end_time: "10:00", address: "Via della Moscova 24, 20121 Milano", location: "Brera District", extra_info: "Travel details will be confirmed next week.")
-
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: prada_casting)
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: lemaire_job, rate: 1400)
 Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: wooyungmi_option)

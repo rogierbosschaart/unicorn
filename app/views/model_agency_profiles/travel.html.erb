@@ -5,50 +5,54 @@
 
   <div class="travel-container">
     <% @hotels.each do |hotel| %>
-        <div class="travel-header">
-          <h1 class="centered">Hotel</h1>
-        </div>
-        <div class="travel-layout">
-          <div class="travel-icon">
-            <i class="fa-solid fa-hotel"></i>
+        <div class="travel-card">
+          <div class="travel-header">
+            <h1 class="centered">Hotel</h1>
           </div>
-          <div class="travel-info">
-            <div class="d-flex">
-              <span class="p-light p-description">Hotel</span>
-              <span class="p-regular info"><%= hotel.name %></span>
+          <div class="travel-layout">
+            <div class="travel-icon">
+              <i class="fa-solid fa-hotel"></i>
             </div>
-            <div class="d-flex">
-              <span class="p-light p-description">Address</span>
-              <span class="p-regular info"><%= hotel.address %></span>
-            </div>
-            <div class="d-flex">
-              <span class="p-light p-description">Info</span>
-              <span class="p-regular info"><%= hotel.extra_info %></span>
+            <div class="travel-info">
+              <div class="d-flex">
+                <span class="p-light p-description">Hotel</span>
+                <span class="p-regular info"><%= hotel.name %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Address</span>
+                <span class="p-regular info"><%= hotel.address %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Info</span>
+                <span class="p-regular info"><%= hotel.extra_info %></span>
+              </div>
             </div>
           </div>
         </div>
     <% end %>
 
     <% @travels.each do |travel| %>
-        <div class="travel-header">
-          <h1 class="centered">Travel</h1>
-        </div>
-        <div class="travel-layout">
-          <div class="travel-icon">
-            <i class="fa-solid fa-plane"></i>
+        <div class="travel-card">
+          <div class="travel-header">
+            <h1 class="centered">Travel</h1>
           </div>
-          <div class="travel-info">
-            <div class="d-flex">
-              <span class="p-light p-description">From</span>
-              <span class="p-regular"><%= travel.origin %></span>
+          <div class="travel-layout">
+            <div class="travel-icon">
+              <i class="fa-solid fa-plane"></i>
             </div>
-            <div class="d-flex">
-              <span class="p-light p-description">To</span>
-              <span class="p-regular"><%= travel.destination %></span>
-            </div>
-            <div class="d-flex">
-              <span class="p-light p-description">Info</span>
-              <span class="p-regular"><%= travel.extra_info %></span>
+            <div class="travel-info">
+              <div class="d-flex">
+                <span class="p-light p-description">From</span>
+                <span class="p-regular"><%= travel.origin %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">To</span>
+                <span class="p-regular"><%= travel.destination %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Info</span>
+                <span class="p-regular"><%= travel.extra_info %></span>
+              </div>
             </div>
           </div>
         </div>
