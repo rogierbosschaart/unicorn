@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :listings
   has_many :model_agency_profiles, dependent: :destroy
   has_many :connection_comments
+  has_many :travels, through: :model_agency_profiles
+  has_many :hotels, through: :model_agency_profiles
 
   def full_name
     "#{f_name} #{l_name}".strip

@@ -1,4 +1,5 @@
 class ModelAgencyProfilesController < ApplicationController
+  before_action :set_model_agency_profile
   before_action :set_user, except: [:update, :home, :new, :create]
 
   def new
@@ -38,8 +39,14 @@ class ModelAgencyProfilesController < ApplicationController
 
   def travel
     @agency = current_user.model_agency_profiles.where(active: true).first.agency
-    @travels = current_user.model_agency_profiles.where(active: true).first.travels
-    @hotels = current_user.model_agency_profiles.where(active: true).first.hotels
+    @travels = @model.travels.where(agency: @agency)
+    @hotels = @model.hotels.where(agency: @agency)
+
+
+    # @agency = current_user.model_agency_profiles.where(active: true).first.agency
+    # @travels = current_user.model_agency_profiles.where(active: true).first.travels
+    # @hotels = current_user.model_agency_profiles.where(active: true).first.hotels
+
     # @travels = Travel.where(current_user == :model_agency_profile)
     # @hotels = Hotel.where(current_user == :model_agency_profile)
   end
@@ -79,5 +86,9 @@ class ModelAgencyProfilesController < ApplicationController
 
   def selected_params
     params.require(:model).permit(:selected)
+  end
+
+  def set_model_agency_profile
+    @model_agency_profile = current_user.model_agency_profiles.find_by(active: true)
   end
 end

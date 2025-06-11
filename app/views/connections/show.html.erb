@@ -1,8 +1,7 @@
 <div class="connection-show-container">
   <%# HEADER // ALWAYS THE SAME %>
   <div class="connection-header">
-    <div class="avatar avatar-connection-show">
-    </div>
+    <%= image_tag "#{@listing.user.agency.profile_pic}", class: "avatar avatar-connection-show", alt: "dropdown menu", crop: :cover %>
     <div class="connection-agency-info">
       <span class="p-standard"><%= @agency.name %></span>
       <span class="small-type"><%= @agency.city %></span>
@@ -14,7 +13,7 @@
     <%= link_to inbox_path do %>
       <i class="fa-solid fa-chevron-left"></i>
     <% end %>
-    <% if @connection.listing.listing_type == 'casting' %>
+    <% if @listing.listing_type == 'casting' %>
       <div class="d-flex">
         <div class="check-button-field">
           <div class="check-button"></div>
