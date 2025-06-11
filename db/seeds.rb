@@ -24,10 +24,10 @@ model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_t
 # create model_agency_profiles
 model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
 ModelAgencyProfile.create!(user: model2, agency: success, active: true)
-ModelAgencyProfile.create!(user: model1, agency: bella, active: true)
-ModelAgencyProfile.create!(user: model2, agency: bella, active: true)
-ModelAgencyProfile.create!(user: model1, agency: img, active: true)
-ModelAgencyProfile.create!(user: model2, agency: img, active: true)
+ModelAgencyProfile.create!(user: model1, agency: bella)
+ModelAgencyProfile.create!(user: model2, agency: bella)
+ModelAgencyProfile.create!(user: model1, agency: img)
+ModelAgencyProfile.create!(user: model2, agency: img)
 
 
 # create travels
