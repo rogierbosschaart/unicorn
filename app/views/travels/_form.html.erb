@@ -4,7 +4,7 @@
     <%= f.input :origin, label: "Origin" %>
     <%= f.input :destination, label: "Destination" %>
     <div class="d-flex">
-      <%= f.input :date, label: "Date" %>
+      <%= f.input :date, as: :string, input_html: { type: "date" }, label: "Date" %>
       <%= f.input :time, label: "Time" %>
     </div>
     <%= f.input :extra_info, label: "Extra information" %>
