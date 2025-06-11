@@ -5,7 +5,7 @@
       <%= f.input :address, placeholder: "Address" %>
       <%= f.input :checkin, as: :string, input_html: { type: "date" }, placeholder: "Check In" %>
       <%= f.input :checkout, as: :string, input_html: { type: "date" }, placeholder: "Check Out" %>
-      <%= f.input :extra_info, placeholder: "Extra information" %>
+      <%= f.input :extra_info, placeholder: "Extra info" %>
       <%= f.input :model_agency_profile_id, placeholder: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
       <%= f.submit "SEND", class: "button-dashboard" %>
     <% end %>

@@ -1,13 +1,15 @@
-<div class="map-container">
+<div class="mobile-container ">
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
-  <h1 class="inbox-header">Map</h1>
-  <div
-        style="width: 100%; height: 400px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <h1 class="mobile-header">Map</h1>
+  <div class="map-container">
+    <div
+          style="width: 100%; height: 100%;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
   <div class="navbar-bottom-container">
     <div class="navbar-bottom">

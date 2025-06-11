@@ -1,7 +1,7 @@
 <%= turbo_frame_tag :modal do %>
   <%= simple_form_for [@post] do |f| %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :post_text, label: "Message" %>
-    <%= f.submit "Post", class: "btn btn-primary" %>
+    <%= f.input :photo, as: :file, class: "m-2" %>
+    <%= f.input :post_text, placeholder: "Message", class: "m-2" %>
+    <%= f.submit "+ POST", class: "button-dashboard" %>
   <% end %>
 <% end %>

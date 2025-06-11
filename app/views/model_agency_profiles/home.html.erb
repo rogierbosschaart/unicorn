@@ -1,24 +1,26 @@
-<div class="navbar-top-container">
+<div class="mobile-container <%= @agency.name %>">
+  <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
-<div class="home-posts-container">
-  <% @posts.each do |post| %>
-    <div class="connection-header">
-    <div class="avatar avatar-connection-show">
+  <div class="home-posts-container">
+    <% @posts.each do |post| %>
+      <div class="connection-header">
+      <div class="avatar avatar-connection-show">
+      </div>
+      <div class="connection-agency-info">
+        <span class="p-standard"><%= post.agency.name %></span>
+        <span class="small-type"><%= post.agency.city %></span>
+      </div>
     </div>
-    <div class="connection-agency-info">
-      <span class="p-standard"><%= post.agency.name %></span>
-      <span class="small-type"><%= post.agency.city %></span>
-    </div>
-  </div>
-    <% if post.photo.presence %>
-      <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
+      <% if post.photo.presence %>
+        <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <h1> <%= post.post_text %> </h1>
     <% end %>
-    <h1> <%= post.post_text %> </h1>
-  <% end %>
-</div>
-<div class="navbar-bottom-container">
+  </div>
+  <div class="navbar-bottom-container">
     <div class="navbar-bottom">
       <%= render 'shared/mobile-app-navbar' %>
     </div>
   </div>
+</div>

@@ -1,7 +1,7 @@
 <%= turbo_frame_tag :modal do %>
   <%= simple_form_for [@client] do |f| %>
-    <%= f.input :name, label: "name" %>
-    <%= f.input :contact_info, label: "contact info" %>
-    <%= f.submit "Client", class: "btn btn-primary" %>
+    <%= f.input :name, placeholder: "name", class: "m-2" %>
+    <%= f.input :contact_info, placeholder: "contact info", class: "m-2" %>
+    <%= f.submit "+ CLIENT", class: "button-dashboard" %>
   <% end %>
 <% end %>

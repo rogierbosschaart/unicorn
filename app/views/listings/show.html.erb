@@ -3,8 +3,8 @@
     <div class="connection-show-container">
       <%# HEADER // ALWAYS THE SAME %>
       <div class="connection-header">
-        <div class="avatar avatar-connection-show">
-        </div>
+         <%= image_tag "#{current_user.agency.profile_pic}", class: "avatar avatar-connection-show", alt: "agency logo", crop: :cover %>
+
         <div class="connection-agency-info">
           <span class="p-standard"><%= @agency.name %></span>
           <span class="small-type"><%= @agency.city %></span>
@@ -92,7 +92,17 @@
         <% end %>
         <hr class="mt-4">
       </div>
+      <%= turbo_frame_tag :show_connection_comments do %>
+        <%# Show comments here %>
+      <% end %>
     </div>
-    <div></div>
+    <div>
+      <% @connections.each do |connection| %>
+        <div class="models-list">
+          <%= image_tag "#{connection.model_agency_profile.user.profile_pic}", class: "models-list-avatar", alt: "dropdown menu", crop: :cover %>
+          <span><%= connection.model_agency_profile.user.f_name %> <%= connection.model_agency_profile.user.l_name %></span>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

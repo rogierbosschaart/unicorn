@@ -7,10 +7,23 @@
 
 
 
-<div class="agenda-container">
+<div class="mobile-container"> <%=  %>
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
+<<<<<<< HEAD
+  <h1 class="mobile-header">Calendar</h1>
+  <div class="mobile-content">
+    <%= month_calendar(class: "big-calendar", params: { month: params[:month] }) do |date| %>
+      <div>
+        <strong><%= date.day %></strong>
+        <% (@listings_by_date[date] || []).each do |listing| %>
+          <div>
+            <%= listing.listing_type %><br>
+            <%= listing.start_time %> - <%= listing.end_time %><br>
+            <%= listing.extra_info %>
+          </div>
+=======
 
   <div class="agenda-info">
     <%= month_calendar(events: @listings, attribute: :start_date) do |date, listings| %>
@@ -22,6 +35,7 @@
               <span class="calendar-type">---</span>
             <% end %>
           </strong>
+>>>>>>> 599880badd93341440b06f02f97325a6dd32b143
         <% end %>
       </div>
     <% end %>

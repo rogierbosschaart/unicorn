@@ -76,9 +76,3 @@ test:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
-production:
-  <<: *default
-  database: unicorn_production
-  username: unicorn
-  password: <%= ENV["UNICORN_DATABASE_PASSWORD"] %>
