@@ -27,9 +27,9 @@ ModelAgencyProfile.create!(user: model1, agency: img)
 ModelAgencyProfile.create!(user: model2, agency: img)
 
 # create travels
-Travel.create!( origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success )
-Travel.create!( origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_development, agency: success )
-Travel.create!( origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_development, agency: success )
+Travel.create!(origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success)
+Travel.create!(origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_development, agency: bella)
+Travel.create!(origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_development, agency: img)
 # create hotels
 Hotel.create!(
   name: "The Casting Call Inn",
@@ -43,7 +43,7 @@ Hotel.create!(
   address: "456 Fashion Blvd, Milan, Lombardy, Italy",
   extra_info: "A chic, modern hotel frequented by models and designers, ideal for fashion week or extended job assignments.",
   model_agency_profile: model_development,
-  agency: success
+  agency: bella
 )
 
 # create clients
