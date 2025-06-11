@@ -1,0 +1,15 @@
+<%= turbo_frame_tag :listing_details do %>
+  <% if @listings.present? %>
+    <div class="listing-details">
+      <% @listings.each do |listing| %>
+        <p>
+          <strong><%= listing.listing_type %></strong><br>
+          <%= listing.start_time.strftime("%H:%M") if listing.start_time %> – <%= listing.end_time.strftime("%H:%M") if listing.end_time %><br>
+          <%= listing.extra_info %>
+        </p>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No listings for this date.</p>
+  <% end %>
+<% end %>

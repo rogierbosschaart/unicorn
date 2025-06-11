@@ -11,6 +11,7 @@
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
+<<<<<<< HEAD
   <h1 class="mobile-header">Calendar</h1>
   <div class="mobile-content">
     <%= month_calendar(class: "big-calendar", params: { month: params[:month] }) do |date| %>
@@ -22,8 +23,27 @@
             <%= listing.start_time %> - <%= listing.end_time %><br>
             <%= listing.extra_info %>
           </div>
+=======
+
+  <div class="agenda-info">
+    <%= month_calendar(events: @listings, attribute: :start_date) do |date, listings| %>
+      <div class="calendar-day <%= 'has-listings' if listings.any? %>">
+        <%= link_to listings_for_date_path(date: date), data: { turbo_frame: :listing_details }, class: "calendar-date-button" do %>
+          <strong>
+            <%= date.day %>
+            <% if listings.any? %>
+              <span class="calendar-type">---</span>
+            <% end %>
+          </strong>
+>>>>>>> 599880badd93341440b06f02f97325a6dd32b143
         <% end %>
       </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= turbo_frame_tag :listing_details do %>
+      <h2> </h2>
     <% end %>
   </div>
 
