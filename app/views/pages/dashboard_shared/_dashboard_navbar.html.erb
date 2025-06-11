@@ -1,6 +1,9 @@
 <%# DASHBOARD NAVBAR BUTTONS %>
 <div class="dashboard-navbar">
   <div class="dashboard-navbar-buttons">
+    <%= link_to home_path do %>
+      <i class="fa-solid fa-house"></i>
+    <% end %>
     <%= link_to dashboard_path,
                 data: { turbo_frame: "other_side" },
                 class: "icon-dashboard-nav"  do %>
