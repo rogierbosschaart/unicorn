@@ -14,7 +14,7 @@
     <%= link_to inbox_path do %>
       <i class="fa-solid fa-chevron-left"></i>
     <% end %>
-    <% if @connection.listing.listing_type == 'casting' %>
+    <% if @listing.listing_type == 'casting' %>
       <div class="d-flex">
         <div class="check-button-field">
           <div class="check-button"></div>

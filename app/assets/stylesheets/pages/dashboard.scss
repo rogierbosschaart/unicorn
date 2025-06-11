@@ -165,10 +165,12 @@
   background-color: rgba(255,255,255,1.0);
 }
 
-a.button-dashboard {
+.button-dashboard {
+  font-size: 1.6rem;
   text-align: center;
   font-weight: 800;
   color: #7d7d7d;
+  background-color: white;;
   width: 100px;
   padding: 0.8rem 0;
   border: 1px solid #7d7d7d;

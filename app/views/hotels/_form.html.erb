@@ -1,13 +1,14 @@
-<div class="my-2 mx-5">
-  <%= simple_form_for [@agency, @hotel] do |f| %>
-    <%= f.input :name, label: "Name" %>
-    <%= f.input :address, label: "Address" %>
-    <div class="d-flex">
-      <%= f.input :checkin, as: :string, input_html: { type: "date" }, label: "Check In" %>
-      <%= f.input :checkout, as: :string, input_html: { type: "date" }, label: "Check Out" %>
-    </div>
-    <%= f.input :extra_info, label: "Extra information" %>
-    <%= f.input :model_agency_profile_id, label: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
-    <%= f.submit "Create Option", class: "btn btn-primary" %>
-  <% end %>
+<div class="create-panel-container">
+  <div class="form-container">
+    <%= simple_form_for [@agency, @hotel] do |f| %>
+      <%= f.input :name, placeholder: "Hotel" %>
+      <%= f.input :address, placeholder: "Address" %>
+      <%= f.input :checkin, as: :string, input_html: { type: "date" }, placeholder: "Check In" %>
+      <%= f.input :checkout, as: :string, input_html: { type: "date" }, placeholder: "Check Out" %>
+      <%= f.input :extra_info, placeholder: "Extra information" %>
+      <%= f.input :model_agency_profile_id, placeholder: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
+      <%= f.submit "SEND", class: "button-dashboard" %>
+    <% end %>
+  </div>
+  <div></div>
 </div>
