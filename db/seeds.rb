@@ -19,30 +19,30 @@ model1 = User.create!(f_name: "Tymur", l_name: "Topchu", username: 'tymur', user
 model2 = User.create!(f_name: "James", l_name: "Jameson", username: 'JJ', user_type: 'mannequin', email: "model@test.com", password: "123456")
 
 # create model_agency_profiles
-model_development = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
+model_success = ModelAgencyProfile.create!(user: model1, agency: success, active: true)
 ModelAgencyProfile.create!(user: model2, agency: success, active: true)
-ModelAgencyProfile.create!(user: model1, agency: bella)
+model_bella = ModelAgencyProfile.create!(user: model1, agency: bella)
 ModelAgencyProfile.create!(user: model2, agency: bella)
-ModelAgencyProfile.create!(user: model1, agency: img)
+model_img = ModelAgencyProfile.create!(user: model1, agency: img)
 ModelAgencyProfile.create!(user: model2, agency: img)
 
 # create travels
-Travel.create!(origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_development, agency: success)
-Travel.create!(origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_development, agency: bella)
-Travel.create!(origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_development, agency: img)
+Travel.create!(origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_success, agency: success)
+Travel.create!(origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_bella, agency: bella)
+Travel.create!(origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_img, agency: img)
 # create hotels
 Hotel.create!(
   name: "The Casting Call Inn",
   address: "123 Film Studio Ave, Los Angeles, CA 90210, USA",
   extra_info: "Perfectly located for quick access to major casting studios, offering comfortable stays with early breakfast options.",
-  model_agency_profile: model_development,
+  model_agency_profile: model_success,
   agency: success
 )
 Hotel.create!(
   name: "Runway Retreat Boutique",
   address: "456 Fashion Blvd, Milan, Lombardy, Italy",
   extra_info: "A chic, modern hotel frequented by models and designers, ideal for fashion week or extended job assignments.",
-  model_agency_profile: model_development,
+  model_agency_profile: model_bella,
   agency: bella
 )
 
@@ -85,33 +85,33 @@ versace_job           = Listing.create!(client: versace,       user: agent_devel
 prada_job             = Listing.create!(client: prada,         user: agent_development, listing_type: 'job',     start_date: "20/06/2026", start_time: "09:00", end_time: "10:00", address: "99 Spring St, New York, NY 10012", extra_info: "Catering will be provided. Please inform us of any allergies.")
 chanel_job            = Listing.create!(client: chanel,        user: agent_development, listing_type: 'job',     start_date: "23/06/2026", start_time: "09:00", end_time: "10:00", address: "18 Rue Saint-Honoré, 75001 Paris", stylist: "Ferdi Sibbel", location: "Concorde Square Studio")
 fendi_job             = Listing.create!(client: fendi,         user: agent_development, listing_type: 'job',     start_date: "26/06/2026", end_date: "26/06/2026", start_time: "09:00", end_time: "10:00", address: "Via della Moscova 24, 20121 Milano", location: "Brera District", extra_info: "Travel details will be confirmed next week.")
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: prada_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: lemaire_job, rate: 1400)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: wooyungmi_option)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: chanel_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: dior_job, rate: 1500)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: louis_vuitton_option)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: gucci_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: hermes_job, rate: 1450)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: saint_laurent_option, rate: 1350)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: balenciage_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: versace_job, rate: 1600)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: fendi_option, rate: 1150)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: burberry_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: prada_job, rate: 1550)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: gucci_option, rate: 1050)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: lemaire_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: chanel_job, rate: 1450)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: dior_option, rate: 1200)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: saint_laurent_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: fendi_job, rate: 1400)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: prada_casting, rate: 1250)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: hermes_job, rate: 1380)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: louis_vuitton_option, rate: 1080)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: balenciage_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: lemaire_job, rate: 1490)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: chanel_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: burberry_casting)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: saint_laurent_option)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: gucci_option, rate: 1040)
-Connection.create!(model_agency_profile: model_development, agency_id: success.id, listing: fendi_option)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: prada_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: lemaire_job, rate: 1400)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: wooyungmi_option)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: chanel_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: dior_job, rate: 1500)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: louis_vuitton_option)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: gucci_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: hermes_job, rate: 1450)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: saint_laurent_option, rate: 1350)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: balenciage_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: versace_job, rate: 1600)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: fendi_option, rate: 1150)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: burberry_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: prada_job, rate: 1550)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: gucci_option, rate: 1050)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: lemaire_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: chanel_job, rate: 1450)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: dior_option, rate: 1200)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: saint_laurent_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: fendi_job, rate: 1400)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: prada_casting, rate: 1250)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: hermes_job, rate: 1380)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: louis_vuitton_option, rate: 1080)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: balenciage_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: lemaire_job, rate: 1490)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: chanel_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: burberry_casting)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: saint_laurent_option)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: gucci_option, rate: 1040)
+Connection.create!(model_agency_profile: model_success, agency_id: success.id, listing: fendi_option)
