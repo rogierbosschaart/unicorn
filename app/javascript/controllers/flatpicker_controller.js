@@ -1,9 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import flatpickr from "flatpickr"
-import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect"
-
-import "flatpickr/dist/flatpickr.min.css"
-import "flatpickr/dist/plugins/monthSelect/style.css"
 
 export default class extends Controller {
   static targets = ["date", "month"]

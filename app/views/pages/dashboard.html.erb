@@ -31,18 +31,25 @@
     <div class="grid-bottom">
       <%# Grid Bottom Left %>
       <div class="grid-bottom-left">
+
+        <div class="search-form">
+          <%= form_with url: dashboard_path, method: :get, class: "d-flex", local: true do %>
+            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
         <!-- searchbar || not yet functioning -->
         <div class="form-section">
-          <form action="<%= root_path %>" method="get" class="search-form">
+          <form action="<%= dashboard_path %>" method="get" class="search-form">
             <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
             <input type="submit" value="search" class="button">
           </form>
         </div>
-        <hr class="divider">
-        
+
         <!-- Models list -->
         <div class="model-listings-section">
-          <% @models.each do |model| %>
+          <% @models_for_display.each do |model| %>
             <%= button_to model_agency_profile_path(model),
                           method: :patch,
                           class: "models-links" do %>
