@@ -1,23 +1,27 @@
 import { Controller } from "@hotwired/stimulus"
+import flatpickr from "flatpickr"
+import "flatpickr/dist/flatpickr.min.css"
 
 export default class extends Controller {
-  static targets = ["jumpInput", "calendar"]
+  static targets = ["jump"]
 
   connect() {
-    this.jumpInput = document.getElementById("calendar-jump")
+    flatpickr(this.jumpTarget, {
+      dateFormat: "Y-m-d",
+      allowInput: true,
+      onChange: this.onDateChange.bind(this)
+    })
+  }
 
-    if (this.jumpInput) {
-      this.jumpInput.addEventListener("change", (e) => {
-        const selectedDate = new Date(e.target.value)
-        if (isNaN(selectedDate)) return
+  onDateChange(selectedDates) {
+    if (selectedDates.length === 0) return;
 
-        const year = selectedDate.getFullYear()
-        const month = selectedDate.getMonth() + 1
+    const selectedDate = selectedDates[0];
+    const year = selectedDate.getFullYear();
+    const month = (selectedDate.getMonth() + 1).toString().padStart(2, "0");
 
-        const searchParams = new URLSearchParams(window.location.search)
-        searchParams.set("month", `${year}-${month.toString().padStart(2, "0")}`)
-        window.location.search = searchParams.toString()
-      })
-    }
+    const url = new URL(window.location.href);
+    url.searchParams.set("month", `${year}-${month}`);
+    window.location.href = url.toString();
   }
 }
