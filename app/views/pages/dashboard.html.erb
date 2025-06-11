@@ -54,7 +54,7 @@
                           method: :patch,
                           class: "models-links" do %>
               <div class="models-list">
-                <div class="avatar-small mx-2"></div>
+                <%= image_tag "#{model.user.profile_pic}", class: "avatar avatar-connection-show", alt: "dropdown menu", crop: :cover %>
                 <% if session[:selected_model_ids].include?(model.id) %>
                   <span class="p-xbold"><%= model.user.f_name %> <%= model.user.l_name %></span>
                 <% else %>
