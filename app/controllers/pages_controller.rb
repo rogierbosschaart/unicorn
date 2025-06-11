@@ -14,8 +14,6 @@ class PagesController < ApplicationController
     end
   end
 
-
-
   def dashboard
     @model_agency_profile = ModelAgencyProfile.new
     @agency = current_user.agency
@@ -44,7 +42,7 @@ class PagesController < ApplicationController
   end
 
   def agenda
-  @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
+    @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
     start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
     next unless start
 

@@ -8,6 +8,7 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def home
+    @agency = current_user.model_agency_profiles.where(active: true).first.agency
     @posts = Post.all.order(created_at: :desc)
   end
 
@@ -36,6 +37,7 @@ class ModelAgencyProfilesController < ApplicationController
       render 'pages/dashboard', status: :unprocessable_entity
     end
   end
+
 
   def travel
     @agency = current_user.model_agency_profiles.where(active: true).first.agency

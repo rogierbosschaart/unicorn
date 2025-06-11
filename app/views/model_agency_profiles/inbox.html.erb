@@ -1,9 +1,10 @@
-<div class="inbox-container" data-controller="inbox">
+<div class="mobile-container <%= @agency.name %>" data-controller="inbox">
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
-  <div class="inbox-body">
-    <h1 class="inbox-header">Inbox</h1>
+  <h1 class="mobile-header">Inbox</h1>
+  <div class="mobile-content scroll">
+
     <%# INBOX NAVIGATION TABS %>
     <div class="tab">
       <%= link_to "MAP", map_path, class: "btn btn-primary" %>
@@ -81,10 +82,10 @@
             <% end %>
           </div>
         <% end %>
-
+        <div class="filler"></div>
       <% end %>
     </div>
-  </div>
+
 
     <%# CASTINGS %>
     <div id="Casting" class="tabcontent connections-inbox">
@@ -109,6 +110,7 @@
           <% end %>
         </div>
       <% end %>
+      <div class="filler"></div>
     </div>
 
     <%# OPTIONS %>
@@ -134,6 +136,7 @@
           <% end %>
         </div>
       <% end %>
+      <div class="filler"></div>
     </div>
 
     <%# JOBS %>
@@ -159,6 +162,7 @@
           <% end %>
         </div>
       <% end %>
+      <div class="filler"></div>
     </div>
 
     <script>
@@ -188,9 +192,11 @@
         openTag(null, 'All');
       });
     </script>
+    </div>
     <div class="navbar-bottom-container">
       <div class="navbar-bottom">
         <%= render 'shared/mobile-app-navbar' %>
       </div>
     </div>
-  </div>
+
+</div>

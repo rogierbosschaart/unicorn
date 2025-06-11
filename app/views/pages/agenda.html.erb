@@ -7,12 +7,12 @@
 
 
 
-<div class="agenda-container">
+<div class="mobile-container"> <%=  %>
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
-  
-  <div class="agenda-info">
+  <h1 class="mobile-header">Calendar</h1>
+  <div class="mobile-content">
     <%= month_calendar(class: "big-calendar", params: { month: params[:month] }) do |date| %>
       <div>
         <strong><%= date.day %></strong>
