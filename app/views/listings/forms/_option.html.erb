@@ -4,12 +4,12 @@
     <%= f.input :location, label: "Location" %>
     <div class="d-flex">
       <div>
-        <%= f.input :start_date, label: "From", as: :date  %>
+        <%= f.input :start_date, as: :string, input_html: { type: "date" }, label: "Start Date" %>
         <%= f.input :photographer, label: "Photographer" %>
         <%= f.input :stylist, label: "Stylist" %>
       </div>
       <div>
-        <%= f.input :end_date, label: "Until", as: :date  %>
+        <%= f.input :end_date, as: :string, input_html: { type: "date" }, label: "End Date" %>
         <%= f.input :extra_info, label: "Extra information" %>
       </div>
     </div>
