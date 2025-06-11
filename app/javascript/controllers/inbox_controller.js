@@ -6,7 +6,7 @@ export default class extends Controller {
 
   }
 
-  function openTag(evt, tagName) {
+  openTag(evt, tagName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -28,7 +28,7 @@ export default class extends Controller {
           }
         }
       }
-      document.addEventListener("DOMContentLoaded", function() {
-        openTag(null, 'All');
-      });
+      // document.addEventListener("DOMContentLoaded", function() {
+      //   openTag(null, 'All');
+      // });
 }
