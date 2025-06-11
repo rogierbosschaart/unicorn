@@ -14,6 +14,8 @@ class PagesController < ApplicationController
     end
   end
 
+
+
   def dashboard
     @model_agency_profile = ModelAgencyProfile.new
     @agency = current_user.agency
@@ -21,6 +23,12 @@ class PagesController < ApplicationController
                                 .where(agency: @agency)
     @listing = Listing.new
     session[:selected_model_ids] ||= []
+
+    if params[:query].present?
+      @models_for_display = ModelAgencyProfile.search_by_name(params[:query]).where(agency: @agency)
+    else
+      @models_for_display = @models
+    end
   end
 
   def map

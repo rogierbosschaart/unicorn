@@ -6,7 +6,17 @@ class ModelAgencyProfile < ApplicationRecord
   has_many :hotels
   has_many :connections
 
+
   scope :mannequin, -> { joins(:user).where(users: { user_type: 'mannequin'}) }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+                   associated_against: {
+                  user: [:f_name, :l_name]
+                  },
+                   using: {
+                  tsearch: { prefix: true }
+                  }
 
   private
 
