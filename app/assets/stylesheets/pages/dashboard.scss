@@ -10,7 +10,7 @@
 }
 
 .dashboard-navbar:hover {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.7);
   transition: 0.2s;
 }
 
@@ -180,4 +180,29 @@
 #plus-icon:hover {
   transition: 0.3s;
   transform: rotate(-90deg);
+}
+
+.models-list-avatar {
+  margin-right: 10px;
+  height: 50px;
+  width: 40px;
+  border-radius: 6px;
+}
+
+.models-list{
+  width: 80%;
+  margin: 8px 0 0 26px;
+  padding: 2px;
+}
+
+.models-list.selected {
+  // border: 0.5px solid #b4b4b4;
+  // background-color: #f2f0f0;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.models-list:hover {
+  cursor: pointer;
 }

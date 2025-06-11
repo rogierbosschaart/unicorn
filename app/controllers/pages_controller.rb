@@ -42,21 +42,18 @@ class PagesController < ApplicationController
   end
 
   def agenda
-<<<<<<< HEAD
     @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
     start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
     next unless start
-=======
     @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
->>>>>>> 599880badd93341440b06f02f97325a6dd32b143
 
-    if params[:date].present?
-      selected_date = Date.parse(params[:date]) rescue nil
-      @selected_listings = Listing.where(start_date: selected_date)
-    else
-      @selected_listings = []
+      if params[:date].present?
+        selected_date = Date.parse(params[:date]) rescue nil
+        @selected_listings = Listing.where(start_date: selected_date)
+      else
+        @selected_listings = []
+      end
     end
-
   end
 
   private
