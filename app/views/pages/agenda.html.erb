@@ -1,19 +1,35 @@
-<h1>Agenda</h1>
 
-<div class="mb-3" data-controller="calendar">
+
+<%# <div class="mb-3" data-controller="calendar">
   <label for="calendar-jump" class="form-label">Jump to Date:</label>
   <input type="date" id="calendar-jump" class="form-control" />
-</div>
+</div> %>
 
-<%= month_calendar(class: "big-calendar", params: { start_date: params[:month] }) do |date| %>
-  <div>
-    <strong><%= date.day %></strong>
-    <% (@listings_by_date[date] || []).each do |listing| %>
+
+
+<div class="agenda-container">
+  <div class="navbar-top-container">
+    <%= render "shared/navbar_top" %>
+  </div>
+  
+  <div class="agenda-info">
+    <%= month_calendar(class: "big-calendar", params: { month: params[:month] }) do |date| %>
       <div>
-        <%= listing.listing_type %><br>
-        <%= listing.start_time %> - <%= listing.end_time %><br>
-        <%= listing.extra_info %>
+        <strong><%= date.day %></strong>
+        <% (@listings_by_date[date] || []).each do |listing| %>
+          <div>
+            <%= listing.listing_type %><br>
+            <%= listing.start_time %> - <%= listing.end_time %><br>
+            <%= listing.extra_info %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-<% end %>
+
+  <div class="navbar-bottom-container">
+      <div class="navbar-bottom">
+        <%= render 'shared/mobile-app-navbar' %>
+      </div>
+    </div>
+</div>
