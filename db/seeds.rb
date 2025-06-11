@@ -76,8 +76,6 @@ saint_laurent_option  = Listing.create!(client: saint_laurent, user: agent_devel
 fendi_option          = Listing.create!(client: fendi,         user: agent_development, listing_type: 'option',  start_date: "18/06/2026", end_date: "18/06/2026", address: "680 5th Ave, New York, NY 10019", photographer: "Micha Taylor", extra_info: "Client confirms within 24h. Hold valid until end of day.")
 gucci_option          = Listing.create!(client: gucci,         user: agent_development, listing_type: 'option',  start_date: "21/06/2026", end_date: "21/06/2026", address: "8 Rue de la Paix, 75002 Paris")
 dior_option           = Listing.create!(client: dior,          user: agent_development, listing_type: 'option',  start_date: "24/06/2026", end_date: "24/06/2026", address: "Via del Corso 12, 00186 Roma", stylist: "Ferdi Sibbel", location: "Trastevere Studio")
-New
-9:30
 # Job Listings (Mixed Cities)
 lemaire_job           = Listing.create!(client: lemaire,       user: agent_development, listing_type: 'job',     start_date: "05/06/2026", end_date: "05/06/2026", start_time: "09:00", end_time: "10:00", address: "45 Rockefeller Plaza, New York, NY 10111", photographer: "Micha Taylor", location: "Manhattan Penthouse", extra_info: "Full day shoot, lunch provided.")
 dior_job              = Listing.create!(client: dior,          user: agent_development, listing_type: 'job',     start_date: "10/06/2026", start_time: "09:00", end_time: "10:00", address: "32 Rue François 1er, 75008 Paris", stylist: "Ferdi Sibbel", extra_info: "Early call time requested. Specific wardrobe details to follow.")
