@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get 'map', to: 'pages#map', as: :map
 
   get 'agenda', to: 'pages#agenda'
+
+  get 'listings_for_date', to: 'listings#for_date'
 end

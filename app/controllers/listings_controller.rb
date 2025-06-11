@@ -30,6 +30,11 @@ class ListingsController < ApplicationController
     end
   end
 
+  def for_date
+    date = params[:date].present? ? Date.parse(params[:date]) : nil
+    @listings = date ? Listing.where(start_date: date) : []
+  end
+
   private
 
   def listing_params
