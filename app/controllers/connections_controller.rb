@@ -1,4 +1,6 @@
 class ConnectionsController < ApplicationController
+  before_action :set_model_agency_profile
+
   def show
     @connection = Connection.find(params[:id])
     @connection.update(opened: true)
@@ -14,6 +16,7 @@ class ConnectionsController < ApplicationController
 
   private
 
-  def connection_params
+  def set_model_agency_profile
+    @model_agency_profile = current_user.model_agency_profiles.find_by(active: true)
   end
 end

@@ -124,7 +124,7 @@ class ModelAgencyProfilesController < ApplicationController
 
   def set_user
     if current_user.user_type == 'agent'
-      redirect_to dashboard_path
+      redirect_to home_path
     else
       @model = current_user.model_agency_profiles.find_by(active: true)
     end

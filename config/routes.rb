@@ -27,9 +27,6 @@ Rails.application.routes.draw do
 
   # MAP
   get 'map', to: 'model_agency_profiles#map', as: :map
-
   get 'agenda', to: 'model_agency_profiles#agenda'
-
-  
   get 'listings_for_date', to: 'listings#for_date'
 end

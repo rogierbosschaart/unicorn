@@ -1,5 +1,10 @@
 class TravelsController < ApplicationController
 
+  def index
+    @travels = Travel.includes(:agency).where(agency: current_user.agency)
+    @travels = @travels.order(date: :asc, time: :asc) if @travels.any?
+  end
+
   def new
     @agency = Agency.find(params[:agency_id])
     @travel = Travel.new
