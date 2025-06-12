@@ -570,38 +570,36 @@ Connection.create!(model_agency_profile: profile_9, agency_id: success.id, listi
 Connection.create!(model_agency_profile: profile_9, agency_id: success.id, listing: wooyungmi_casting, rate: 1581)
 
 # create posts
-# post = Post.create!(post_text: "Casting in Milan!", user: model1, agency: success)
-# post.photo.attach(io: File.open(...), filename: "Milan.jpg", content_type: "image/jpeg")
 
-# post2 = Post.create!(
-#   user: model1,
-#   agency: success,
-#   post_text: "Quick reminder: the casting in Paris is at 10:00 sharp. Don’t forget comp cards and arrive 15 mins early."
-# )
-# post2.photo.attach(
-#   io: File.open(Rails.root.join("db", "seeds", "photos", "Paris.jpg")),
-#   filename: "Paris.jpg",
-#   content_type: "image/jpeg"
-# )
+post2 = Post.create!(
+  user: model1,
+  agency: success,
+  post_text: "Quick reminder: the casting in Paris is at 10:00 sharp. Don’t forget comp cards and arrive 15 mins early."
+)
+post2.photo.attach(
+  io: File.open(Rails.root.join("db", "photos", "Paris.jpg")),
+  filename: "Paris.jpg",
+  content_type: "image/jpeg"
+)
 
-# post3 = Post.create!(
-#   user: model1,
-#   agency: success,
-#   post_text: "New campaign casting happening this weekend. Final list will be shared soon — stay prepared."
-# )
-# post3.photo.attach(
-#   io: File.open(Rails.root.join("db", "seeds", "photos", "casting.jpg")),
-#   filename: "casting.jpg",
-#   content_type: "image/jpeg"
-# )
+post3 = Post.create!(
+  user: model1,
+  agency: success,
+  post_text: "New campaign casting happening this weekend. Final list will be shared soon — stay prepared."
+)
+post3.photo.attach(
+  io: File.open(Rails.root.join("db", "photos", "casting.jpg")),
+  filename: "casting.jpg",
+  content_type: "image/jpeg"
+)
 
-# post4 = Post.create!(
-#   user: model1,
-#   agency: success,
-#   post_text: "This month’s highlight moments across Europe. Proud to see the hard work paying off."
-# )
-# post4.photo.attach(
-#   io: File.open(Rails.root.join("db", "seeds", "photos", "photoshoot.jpg")),
-#   filename: "photoshoot.jpg",
-#   content_type: "image/jpeg"
-# )
+post4 = Post.create!(
+  user: model1,
+  agency: success,
+  post_text: "This month’s highlight moments across Europe. Proud to see the hard work paying off."
+)
+post4.photo.attach(
+  io: File.open(Rails.root.join("db", "photos", "photoshoot.jpg")),
+  filename: "photoshoot.jpg",
+  content_type: "image/jpeg"
+)
