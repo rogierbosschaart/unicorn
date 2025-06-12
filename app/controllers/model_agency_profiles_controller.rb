@@ -90,7 +90,15 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def map
-    @listings = Listing.geocoded
+    active_profile = current_user.model_agency_profiles.find_by(active: true)
+    @listings = if active_profile
+                  Listing.joins(:connections)
+                        .where(connections: { model_agency_profile_id: active_profile.id })
+                        .geocoded
+                else
+                  Listing.none
+                end
+
     @markers = @listings.map do |listing|
       {
         lat: listing.latitude,
