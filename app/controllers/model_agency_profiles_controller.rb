@@ -73,17 +73,19 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def agenda
-    @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
-      start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
-      next unless start
-      @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
+    if current_user.user_type == 'agent'
+      redirect_to dashboard_path
+      return
+    end
 
-      if params[:date].present?
-        selected_date = Date.parse(params[:date]) rescue nil
-        @selected_listings = Listing.where(start_date: selected_date)
-      else
-        @selected_listings = []
-      end
+    active_profile = current_user.model_agency_profiles.find_by(active: true)
+    if active_profile
+      @listings = Listing.joins(:connections)
+                         .where(connections: { model_agency_profile_id: active_profile.id })
+                         .where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
+                         .distinct
+    else
+      @listings = Listing.none
     end
   end
 
