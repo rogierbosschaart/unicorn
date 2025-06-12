@@ -1,6 +1,6 @@
 <div class="create-panel-container">
   <div class="form-container">
-    <%= simple_form_for [@agency, @travel] do |f| %>
+    <%= simple_form_for [@agency, @travel], data: { turbo: false } do |f| %>
       <%= f.input :model_agency_profile_id, placeholder: "Model", collection: ModelAgencyProfile.all.map { |m| [m.user.f_name + " " + m.user.l_name, m.id] }, prompt: "Select model" %>
       <%= f.input :origin, placeholder: "Origin" %>
       <%= f.input :destination, placeholder: "Destination" %>

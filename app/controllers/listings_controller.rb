@@ -37,6 +37,12 @@ class ListingsController < ApplicationController
     end
   end
 
+  # if @item.save
+  #     redirect_to dashboard_path, notice: 'Game was successfully added to your listings!'
+  #   else
+  #     redirect_to dashboard_path, alert: @item.errors.full_messages.to_sentence
+  #     #render :new, status: :unprocessable_entity
+  #   end
   def for_date
     date = params[:date].present? ? Date.parse(params[:date]) : nil
     @listings = date ? Listing.where(start_date: date) : []
