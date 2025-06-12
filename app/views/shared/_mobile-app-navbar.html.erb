@@ -3,7 +3,12 @@
     <i class="bottom-button fa-solid fa-house"></i>
 <% end %>
 <%= link_to inbox_path do %>
+  <div class="position-relative">
     <i class="bottom-button fa-solid fa-envelope"></i>
+     <% if user_signed_in? && @connections&.where(opened: [false, nil])&.exists? %>
+      <div class="message-dot"></div>
+    <% end %>
+  </div>
 <% end %>
 <%= link_to travel_path do %>
     <i class="bottom-button fa-solid fa-plane"></i>
