@@ -12,7 +12,7 @@
         <span class="small-type"><%= post.agency.city %></span>
       </div>
     </div>
-      <% if post.photo.presence %>
+      <% if post.photo.attached? %>
         <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
       <% end %>
       <h1> <%= post.post_text %> </h1>
