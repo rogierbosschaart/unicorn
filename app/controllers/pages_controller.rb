@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, except: [:map, :agenda]
+  before_action :set_user, except: [:map]
 
   def root
     if user_signed_in?
@@ -41,21 +41,21 @@ class PagesController < ApplicationController
     end
   end
 
-  def agenda
-    @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
-      start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
-      next unless start
-      @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
+  # def agenda
+  #   @listings_by_date = Listing.all.each_with_object(Hash.new { |h, k| h[k] = [] }) do |listing, hash|
+  #     start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
+  #     next unless start
+  #     @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
 
-      if params[:date].present?
-        selected_date = Date.parse(params[:date]) rescue nil
-        @selected_listings = Listing.where(start_date: selected_date)
-      else
-        @selected_listings = []
-      end
-    end
-  end
-  
+  #     if params[:date].present?
+  #       selected_date = Date.parse(params[:date]) rescue nil
+  #       @selected_listings = Listing.where(start_date: selected_date)
+  #     else
+  #       @selected_listings = []
+  #     end
+  #   end
+  # end
+
   private
 
   def set_user
