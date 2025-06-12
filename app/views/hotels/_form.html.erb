@@ -1,6 +1,6 @@
 <div class="create-panel-container">
   <div class="form-container">
-    <%= simple_form_for [@agency, @hotel] do |f| %>
+    <%= simple_form_for [@agency, @hotel], data: { turbo: false } do |f| %>
       <%= f.input :name, placeholder: "Hotel" %>
       <%= f.input :address, placeholder: "Address" %>
       <%= f.input :checkin, as: :string, input_html: { type: "date" }, placeholder: "Check In" %>

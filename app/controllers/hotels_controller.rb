@@ -10,7 +10,7 @@ class HotelsController < ApplicationController
     @hotel.agency = @agency
 
     if @hotel.save
-      redirect_to dashboard_path, notice: "Travel created successfully."
+      redirect_to dashboard_path, notice: "Hotel created successfully."
     else
       puts @hotel.errors.full_messages
       render :new, status: :unprocessable_entity
