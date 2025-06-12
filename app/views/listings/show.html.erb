@@ -98,10 +98,12 @@
     </div>
     <div>
       <% @connections.each do |connection| %>
-        <div class="models-list">
-          <%= image_tag "#{connection.model_agency_profile.user.profile_pic}", class: "models-list-avatar", alt: "dropdown menu", crop: :cover %>
-          <span><%= connection.model_agency_profile.user.f_name %> <%= connection.model_agency_profile.user.l_name %></span>
-        </div>
+        <%= link_to connection_connection_comment_path(connection), data: { turbo_frame: "show_connection_comments" } do %>
+          <div class="models-list">
+            <%= image_tag "#{connection.model_agency_profile.user.profile_pic}", class: "models-list-avatar", alt: "dropdown menu", crop: :cover %>
+            <span><%= connection.model_agency_profile.user.f_name %> <%= connection.model_agency_profile.user.l_name %></span>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
