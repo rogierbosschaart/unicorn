@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # EVERYONE
   resources :connections, only: [:new, :create, :show] do
-    resources :connection_comments, only: [:new, :create]
+    resources :connection_comments, only: [:new, :create, :show]
   end
 
   # MAP
