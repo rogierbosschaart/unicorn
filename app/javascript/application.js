@@ -22,3 +22,13 @@ document.addEventListener("turbo:submit-start", function(event) {
     }
   }
 });
+
+ window.addEventListener("models:selected", function(event) {
+        var input = document.querySelector(
+          '.form-container input[name="selected_model_ids"]'
+        );
+        if (input) {
+          input.value = event.detail.ids.join(",");
+        }
+      });
+

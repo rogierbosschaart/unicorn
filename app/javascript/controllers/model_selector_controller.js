@@ -6,9 +6,15 @@ export default class extends Controller {
   connect() {
     this.selectedIds = []
     this.renderSelected()
+
+    document.addEventListener("turbo:frame-render", this.resetIfFormChanged)
   }
 
-   select(event) {
+  disconnect() {
+    document.removeEventListener("turbo:frame-render", this.resetIfFormChanged)
+  }
+
+  select(event) {
     const element = event.currentTarget
     const id = element.dataset.modelId
 
@@ -29,6 +35,16 @@ export default class extends Controller {
         const el = this.modelTargets.find(m => m.dataset.modelId === id)
         return el ? el.dataset.modelName : ""
       }).filter(Boolean).join(", ")
+    }
+  }
+
+
+  resetIfFormChanged = (event) => {
+    if (event.target.id === "create_panel") {
+      this.selectedIds = []
+      this.modelTargets.forEach(el => el.classList.remove("selected"))
+      this.renderSelected()
+      window.dispatchEvent(new CustomEvent("models:selected", { detail: { ids: this.selectedIds } }))
     }
   }
 }
