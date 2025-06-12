@@ -1,6 +1,7 @@
 class ModelAgencyProfilesController < ApplicationController
   before_action :set_model_agency_profile
   before_action :set_user, except: [:update, :home, :new, :create, :agenda, :map]
+  before_action :set_unread_connections, except: [:inbox]
 
   def new
     @model_agency_profile = ModelAgencyProfile.new
@@ -8,21 +9,25 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def home
+    @model = current_user.model_agency_profiles.where(active: true).first
     @agency = current_user.model_agency_profiles.where(active: true).first.agency
     @posts = Post.all.order(created_at: :desc)
   end
 
   def inbox
-    @agency = current_user.model_agency_profiles.where(active: true).first.agency
-    return if @model.connections.nil?
+    @model = current_user.model_agency_profiles.find_by(active: true)
+    return unless @model
 
-      @connections = @model.connections.where(agency_id: @agency.id).order(created_at: :desc)
-      @castings     = @connections.joins(:listing)
-                                  .where(listings: { listing_type: 'casting' })
-      @options      = @connections.joins(:listing)
-                                  .where(listings: { listing_type: 'option' })
-      @jobs         = @connections.joins(:listing)
-                                  .where(listings: { listing_type: 'job' })
+    @agency = @model.agency
+
+    profile_ids = current_user.model_agency_profiles.select(:id)
+    @has_unread_messages = Connection.where(model_agency_profile_id: profile_ids, opened: [false, nil]).exists?
+
+
+    @connections = @model.connections.where(agency_id: @agency.id).order(created_at: :desc)
+    @castings = @connections.joins(:listing).where(listings: { listing_type: 'casting' })
+    @options  = @connections.joins(:listing).where(listings: { listing_type: 'option' })
+    @jobs     = @connections.joins(:listing).where(listings: { listing_type: 'job' })
   end
 
   def create
@@ -40,6 +45,7 @@ class ModelAgencyProfilesController < ApplicationController
 
 
   def travel
+    @model = current_user.model_agency_profiles.where(active: true).first
     @agency = current_user.model_agency_profiles.where(active: true).first.agency
     @travels = @model.travels.where(agency: @agency)
     @hotels = @model.hotels.where(agency: @agency)
@@ -130,5 +136,10 @@ class ModelAgencyProfilesController < ApplicationController
 
   def set_model_agency_profile
     @model_agency_profile = current_user.model_agency_profiles.find_by(active: true)
+  end
+
+  def set_unread_connections
+    profile_ids = current_user.model_agency_profiles.select(:id)
+    @has_unread_messages = Connection.where(model_agency_profile_id: profile_ids, opened: [false, nil]).exists?
   end
 end
