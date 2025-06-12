@@ -47,15 +47,15 @@ class PagesController < ApplicationController
       next unless start
       @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
 
-    if params[:date].present?
-      selected_date = Date.parse(params[:date]) rescue nil
-      @selected_listings = Listing.where(start_date: selected_date)
-    else
-      @selected_listings = []
+      if params[:date].present?
+        selected_date = Date.parse(params[:date]) rescue nil
+        @selected_listings = Listing.where(start_date: selected_date)
+      else
+        @selected_listings = []
+      end
     end
-    raise
   end
-
+  
   private
 
   def set_user
