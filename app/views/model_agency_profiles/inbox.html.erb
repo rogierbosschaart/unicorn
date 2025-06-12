@@ -21,7 +21,7 @@
         <% if connection.listing.listing_type == 'casting' %>
           <div>
             <%= link_to connection_path(connection), class: "connection-container" do %>
-              <%= render 'shared/avatar_inbox' %>
+              <%= render 'shared/avatar_inbox', listing: connection.listing %>
               <div class="connection-info">
                 <% if connection.opened == true %>
                   <span class="p-light"><%= connection.listing.client.name %></span>
@@ -42,7 +42,7 @@
         <% elsif connection.listing.listing_type == 'option' %>
           <div>
             <%= link_to connection_path(connection), class: "connection-container" do %>
-              <%= render 'shared/avatar_inbox' %>
+              <%= render 'shared/avatar_inbox', listing: connection.listing %>
               <div class="connection-info">
                 <% if connection.opened == true %>
                   <span class="p-light"><%= connection.listing.client.name %></span>
@@ -64,7 +64,7 @@
         <% elsif connection.listing.listing_type == 'job' %>
           <div>
             <%= link_to connection_path(connection), class: "connection-container" do %>
-              <%= render 'shared/avatar_inbox' %>
+              <%= render 'shared/avatar_inbox', listing: connection.listing %>
               <div class="connection-info">
                 <% if connection.opened == true %>
                   <span class="p-light"><%= connection.listing.client.name %></span>
@@ -92,7 +92,7 @@
       <% @castings.each do |casting| %>
         <div>
           <%= link_to connection_path(casting), class: "connection-container" do %>
-            <%= render 'shared/avatar_inbox' %>
+            <%= render 'shared/avatar_inbox', listing: casting.listing %>
             <div class="connection-info">
               <% if casting.opened == true %>
                 <span class="p-light"><%= casting.listing.client.name %></span>
@@ -118,7 +118,7 @@
       <% @options.each do |option| %>
         <div>
           <%= link_to connection_path(option), class: "connection-container" do %>
-            <%= render 'shared/avatar_inbox' %>
+            <%= render 'shared/avatar_inbox', listing: option.listing %>
             <div class="connection-info">
               <% if option.opened == true %>
                 <span class="p-light"><%= option.listing.client.name %></span>
@@ -144,7 +144,7 @@
       <% @jobs.each do |job| %>
         <div>
           <%= link_to connection_path(job), class: "connection-container" do %>
-            <%= render 'shared/avatar_inbox' %>
+            <%= render 'shared/avatar_inbox', listing: job.listing %>
             <div class="connection-info">
               <% if job.opened == true %>
                 <span class="p-light"><%= job.listing.client.name %></span>
@@ -165,7 +165,7 @@
       <div class="filler"></div>
     </div>
 
-    
+
     </div>
     <div class="navbar-bottom-container">
       <div class="navbar-bottom">
