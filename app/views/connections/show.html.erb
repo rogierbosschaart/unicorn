@@ -1,4 +1,8 @@
-<div class="connection-show-container">
+<div class="mobile-container <%= @agency.name %>">
+  <div class="navbar-top-container">
+    <%= render "shared/navbar_top" %>
+  </div>
+
   <%# HEADER // ALWAYS THE SAME %>
   <div class="connection-header">
     <%= image_tag "#{@listing.user.agency.profile_pic}", class: "avatar avatar-connection-show", alt: "dropdown menu", crop: :cover %>
@@ -13,36 +17,12 @@
     <%= link_to inbox_path do %>
       <i class="fa-solid fa-chevron-left"></i>
     <% end %>
-    <% if @listing.listing_type == 'casting' %>
-      <div class="d-flex">
-        <div class="check-button-field">
-          <div class="check-button"></div>
-          <span class="x-small-type centered">check</span>
-        </div>
-        <div class="reply-button">
-          <div class="check-button"></div>
-        </div>
-      </div>
-    <% elsif @connection.listing.listing_type == 'option' %>
-      <div class="d-flex">
-        <div class="check-button">
-          <div class="check-button"></div>
-          <span class="x-small-type centered">available</span>
-        </div>
-        <div class="reply-button">
-          <div class="check-button"></div>
-        </div>
-      </div>
-    <% else %>
-      <div class="reply-button">
-        <div class="check-button"></div>
-      </div>
-    <% end %>
-
+    <div><h2 class="centered"><%= @connection.listing.listing_type.capitalize %></h2></div>
+    <div class="space-filler"></div>
   </div>
 
   <%# MAIN CONTENT %>
-  <div class="connection-main-content">
+  <div class="connection-main-content" id="connection-main-content">
     <%# Client name & Job dates %>
     <div class="connection-content-header">
       <% if @connection.listing.listing_type == 'casting' || @connection.listing.listing_type == 'job' %>
@@ -128,30 +108,34 @@
       </div>
     <% end %>
     <hr class="mt-4">
+
+
+    <% @connection.connection_comments.each do |comment| %>
+      <div class="comment">
+      <% split_comment = comment.comment.split %>
+        <span class="p-light"><%= comment.user.f_name %></span>
+        <% split_comment.each do |line| %>
+          <p><%= line %></p>
+        <% end %>
+        <hr>
+      </div>
+    <% end %>
   </div>
 
-  <% @connection.connection_comments.each do |comment| %>
-    <div class="comment">
-      <strong><%= comment.user.f_name %>:</strong>
-      <p><%= comment.comment %></p>
-      <hr>
-    </div>
-  <% end %>
+  <div class="comment-form">
+    <%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
+      <span class="p-regular">To: </span>
+      <span class="p-xbold"><%= @connection.listing.user.f_name %></span>
+      <div class="comment-field">
+        <%= f.text_area :comment, rows: 3 %>
+      </div>
+      <div class="connection-comment-submit">
+        <%= button_tag type: "submit", class: "connection-comment-submit-button" do %>
+           <i class="fa-solid fa-location-arrow fa-rotate-by" style="--fa-rotate-angle: 43deg;"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-
-  <%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
-    <span class="p-regular">To: </span>
-    <span class="p-xbold"><%= @connection.listing.user.f_name %></span>
-    <div class="comment-field">
-      <%= f.text_area :comment, rows: 3 %>
-    </div>
-
-    <div class="connection-comment-submit">
-      <%= button_tag type: "submit", class: "connection-comment-submit-button" do %>
-         <i class="fa-solid fa-location-arrow fa-rotate-by" style="--fa-rotate-angle: 43deg;"></i>
-      <% end %>
-    </div>
-  <% end %>
-
-<%= render 'shared/mobile-app-navbar' %>
+  <%= render 'shared/mobile-app-navbar' %>
 </div>
