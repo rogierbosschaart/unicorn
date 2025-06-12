@@ -1,12 +1,48 @@
 <%= turbo_frame_tag :listing_details do %>
   <% if @listings.present? %>
-    <div class="listing-details">
+    <div class="calendar-listing-details">
       <% @listings.each do |listing| %>
-        <p>
-          <strong><%= listing.listing_type %></strong><br>
-          <%= listing.start_time.strftime("%H:%M") if listing.start_time %> – <%= listing.end_time.strftime("%H:%M") if listing.end_time %><br>
-          <%= listing.extra_info %>
-        </p>
+        <h2 class="p-regular"><%= listing.client.name %></h2>
+        <div class="d-flex justify-content-between">
+          <span class="p-regular"><%= listing.listing_type.capitalize %></span>
+          <span class="p-regular"><%= listing.start_time.strftime("%H:%M") if listing.start_time %> – <%= listing.end_time.strftime("%H:%M") if listing.end_time %></span>
+        </div>
+        <hr class="my-4">
+        <% if listing.location.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Location</span>
+            <span class="p-regular info"><%= listing.location %></span>
+          </div>
+        <% end %>
+        <div class="d-flex">
+          <span class="p-light p-description">Address</span>
+          <span class="p-regular"><%= listing.address %></span>
+        </div>
+
+        <%# Photographer %>
+        <% if listing.photographer.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Photographer</span>
+            <span class="p-regular info"><%= listing.photographer %></span>
+          </div>
+        <% end %>
+
+        <%# Stylist %>
+        <% if listing.stylist.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Stylist</span>
+            <span class="p-regular info"><%= listing.stylist %></span>
+          </div>
+        <% end %>
+
+        <%# Extra info %>
+        <% if listing.extra_info.present? %>
+          <div class="d-flex">
+            <span class="p-light p-description">Info</span>
+            <span class="p-regular info"><%= listing.extra_info%></span>
+          </div>
+        <% end %>
+
       <% end %>
     </div>
   <% else %>
