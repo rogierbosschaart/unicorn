@@ -15,7 +15,7 @@ img = Agency.create!( name: "IMG", city: "New-York", profile_pic: "https://exter
 # create agents
 agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "agent@agent.com", password: "123456", agency: success)
 agent2 = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: "rogier", user_type: "agent", email: "agent@test.com", password: "123456", agency: bella)
-agent2 = User.create!(f_name: "Tymur", l_name: "Topchu", username: "tymur", user_type: "agent", email: "tymur@test.com", password: "123456", agency: img)
+agent3 = User.create!(f_name: "Tymur", l_name: "Topchu", username: "tymur", user_type: "agent", email: "tymur@test.com", password: "123456", agency: img)
 
 # create models
 model1 = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: 'tymur', user_type: 'mannequin', email: "model@model.com", password: "123456", profile_pic: "https://mediaslide-europe.storage.googleapis.com/success/pictures/1300/1302/large-1538734850-5a8d3b324b3a9b0c1bc3d65d50daa89e.jpg")
