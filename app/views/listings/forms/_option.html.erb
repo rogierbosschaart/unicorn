@@ -12,16 +12,5 @@
       <input type="hidden" name="selected_model_ids" value="">
       <%= f.submit "SEND", class: "button-dashboard" %>
     <% end %>
-    
-    <script>
-      window.addEventListener("models:selected", function(event) {
-        var input = document.querySelector(
-          '.form-container input[name="selected_model_ids"]'
-        );
-        if (input) {
-          input.value = event.detail.ids.join(",");
-        }
-      });
-    </script>
   </div>
 </div>
