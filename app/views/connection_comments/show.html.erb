@@ -1,4 +1,17 @@
 <%= turbo_frame_tag :show_connection_comments do %>
+<%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
+    <span class="p-regular">To: </span>
+    <span class="p-xbold"><%= @connection.listing.user.f_name %></span>
+    <div class="comment-field">
+      <%= f.text_area :comment, rows: 3 %>
+    </div>
+
+    <div class="listing-comment-submit">
+      <%= button_tag type: "submit", class: "connection-comment-submit-button" do %>
+         <i class="fa-solid fa-location-arrow fa-rotate-by" style="--fa-rotate-angle: 43deg;"></i>
+      <% end %>
+    </div>
+  <% end %>
   <% @connection.connection_comments.each do |comment| %>
     <div class="comment">
       <% split_comment = comment.comment.split %>
@@ -9,20 +22,4 @@
       <hr>
     </div>
   <% end %>
-  
-  <%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
-    <span class="p-regular">To: </span>
-    <span class="p-xbold"><%= @connection.listing.user.f_name %></span>
-    <div class="comment-field">
-      <%= f.text_area :comment, rows: 3 %>
-    </div>
-
-    <div class="connection-comment-submit">
-      <%= button_tag type: "submit", class: "connection-comment-submit-button" do %>
-         <i class="fa-solid fa-location-arrow fa-rotate-by" style="--fa-rotate-angle: 43deg;"></i>
-      <% end %>
-    </div>
-  <% end %>
-
-
 <% end %>
