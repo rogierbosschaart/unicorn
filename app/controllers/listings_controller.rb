@@ -42,6 +42,7 @@ class ListingsController < ApplicationController
     @listings = date ? Listing.where(start_date: date) : []
   end
 
+
   private
 
   def listing_params
