@@ -1,12 +1,15 @@
 <%= turbo_frame_tag :show_connection_comments do %>
   <% @connection.connection_comments.each do |comment| %>
     <div class="comment">
-      <strong><%= comment.user.f_name %>:</strong>
-      <p><%= comment.comment %></p>
+      <% split_comment = comment.comment.split %>
+      <span class="p-light"><%= comment.user.f_name %></span>
+      <% split_comment.each do |line| %>
+        <p><%= line %></p>
+      <% end %>
       <hr>
     </div>
   <% end %>
-
+  
   <%= form_with(model: [@connection, ConnectionComment.new], local: true) do |f| %>
     <span class="p-regular">To: </span>
     <span class="p-xbold"><%= @connection.listing.user.f_name %></span>
@@ -20,4 +23,6 @@
       <% end %>
     </div>
   <% end %>
+
+
 <% end %>

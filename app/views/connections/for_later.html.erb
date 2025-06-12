@@ -1,0 +1,25 @@
+<% if @listing.listing_type == 'casting' %>
+      <div class="d-flex">
+        <div class="check-button-field">
+          <div class="check-button"></div>
+          <span class="x-small-type centered">check</span>
+        </div>
+        <div class="reply-button">
+          <div class="check-button"></div>
+        </div>
+      </div>
+    <% elsif @connection.listing.listing_type == 'option' %>
+      <div class="d-flex">
+        <div class="check-button">
+          <div class="check-button"></div>
+          <span class="x-small-type centered">available</span>
+        </div>
+        <div class="reply-button">
+          <div class="check-button"></div>
+        </div>
+      </div>
+    <% else %>
+      <div class="reply-button">
+        <div class="check-button"></div>
+      </div>
+    <% end %>

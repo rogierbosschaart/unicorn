@@ -46,7 +46,6 @@ class PagesController < ApplicationController
   #     start = listing.start_date || (listing.start_time.present? ? Date.current : nil)
   #     next unless start
   #     @listings = Listing.where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
-
   #     if params[:date].present?
   #       selected_date = Date.parse(params[:date]) rescue nil
   #       @selected_listings = Listing.where(start_date: selected_date)
