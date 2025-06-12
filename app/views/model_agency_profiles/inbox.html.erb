@@ -165,33 +165,7 @@
       <div class="filler"></div>
     </div>
 
-    <script>
-      function openTag(evt, tagName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-          tabcontent[i].classList.remove("active"); // Remove active class from content divs
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tagName).style.display = "block";
-        document.getElementById(tagName).classList.add("active"); // Add active class to content div
-        if (evt && evt.currentTarget) {
-          evt.currentTarget.className += " active";
-        } else {
-          const defaultButton = document.querySelector(`.tablinks[onclick*="'${tagName}'"]`);
-          if (defaultButton) {
-            defaultButton.className += " active";
-          }
-        }
-      }
-      document.addEventListener("DOMContentLoaded", function() {
-        openTag(null, 'All');
-      });
-    </script>
+    
     </div>
     <div class="navbar-bottom-container">
       <div class="navbar-bottom">
