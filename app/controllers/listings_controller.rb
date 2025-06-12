@@ -19,28 +19,29 @@ class ListingsController < ApplicationController
   end
 
   def create
-  @agency = Agency.find(params[:agency_id])
-  @listing = current_user.listings.build(listing_params)
+    @agency = Agency.find(params[:agency_id])
+    @listing = current_user.listings.build(listing_params)
 
-  if @listing.save
-    model_ids = params[:selected_model_ids].to_s.split(',').map(&:to_i)
-    model_ids.each do |model_id|
-      Connection.create(
-        listing: @listing,
-        model_agency_profile_id: model_id,
-        agency_id: @agency.id
-      )
+    if @listing.save
+      model_ids = params[:selected_model_ids].to_s.split(',').map(&:to_i)
+      model_ids.each do |model_id|
+        Connection.create(
+          listing: @listing,
+          model_agency_profile_id: model_id,
+          agency_id: @agency.id
+        )
+      end
+      redirect_to dashboard_path, notice: 'Listing and connections created!'
+    else
+      render :new, status: :unprocessable_entity
     end
-    redirect_to dashboard_path, notice: 'Listing and connections created!'
-  else
-    render :new, status: :unprocessable_entity
   end
-end
 
   def for_date
     date = params[:date].present? ? Date.parse(params[:date]) : nil
     @listings = date ? Listing.where(start_date: date) : []
   end
+
 
   private
 

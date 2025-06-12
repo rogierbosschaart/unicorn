@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   # MAP
-  get 'map', to: 'model_agency_profiles#map', as: :map
+  get 'map', to: 'pages#map', as: :map
 
   get 'agenda', to: 'pages#agenda'
 
