@@ -1,6 +1,6 @@
 class ModelAgencyProfilesController < ApplicationController
   before_action :set_model_agency_profile
-  before_action :set_user, except: [:update, :home, :new, :create, :agenda]
+  before_action :set_user, except: [:update, :home, :new, :create, :agenda, :map]
 
   def new
     @model_agency_profile = ModelAgencyProfile.new
@@ -84,6 +84,18 @@ class ModelAgencyProfilesController < ApplicationController
       else
         @selected_listings = []
       end
+    end
+  end
+
+  def map
+    @listings = Listing.geocoded
+    @markers = @listings.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { listing: listing }),
+        marker_html: render_to_string(partial: "marker", locals: { listing: listing })
+      }
     end
   end
 
