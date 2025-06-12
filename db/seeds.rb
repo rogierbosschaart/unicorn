@@ -11,11 +11,13 @@ Agency.destroy_all
 success = Agency.create!( name: "Success", city: "Paris", profile_pic: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.KFul4HYDZMXY29mMQcG2eAAAAA%3Fpid%3DApi&f=1&ipt=2965f9e8ca5b6b6cd39c10f9d5465ad61409215eb337152616098e4966ee1fef&ipo=images" )
 bella = Agency.create!( name: "Elite", city: "Milan", profile_pic: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.mdel.net%2Fi%2Fdb%2Flogos%2Fag%2F399.jpg%3Fv%3D1719583220000&f=1&nofb=1&ipt=4d9bf04c8f28a5b5e815171ee0d9487b8ea9c45576036ce3d118295447ebddaf")
 img = Agency.create!( name: "IMG", city: "New-York", profile_pic: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fa7%2F91%2F6a%2Fa7916a76d838a86a0bc97d0aa0643692.jpg&f=1&nofb=1&ipt=ee857f50197a02c790309075b6deec598b4b6f90a05aebfc9da5abcbfc579062")
+unicorn = Agency.create!( name: "Unicorn", city: "Amsterdam")
 
 # create agents
 agent_development = User.create!(f_name: "Kaz", l_name: "Bek", username: "kazbek", user_type: "agent", email: "agent@agent.com", password: "123456", agency: success)
 agent2 = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: "rogier", user_type: "agent", email: "agent@test.com", password: "123456", agency: bella)
 agent3 = User.create!(f_name: "Tymur", l_name: "Topchu", username: "tymur", user_type: "agent", email: "tymur@test.com", password: "123456", agency: img)
+agent4 = User.create!(f_name: "Test", l_name: "Tester", username: "test", user_type: "agent", email: "admin@test.com", password: "123456", agency: unicorn)
 
 # create models
 model1 = User.create!(f_name: "Rogier", l_name: "Bosschaart", username: 'rogier', user_type: 'mannequin', email: "model@model.com", password: "123456", profile_pic: "https://mediaslide-europe.storage.googleapis.com/success/pictures/1300/1302/large-1538734850-5a8d3b324b3a9b0c1bc3d65d50daa89e.jpg")
