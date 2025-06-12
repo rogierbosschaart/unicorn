@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :set_unread_connections
 
   def root
     if user_signed_in?
@@ -56,6 +57,17 @@ class PagesController < ApplicationController
   # end
 
   private
+
+  def set_unread_connections
+    if current_user
+      @unread_connection_comments = current_user.connection_comments
+                                        .where(read: [false, nil])
+                                        .where.not(user_id: current_user.id)
+                                        .distinct
+    else
+      @unread_connection_comments = ConnectionComment.none
+    end
+  end
 
   def set_user
     if current_user.user_type == 'mannequin'

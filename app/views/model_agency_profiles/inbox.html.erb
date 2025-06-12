@@ -2,12 +2,15 @@
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
-  <h1 class="mobile-header">Inbox</h1>
+  <div class="mobile-header d-flex justify-content-between align-items-center">
+    <h1>Inbox</h1>
+    <%= link_to "MAP", map_path, class: "btn btn-outline-warning mx-3" %>
+  </div>
+
   <div class="mobile-content scroll">
 
     <%# INBOX NAVIGATION TABS %>
     <div class="tab">
-      <%= link_to "MAP", map_path, class: "btn btn-primary" %>
       <button class="tablinks active" onclick="openTag(event, 'All')">All</button>
       <button class="tablinks" onclick="openTag(event, 'Casting')">Castings</button>
       <button class="tablinks" onclick="openTag(event, 'Option')">Options</button>
@@ -51,7 +54,7 @@
                 <% else %>
                   <span class="p-xbold"><%= connection.listing.client.name %></span>
                   <span class="p-xbold"><%= connection.listing.start_date.strftime('%-d %B') %> - <%= connection.listing.end_date.presence&.strftime('%-d %B') %></span>
-                  <span class="p-standard"><%= connection.listing.extra_info.presence&.truncate(36) %></span>
+                  <span class="p-standard"><%= connection.listing.extra_info.presence&.truncate(31) %></span>
                 <% end %>
               </div>
               <div class="connection-listing-type">
@@ -82,7 +85,7 @@
             <% end %>
           </div>
         <% end %>
-        <div class="filler"></div>
+
       <% end %>
     </div>
 
@@ -127,7 +130,7 @@
               <% else %>
                 <span class="p-xbold"><%= option.listing.client.name %></span>
                 <span class="p-xbold"><%= option.listing.start_date.strftime('%-d %B') %> - <%= option.listing.end_date.presence&.strftime('%-d %B') %></span>
-                <span class="p-standard"><%= option.listing.extra_info.presence&.truncate(36) %></span>
+                <span class="p-standard"><%= option.listing.extra_info.presence&.truncate(31) %></span>
               <% end %>
             </div>
             <div class="connection-listing-type">

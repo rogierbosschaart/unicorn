@@ -3,6 +3,7 @@ class ConnectionCommentsController < ApplicationController
 
   def show
     @connection = Connection.find(params[:connection_id])
+    @connection.connection_comments.where(read: [false, nil]).update_all(read: true)
   end
 
   def create

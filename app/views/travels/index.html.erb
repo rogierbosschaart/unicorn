@@ -1,0 +1,75 @@
+<div class="background-1">
+  <%# NAVBAR %>
+  <div class="dashboard-navbar">
+    <%= render 'pages/dashboard_shared/dashboard_navbar' %>
+  </div>
+
+  <%# GRID-TOP %>
+  <div class="grid-top">
+    <%# GRID TOP LEFT %>
+    <div class="grid-top-left">
+       <%# empty %>
+    </div>
+
+    <%# GRID TOP CENTER %>
+    <div class="grid-top-center">
+      <%= link_to "CASTING", new_agency_listing_path(@agency, type: 'casting'), data: { turbo_frame: "create_panel" }, class: "button-dashboard" %>
+      <%= link_to "OPTION", new_agency_listing_path(@agency, type: 'option'), data: { turbo_frame: "create_panel" }, class: "button-dashboard" %>
+      <%= link_to "JOB", new_agency_listing_path(@agency, type: 'job'), data: { turbo_frame: "create_panel" }, class: "button-dashboard" %>
+      <%= link_to "TRAVEL", new_agency_travel_path(@agency), data: { turbo_frame: "create_panel" }, class: "button-dashboard" %>
+      <%= link_to "HOTEL",  new_agency_hotel_path(@agency), data: { turbo_frame: "create_panel" }, class: "button-dashboard" %>
+    </div>
+
+    <%# GRID TOP RIGHT %>
+    <div class="grids-top-right">
+      <%# empty %>
+    </div>
+  </div>
+
+  <%# GRID BOTTOM %>
+  <div class="grid-bottom">
+    <%# Grid Bottom Left %>
+    <div class="grid-bottom-left">
+
+      <div class="search-form">
+        <%= form_with url: dashboard_path, method: :get, class: "d-flex", local: true do %>
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
+          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <!-- Models list -->
+      <div data-controller="model-selector">
+        <div class="model-listings-section">
+          <% @models_for_display.each do |model| %>
+            <div
+              data-action="click->model-selector#select"
+              data-model-selector-target="model"
+              data-model-id="<%= model.id %>"
+              data-model-name="<%= "#{model.user.f_name} #{model.user.l_name}" %>"
+              class="models-list models-links">
+              <%= image_tag "#{model.user.profile_pic}", class: "models-list-avatar" %>
+              <span><%= model.user.f_name %> <%= model.user.l_name %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="divider">
+    </div>
+
+    <%# Grid Bottom Center %>
+    <div class="grid-bottom-center">
+      <%# toggle screen with forms and listing#show %>
+      <%= turbo_frame_tag :create_panel do %>
+      <% end %>
+    </div>
+
+    <%# Grid Bottom right %>
+    <div class="grid-bottom-right side-bar-right">
+      <%= render 'pages/dashboard_shared/dashboard_sidebar' %>
+    </div>
+  </div>
+
+  <div class="dashboard-footer">
+  </div>
+</div>

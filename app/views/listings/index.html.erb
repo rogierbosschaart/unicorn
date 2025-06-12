@@ -26,20 +26,23 @@
     <div class="grid-bottom">
       <%# Grid Bottom Left %>
       <div class="grid-bottom-left">
-        <!-- searchbar || not yet functioning -->
-        <div class="form-section">
-          <form action="<%= root_path %>" method="get" class="search-form">
-            <input type="text" name="query" value="<%= params[:query] %>" placeholder="search">
-            <input type="submit" value=">" class="button">
-          </form>
-        </div>
+        <div class="search-form">
+        <%= form_with url: dashboard_path, method: :get, class: "d-flex", local: true do %>
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-warning" %>
+        <% end %>
+      </div>
 
         <!-- listings list -->
         <div class="model-listings-section">
           <% @listings.each do |listing| %>
             <%= link_to agency_listing_path(listing.user.agency, listing), data: { turbo_frame: "show_listing" } do %>
-              <div class="d-flex m-2">
-                <span class="p-light"><%= listing.listing_type %></span>
+              <div class="listings-list-item">
+                <div class="d-flex justify-content-between">
+                  <span class="p-light"><%= listing.listing_type %></span>
+                  <span class="small-type"><%= listing.start_date.strftime("%d %b") %></span>
+                </div>
+
                 <span class="p-regular"> <%= listing.client.name %> </span>
               </div>
             <% end %>

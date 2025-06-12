@@ -5,17 +5,20 @@
   <div class="home-posts-container">
     <% @posts.each do |post| %>
       <div class="connection-header">
-      <div class="avatar avatar-connection-show">
+        <%= image_tag "#{post.agency.profile_pic}", class: "avatar avatar-connection-show", alt: "dropdown menu", crop: :cover %>
+        <div class="connection-agency-info">
+          <span class="p-standard"><%= post.agency.name %></span>
+          <span class="small-type"><%= post.agency.city %></span>
+        </div>
       </div>
-      <div class="connection-agency-info">
-        <span class="p-standard"><%= post.agency.name %></span>
-        <span class="small-type"><%= post.agency.city %></span>
+      <div class="d-flex justify-content-end">
+        <div class="post-card">
+          <% if post.photo.attached? %>
+            <%= cl_image_tag post.photo.key, class: "post-image" %>
+          <% end %>
+          <span class="p-regular"> <%= post.post_text %> </span>
+        </div>
       </div>
-    </div>
-      <% if post.photo.attached? %>
-        <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <h1> <%= post.post_text %> </h1>
     <% end %>
   </div>
   <div class="navbar-bottom-container">

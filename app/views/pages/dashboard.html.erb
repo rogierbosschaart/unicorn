@@ -34,7 +34,7 @@
       <div class="search-form">
         <%= form_with url: dashboard_path, method: :get, class: "d-flex", local: true do %>
           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a keyword" %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-warning" %>
         <% end %>
       </div>
 

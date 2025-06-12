@@ -90,3 +90,17 @@ document.addEventListener("turbo:load", function() {
     // console.warn("Default 'All' tab content (element with ID 'All') not found on turbo:load.");
   }
 });
+
+document.addEventListener("turbo:load", function() {
+  const listingitem = document.querySelectorAll('.listings-list-item');
+  listingitem.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+      listingitem.forEach(function(el) {
+          el.classList.remove('listing-selected');
+      });
+      event.currentTarget.classList.add('listing-selected');
+      console.log("Clicked and selected:", event.currentTarget); // For debugging
+    });
+  });
+  
+});
