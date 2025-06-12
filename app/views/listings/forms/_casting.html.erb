@@ -1,6 +1,6 @@
 <div class="create-panel-container">
   <div class="form-container">
-    <%= simple_form_for [@agency, @listing] do |f| %>
+    <%= simple_form_for [@agency, @listing], data: { turbo: false } do |f| %>
       <%= f.input :client_id, placeholder: "Client", collection: Client.all %>
       <%= f.input :location, placeholder: "Location" %>
       <%= f.input :address, placeholder: "Address" %>

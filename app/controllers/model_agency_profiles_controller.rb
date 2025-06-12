@@ -1,6 +1,6 @@
 class ModelAgencyProfilesController < ApplicationController
   before_action :set_model_agency_profile
-  before_action :set_user, except: [:update, :home, :new, :create]
+  before_action :set_user, except: [:update, :home, :new, :create, :agenda, :map]
 
   def new
     @model_agency_profile = ModelAgencyProfile.new
@@ -70,6 +70,43 @@ class ModelAgencyProfilesController < ApplicationController
     profile = current_user.model_agency_profiles.find(params[:id])
     profile.update(active: true)
     redirect_to dashboard_path
+  end
+
+  def agenda
+    if current_user.user_type == 'agent'
+      redirect_to dashboard_path
+      return
+    end
+
+    active_profile = current_user.model_agency_profiles.find_by(active: true)
+    if active_profile
+      @listings = Listing.joins(:connections)
+                         .where(connections: { model_agency_profile_id: active_profile.id })
+                         .where(start_date: Date.today.beginning_of_month..Date.today.end_of_month)
+                         .distinct
+    else
+      @listings = Listing.none
+    end
+  end
+
+  def map
+    active_profile = current_user.model_agency_profiles.find_by(active: true)
+    @listings = if active_profile
+                  Listing.joins(:connections)
+                        .where(connections: { model_agency_profile_id: active_profile.id })
+                        .geocoded
+                else
+                  Listing.none
+                end
+
+    @markers = @listings.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { listing: listing }),
+        marker_html: render_to_string(partial: "marker", locals: { listing: listing })
+      }
+    end
   end
 
   private

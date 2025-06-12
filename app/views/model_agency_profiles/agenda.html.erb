@@ -1,0 +1,51 @@
+agenda.html.rb
+<%# <div class="mb-3" data-controller="calendar">
+  <label for="calendar-jump" class="form-label">Jump to Date:</label>
+  <input type="date" id="calendar-jump" class="form-control" />
+</div> %>
+<div class="mobile-container"> <%=  %>
+  <div class="navbar-top-container">
+    <%= render "shared/navbar_top" %>
+  </div>
+  <div class="agenda-info">
+    <%
+      calendar_events = @listings.map do |listing|
+        OpenStruct.new(
+          id: listing.id,
+          start_date: listing.start_date,
+          listing_type: listing.listing_type,
+          client: listing.client,
+          original_listing: listing
+        )
+      end
+    %>
+    <%= month_calendar(events: calendar_events, attribute: :start_date) do |date, events| %>
+      <div class="calendar-day <%= 'has-listings' if events.any? %>">
+        <%= link_to listings_for_date_path(date: date), data: { turbo_frame: :listing_details }, class: "calendar-date-button" do %>
+          <strong>
+            <%= date.day %>
+            <% if events.any? %>
+              <% if events.first.listing_type == 'casting' %>
+                <p class="calendar-type casting-type"><%= events.first.listing_type %></p>
+              <% elsif events.first.listing_type == 'option' %>
+                <p class="calendar-type option-type"><%= events.first.listing_type %></p>
+              <% elsif events.first.listing_type == 'job' %>
+                <p class="calendar-type job-type"><%= events.first.listing_type %></p>
+              <% end %>
+            <% end %>
+          </strong>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= turbo_frame_tag :listing_details do %>
+      <h2> </h2>
+    <% end %>
+  </div>
+  <div class="navbar-bottom-container">
+    <div class="navbar-bottom">
+      <%= render 'shared/mobile-app-navbar' %>
+    </div>
+  </div>
+</div>
