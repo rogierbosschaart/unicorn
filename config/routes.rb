@@ -30,5 +30,6 @@ Rails.application.routes.draw do
 
   get 'agenda', to: 'model_agency_profiles#agenda'
 
+  
   get 'listings_for_date', to: 'listings#for_date'
 end

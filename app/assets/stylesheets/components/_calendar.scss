@@ -9,3 +9,41 @@
 .job-type {
   color: #25ad33;
 }
+
+.simple-calendar {
+  .day {
+    background: #ffffff;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+
+  }
+  .past {
+    background: #f2f2f2;
+
+  }
+  .future {
+
+  }
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
+
+.calendar-listing-details {
+  background-color: white;
+  padding: 10px;
+}

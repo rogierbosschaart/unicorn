@@ -1,9 +1,4 @@
-agenda.html.rb
-<%# <div class="mb-3" data-controller="calendar">
-  <label for="calendar-jump" class="form-label">Jump to Date:</label>
-  <input type="date" id="calendar-jump" class="form-control" />
-</div> %>
-<div class="mobile-container"> <%=  %>
+<div class="mobile-container <%= @agency.name %>">
   <div class="navbar-top-container">
     <%= render "shared/navbar_top" %>
   </div>
@@ -37,11 +32,11 @@ agenda.html.rb
         <% end %>
       </div>
     <% end %>
+    <%= turbo_frame_tag :listing_details do %>
+    <% end %>
   </div>
   <div>
-    <%= turbo_frame_tag :listing_details do %>
-      <h2> </h2>
-    <% end %>
+
   </div>
   <div class="navbar-bottom-container">
     <div class="navbar-bottom">

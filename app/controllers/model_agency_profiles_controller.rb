@@ -73,6 +73,7 @@ class ModelAgencyProfilesController < ApplicationController
   end
 
   def agenda
+    @agency = current_user.model_agency_profiles.where(active: true).first.agency
     if current_user.user_type == 'agent'
       redirect_to dashboard_path
       return
