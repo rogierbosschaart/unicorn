@@ -55,6 +55,8 @@ class PagesController < ApplicationController
   #     end
   #   end
   # end
+  def welcome
+  end
 
   private
 
