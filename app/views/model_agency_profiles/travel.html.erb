@@ -32,6 +32,14 @@
                 <span class="p-regular info"><%= hotel.address %></span>
               </div>
               <div class="d-flex">
+                <span class="p-light p-description">Check-in</span>
+                <span class="p-regular info"><%= hotel.checkin %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Check-out</span>
+                <span class="p-regular info"><%= hotel.checkout %></span>
+              </div>
+              <div class="d-flex">
                 <span class="p-light p-description">Info</span>
                 <span class="p-regular info"><%= hotel.extra_info %></span>
               </div>
@@ -57,6 +65,14 @@
               <div class="d-flex">
                 <span class="p-light p-description">To</span>
                 <span class="p-regular"><%= travel.destination %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Date</span>
+                <span class="p-regular"><%= travel.date.strftime('%-d %B %Y') %></span>
+              </div>
+              <div class="d-flex">
+                <span class="p-light p-description">Time</span>
+                <span class="p-regular"><%= travel.time.strftime('%H:%M') %></span>
               </div>
               <div class="d-flex">
                 <span class="p-light p-description">Info</span>

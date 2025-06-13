@@ -91,7 +91,7 @@ profile_30 = ModelAgencyProfile.create!(user: model30, agency: success, selected
 profile_31 = ModelAgencyProfile.create!(user: model31, agency: success, selected: true)
 
 # create travels
-Travel.create!(origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:00", model_agency_profile: model_success, agency: success)
+Travel.create!(origin: "Amsterdam", destination: "Paris", date: "03/06/2026", time: "11:09", model_agency_profile: model_success, agency: success, extra_info: "Thalys from Amsterdam Central Station.")
 Travel.create!(origin: "Paris", destination: "Milan", date: "03/06/2026", time: "23:48", model_agency_profile: model_bella, agency: bella)
 Travel.create!(origin: "Milan", destination: "New-York", date: "04/06/2026", time: "15:55", model_agency_profile: model_img, agency: img)
 
@@ -100,6 +100,8 @@ Hotel.create!(
   name: "Mama Shelter Paris East",
   address: "109 Rue de Bagnolet, 75020 Paris, France",
   extra_info: "Hi Rogier, we got you a room at Mama Shelter again. Let me know if you need anything else.",
+  checkin: "2025-06-17",
+  checkout: "2025-06-19",
   model_agency_profile: model_success,
   agency: success
 )
@@ -107,6 +109,8 @@ Hotel.create!(
   name: "Hotel Bianca Maria",
   address: "Viale Bianca Maria 4, Milano, IT 20129",
   extra_info: "Staying for two nights.",
+  checkin: "2025-06-24",
+  checkout: "2025-06-25",
   model_agency_profile: model_bella,
   agency: bella
 )
