@@ -97,16 +97,16 @@ Travel.create!(origin: "Milan", destination: "New-York", date: "04/06/2026", tim
 
 # create hotels
 Hotel.create!(
-  name: "The Casting Call Inn",
-  address: "123 Film Studio Ave, Los Angeles, CA 90210, USA",
-  extra_info: "Perfectly located for quick access to major casting studios, offering comfortable stays with early breakfast options.",
+  name: "Mama Shelter Paris East",
+  address: "109 Rue de Bagnolet, 75020 Paris, France",
+  extra_info: "Hi Rogier, we got you a room at Mama Shelter again. Let me know if you need anything else.",
   model_agency_profile: model_success,
   agency: success
 )
 Hotel.create!(
-  name: "Runway Retreat Boutique",
-  address: "456 Fashion Blvd, Milan, Lombardy, Italy",
-  extra_info: "A chic, modern hotel frequented by models and designers, ideal for fashion week or extended job assignments.",
+  name: "Hotel Bianca Maria",
+  address: "Viale Bianca Maria 4, Milano, IT 20129",
+  extra_info: "Staying for two nights.",
   model_agency_profile: model_bella,
   agency: bella
 )
